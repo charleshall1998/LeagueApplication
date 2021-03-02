@@ -25,7 +25,7 @@ public class ChampionController {
         return ResponseEntity.ok(toReturn);
     }
 
-    @GetMapping("/champions/{championName}")
+    @GetMapping("/champions/name/{championName}")
     public ResponseEntity getChampionByName(@PathVariable String championName) {
         Champion toReturn = new Champion();
         try {

@@ -1,4 +1,7 @@
+import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { Item } from '../Item';
+import { LeagueService } from '../league.service';
 
 @Component({
   selector: 'app-item',
@@ -7,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemComponent implements OnInit {
 
-  constructor() { }
+  @Input() item : Item;
+
+  constructor(private leagueService : LeagueService) { }
 
   ngOnInit(): void {
   }

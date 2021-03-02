@@ -16,8 +16,7 @@ export class ChampionlistComponent implements OnInit {
 
   ngOnInit(): void {
     this.leagueService.getAllChampions().subscribe(list => {
-      console.log("Hello log!");
-      this.champions = list
+      this.champions = list;
     });
   }
 
