@@ -8,6 +8,7 @@ import { RunelistComponent } from './runelist/runelist.component';
 import { RunesetlistComponent } from './runesetlist/runesetlist.component';
 import { SummonerspellComponent } from './summonerspell/summonerspell.component';
 import { SummonerspelllistComponent } from './summonerspelllist/summonerspelllist.component';
+import { SummonerspellsetlistComponent } from './summonerspellsetlist/summonerspellsetlist.component';
 
 const routes: Routes = [{path: "championlist", component: ChampionlistComponent},
                         {path: "championname", component: ChampionComponent},
@@ -15,7 +16,8 @@ const routes: Routes = [{path: "championlist", component: ChampionlistComponent}
                         {path: "itemsetlist", component: ItemsetlistComponent},
                         {path: "runelist", component: RunelistComponent},
                         {path: "runesetlist", component: RunesetlistComponent},
-                        {path: "summonerspelllist", component: SummonerspelllistComponent}];
+                        {path: "summonerspelllist", component: SummonerspelllistComponent},
+                        {path: "summonerspellsetlist", component: SummonerspellsetlistComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

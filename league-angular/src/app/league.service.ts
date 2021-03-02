@@ -10,6 +10,7 @@ import { SummonerSpell } from './SummonerSpell';
 import { SummonerspellComponent } from './summonerspell/summonerspell.component';
 import { ItemSet } from './ItemSet';
 import { RuneSet } from './RuneSet';
+import { SummonerSpellSet } from './SummonerSpellSet';
 
 @Injectable({
   providedIn: 'root'
@@ -231,4 +232,40 @@ export class LeagueService {
       })
       );
   }
+
+  //Summoner Spell Set Methods
+  getAllSummonerSpellSets() : Observable<SummonerSpellSet[]> {
+    return this.http.get<SummonerSpellSet[]>(this.baseUrl + "/summonerSpellSets")
+    .pipe(
+      tap(x => console.log(x)),
+      catchError(err => {
+        console.log(err);
+        let empty : SummonerSpellSet[] = [];
+        return of(empty);
+      })
+      );
+  }
+
+  getSummonerSpellSetByName(name : string) : Observable<SummonerSpellSet> {
+    return this.http.get<SummonerSpellSet>(this.baseUrl + "/summonerSpellSets/name/" + name)
+    .pipe(
+      tap(x => console.log(x)),
+      catchError(err => {
+        console.log(err);
+        return of(null);
+      })
+      );
+  }
+
+  getSummonerSpellSetById(id : number) : Observable<SummonerSpellSet> {
+    return this.http.get<SummonerSpellSet>(this.baseUrl + "/summonerSpells/id/" + id)
+    .pipe(
+      tap(x => console.log(x)),
+      catchError(err => {
+        console.log(err);
+        return of(null);
+      })
+      );
+  }
+
 }
