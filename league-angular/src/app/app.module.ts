@@ -19,6 +19,7 @@ import { RunesetComponent } from './runeset/runeset.component';
 import { SummonerspellsetComponent } from './summonerspellset/summonerspellset.component';
 import { SummonerspellsetlistComponent } from './summonerspellsetlist/summonerspellsetlist.component';
 import { CreateItemsetComponent } from './create-itemset/create-itemset.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { CreateItemsetComponent } from './create-itemset/create-itemset.componen
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

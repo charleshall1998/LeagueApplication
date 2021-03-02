@@ -1,1 +1,22 @@
-<p>create-itemset works!</p>
+<span>Item Set Name</span>
+<input type="text" [(ngModel)]="itemSetName">
+<span>Champion ID</span>
+<input type="number" [(ngModel)]="championId">
+<br/>
+<span>Items:</span>
+<br/>
+<span>Item 1</span>
+<input id="item1" type="number">
+<span>Item 2</span>
+<input id="item2" type="number">
+<span>Item 3</span>
+<input id="item3" type="number">
+<span>Item 4</span>
+<input id="item4" type="number">
+<span>Item 5</span>
+<input id="item5" type="number">
+<span>Item 6</span>
+<input id="item6" type="number">
+<br/>
+
+<button (click)="createItemSet()">Create</button>

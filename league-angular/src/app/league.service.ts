@@ -22,7 +22,6 @@ export class LeagueService {
 
   constructor(private http : HttpClient) { }
 
-
   //Champion methods
   getAllChampions() : Observable<Champion[]> {
     return this.http.get<Champion[]>(this.baseUrl + "/champions")
@@ -57,6 +56,7 @@ export class LeagueService {
       })
       );
   }
+
 
   //Item Methods
   getAllItems() : Observable<Item[]> {
@@ -93,7 +93,19 @@ export class LeagueService {
       );
   }
 
+
   //Item Set Methods
+  createItemSet(toAdd : ItemSet) : Observable<ItemSet> {
+    return this.http.post<ItemSet>(this.baseUrl + "/new/itemSet", toAdd, this.httpOptions)
+    .pipe(
+      tap(x => console.log(x)),
+      catchError(err => {
+        console.log(err);
+        return of(null);
+      })
+    );
+  }
+
   getAllItemSets() : Observable<ItemSet[]> {
     return this.http.get<ItemSet[]>(this.baseUrl + "/itemSets")
     .pipe(
@@ -127,6 +139,7 @@ export class LeagueService {
       })
       );
   }
+
 
   //Rune Methods
   getAllRunes() : Observable<Rune[]> {
@@ -163,6 +176,7 @@ export class LeagueService {
       );
   }
 
+
   //Rune Set Methods
   getAllRuneSets() : Observable<RuneSet[]> {
     return this.http.get<RuneSet[]>(this.baseUrl + "/runeSets")
@@ -198,6 +212,7 @@ export class LeagueService {
       );
   }
 
+
   //Summoner Spell Methods
   getAllSummonerSpells() : Observable<SummonerSpell[]> {
     return this.http.get<SummonerSpell[]>(this.baseUrl + "/summonerSpells")
@@ -232,6 +247,7 @@ export class LeagueService {
       })
       );
   }
+
 
   //Summoner Spell Set Methods
   getAllSummonerSpellSets() : Observable<SummonerSpellSet[]> {
