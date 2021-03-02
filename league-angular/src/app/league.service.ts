@@ -22,7 +22,6 @@ export class LeagueService {
 
   constructor(private http : HttpClient) { }
 
-  //Champion methods
   getAllChampions() : Observable<Champion[]> {
     return this.http.get<Champion[]>(this.baseUrl + "/champions")
     .pipe(
@@ -131,6 +130,17 @@ export class LeagueService {
 
   getItemSetById(id : number) : Observable<ItemSet> {
     return this.http.get<ItemSet>(this.baseUrl + "/itemSets/id/" + id)
+    .pipe(
+      tap(x => console.log(x)),
+      catchError(err => {
+        console.log(err);
+        return of(null);
+      })
+      );
+  }
+
+  deleteItemSet(toDelete : number) : Observable<ItemSet> {
+    return this.http.delete<ItemSet>(this.baseUrl + "/delete/itemSet/id/" + toDelete)
     .pipe(
       tap(x => console.log(x)),
       catchError(err => {
