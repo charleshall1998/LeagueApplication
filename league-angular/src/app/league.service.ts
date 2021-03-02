@@ -178,6 +178,17 @@ export class LeagueService {
 
 
   //Rune Set Methods
+  createRuneSet(toAdd : RuneSet) : Observable<RuneSet> {
+    return this.http.post<RuneSet>(this.baseUrl + "/new/runeSet", toAdd, this.httpOptions)
+    .pipe(
+      tap(x => console.log(x)),
+      catchError(err => {
+        console.log(err);
+        return of(null);
+      })
+    );
+  }
+
   getAllRuneSets() : Observable<RuneSet[]> {
     return this.http.get<RuneSet[]>(this.baseUrl + "/runeSets")
     .pipe(

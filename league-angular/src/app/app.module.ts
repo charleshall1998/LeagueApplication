@@ -20,6 +20,8 @@ import { SummonerspellsetComponent } from './summonerspellset/summonerspellset.c
 import { SummonerspellsetlistComponent } from './summonerspellsetlist/summonerspellsetlist.component';
 import { CreateItemsetComponent } from './create-itemset/create-itemset.component';
 import { FormsModule } from '@angular/forms';
+import { CreateRunesetComponent } from './create-runeset/create-runeset.component';
+import { CreateSummonerspellsetComponent } from './create-summonerspellset/create-summonerspellset.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { FormsModule } from '@angular/forms';
     RunesetComponent,
     SummonerspellsetComponent,
     SummonerspellsetlistComponent,
-    CreateItemsetComponent
+    CreateItemsetComponent,
+    CreateRunesetComponent,
+    CreateSummonerspellsetComponent
   ],
   imports: [
     BrowserModule,

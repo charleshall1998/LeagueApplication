@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ChampionComponent } from './champion/champion.component';
 import { ChampionlistComponent } from './championlist/championlist.component';
 import { CreateItemsetComponent } from './create-itemset/create-itemset.component';
+import { CreateRunesetComponent } from './create-runeset/create-runeset.component';
 import { ItemlistComponent } from './itemlist/itemlist.component';
 import { ItemsetlistComponent } from './itemsetlist/itemsetlist.component';
 import { RunelistComponent } from './runelist/runelist.component';
@@ -16,6 +17,7 @@ const routes: Routes = [{path: "championlist", component: ChampionlistComponent}
                         {path: "createitemset", component: CreateItemsetComponent},
                         {path: "itemsetlist", component: ItemsetlistComponent},
                         {path: "runelist", component: RunelistComponent},
+                        {path: "createruneset", component: CreateRunesetComponent},
                         {path: "runesetlist", component: RunesetlistComponent},
                         {path: "summonerspelllist", component: SummonerspelllistComponent},
                         {path: "summonerspellsetlist", component: SummonerspellsetlistComponent}];
