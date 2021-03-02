@@ -9,6 +9,7 @@ import { Rune } from './Rune';
 import { SummonerSpell } from './SummonerSpell';
 import { SummonerspellComponent } from './summonerspell/summonerspell.component';
 import { ItemSet } from './ItemSet';
+import { RuneSet } from './RuneSet';
 
 @Injectable({
   providedIn: 'root'
@@ -152,6 +153,41 @@ export class LeagueService {
 
   getRuneById(id : number) : Observable<Rune> {
     return this.http.get<Rune>(this.baseUrl + "/runes/id/" + id)
+    .pipe(
+      tap(x => console.log(x)),
+      catchError(err => {
+        console.log(err);
+        return of(null);
+      })
+      );
+  }
+
+  //Rune Set Methods
+  getAllRuneSets() : Observable<RuneSet[]> {
+    return this.http.get<RuneSet[]>(this.baseUrl + "/runeSets")
+    .pipe(
+      tap(x => console.log(x)),
+      catchError(err => {
+        console.log(err);
+        let empty : RuneSet[] = [];
+        return of(empty);
+      })
+      );
+  }
+
+  getRuneSetByName(name : string) : Observable<RuneSet> {
+    return this.http.get<RuneSet>(this.baseUrl + "/runeSets/name/" + name)
+    .pipe(
+      tap(x => console.log(x)),
+      catchError(err => {
+        console.log(err);
+        return of(null);
+      })
+      );
+  }
+
+  getRuneSetById(id : number) : Observable<RuneSet> {
+    return this.http.get<RuneSet>(this.baseUrl + "/runeSets/id/" + id)
     .pipe(
       tap(x => console.log(x)),
       catchError(err => {

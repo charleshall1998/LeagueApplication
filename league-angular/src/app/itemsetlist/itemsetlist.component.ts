@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Item } from '../Item';
 import { ItemSet } from '../ItemSet';
 import { LeagueService } from '../league.service';
 
