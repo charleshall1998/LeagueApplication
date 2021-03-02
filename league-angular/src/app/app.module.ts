@@ -23,6 +23,9 @@ import { FormsModule } from '@angular/forms';
 import { CreateRunesetComponent } from './create-runeset/create-runeset.component';
 import { CreateSummonerspellsetComponent } from './create-summonerspellset/create-summonerspellset.component';
 import { DeleteItemsetComponent } from './delete-itemset/delete-itemset.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { DeleteRunesetComponent } from './delete-runeset/delete-runeset.component';
+import { DeleteSummonerspellsetComponent } from './delete-summonerspellset/delete-summonerspellset.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +47,10 @@ import { DeleteItemsetComponent } from './delete-itemset/delete-itemset.componen
     CreateItemsetComponent,
     CreateRunesetComponent,
     CreateSummonerspellsetComponent,
-    DeleteItemsetComponent
+    DeleteItemsetComponent,
+    HomePageComponent,
+    DeleteRunesetComponent,
+    DeleteSummonerspellsetComponent
     ],
   imports: [
     BrowserModule,

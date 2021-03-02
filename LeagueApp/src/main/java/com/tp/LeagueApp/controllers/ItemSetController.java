@@ -77,7 +77,4 @@ public class ItemSetController {
         }
     }
 
-    //Tests for service layer and checks
-    //Consider images for the front end
-
 }
