@@ -1,1 +1,14 @@
-<p>create-summonerspellset works!</p>
+<span>Summoner Spell Set Name</span>
+<input type="text" [(ngModel)]="summonerSpellSetName">
+<span>Champion ID</span>
+<input type="number" [(ngModel)]="championId">
+<br/>
+<span>Summoner Spell:</span>
+<br/>
+<span>Summoner Spell 1</span>
+<input id="summonerSpell1" type="number">
+<span>Summoner Spell 2</span>
+<input id="summonerSpell2" type="number">
+<br/>
+
+<button (click)="createSummonerSpellSet()">Create</button>

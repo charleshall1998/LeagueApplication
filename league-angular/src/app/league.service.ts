@@ -225,6 +225,17 @@ export class LeagueService {
 
 
   //Summoner Spell Methods
+  createSummonerSpellSet(toAdd : SummonerSpellSet) : Observable<SummonerSpellSet> {
+    return this.http.post<SummonerSpellSet>(this.baseUrl + "/new/summonerSpellSet", toAdd, this.httpOptions)
+    .pipe(
+      tap(x => console.log(x)),
+      catchError(err => {
+        console.log(err);
+        return of(null);
+      })
+    );
+  }
+
   getAllSummonerSpells() : Observable<SummonerSpell[]> {
     return this.http.get<SummonerSpell[]>(this.baseUrl + "/summonerSpells")
     .pipe(
