@@ -5,6 +5,9 @@ import { Champion } from './Champion';
 import { Item } from './Item';
 import {tap, catchError} from 'rxjs/operators';
 import {of} from 'rxjs';
+import { Rune } from './Rune';
+import { SummonerSpell } from './SummonerSpell';
+import { SummonerspellComponent } from './summonerspell/summonerspell.component';
 
 @Injectable({
   providedIn: 'root'
@@ -88,6 +91,72 @@ export class LeagueService {
   }
 
   //Rune Methods
+  getAllRunes() : Observable<Rune[]> {
+    return this.http.get<Rune[]>(this.baseUrl + "/runes")
+    .pipe(
+      tap(x => console.log(x)),
+      catchError(err => {
+        console.log(err);
+        let empty : Rune[] = [];
+        return of(empty);
+      })
+      );
+  }
+
+  getRuneByName(name : string) : Observable<Rune> {
+    return this.http.get<Rune>(this.baseUrl + "/runes/name/" + name)
+    .pipe(
+      tap(x => console.log(x)),
+      catchError(err => {
+        console.log(err);
+        return of(null);
+      })
+      );
+  }
+
+  getRuneById(id : number) : Observable<Rune> {
+    return this.http.get<Rune>(this.baseUrl + "/runes/id/" + id)
+    .pipe(
+      tap(x => console.log(x)),
+      catchError(err => {
+        console.log(err);
+        return of(null);
+      })
+      );
+  }
 
   //Summoner Spell Methods
+  getAllSummonerSpells() : Observable<SummonerSpell[]> {
+    return this.http.get<SummonerSpell[]>(this.baseUrl + "/summonerSpells")
+    .pipe(
+      tap(x => console.log(x)),
+      catchError(err => {
+        console.log(err);
+        let empty : SummonerSpell[] = [];
+        return of(empty);
+      })
+      );
+  }
+
+  getSummonerSpellByName(name : string) : Observable<SummonerSpell> {
+    return this.http.get<SummonerSpell>(this.baseUrl + "/summonerSpells/name/" + name)
+    .pipe(
+      tap(x => console.log(x)),
+      catchError(err => {
+        console.log(err);
+        return of(null);
+      })
+      );
+  }
+
+  getSummonerSpellById(id : number) : Observable<SummonerSpell> {
+    return this.http.get<SummonerSpell>(this.baseUrl + "/summonerSpells/id/" + id)
+    .pipe(
+      tap(x => console.log(x)),
+      catchError(err => {
+        console.log(err);
+        return of(null);
+      })
+      );
+  }
 }

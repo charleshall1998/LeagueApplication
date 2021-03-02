@@ -10,6 +10,8 @@ import { SummonerspellComponent } from './summonerspell/summonerspell.component'
 import { ChampionlistComponent } from './championlist/championlist.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ItemlistComponent } from './itemlist/itemlist.component';
+import { RunelistComponent } from './runelist/runelist.component';
+import { SummonerspelllistComponent } from './summonerspelllist/summonerspelllist.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { ItemlistComponent } from './itemlist/itemlist.component';
     RuneComponent,
     SummonerspellComponent,
     ChampionlistComponent,
-    ItemlistComponent
+    ItemlistComponent,
+    RunelistComponent,
+    SummonerspelllistComponent
   ],
   imports: [
     BrowserModule,

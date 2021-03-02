@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { SummonerSpell } from '../SummonerSpell';
 
 @Component({
   selector: 'app-summonerspell',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./summonerspell.component.css']
 })
 export class SummonerspellComponent implements OnInit {
+
+  @Input() summonerSpell : SummonerSpell;
 
   constructor() { }
 
