@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ItemlistComponent } from './itemlist/itemlist.component';
 import { RunelistComponent } from './runelist/runelist.component';
 import { SummonerspelllistComponent } from './summonerspelllist/summonerspelllist.component';
+import { ItemsetComponent } from './itemset/itemset.component';
+import { ItemsetlistComponent } from './itemsetlist/itemsetlist.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { SummonerspelllistComponent } from './summonerspelllist/summonerspelllis
     ChampionlistComponent,
     ItemlistComponent,
     RunelistComponent,
-    SummonerspelllistComponent
+    SummonerspelllistComponent,
+    ItemsetComponent,
+    ItemsetlistComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,7 @@ import {of} from 'rxjs';
 import { Rune } from './Rune';
 import { SummonerSpell } from './SummonerSpell';
 import { SummonerspellComponent } from './summonerspell/summonerspell.component';
+import { ItemSet } from './ItemSet';
 
 @Injectable({
   providedIn: 'root'
@@ -81,6 +82,41 @@ export class LeagueService {
 
   getItemById(id : number) : Observable<Item> {
     return this.http.get<Item>(this.baseUrl + "/items/id/" + id)
+    .pipe(
+      tap(x => console.log(x)),
+      catchError(err => {
+        console.log(err);
+        return of(null);
+      })
+      );
+  }
+
+  //Item Set Methods
+  getAllItemSets() : Observable<ItemSet[]> {
+    return this.http.get<ItemSet[]>(this.baseUrl + "/itemSets")
+    .pipe(
+      tap(x => console.log(x)),
+      catchError(err => {
+        console.log(err);
+        let empty : ItemSet[] = [];
+        return of(empty);
+      })
+      );
+  }
+
+  getItemSetByName(name : string) : Observable<ItemSet> {
+    return this.http.get<ItemSet>(this.baseUrl + "/itemSets/name/" + name)
+    .pipe(
+      tap(x => console.log(x)),
+      catchError(err => {
+        console.log(err);
+        return of(null);
+      })
+      );
+  }
+
+  getItemSetById(id : number) : Observable<ItemSet> {
+    return this.http.get<ItemSet>(this.baseUrl + "/itemSets/id/" + id)
     .pipe(
       tap(x => console.log(x)),
       catchError(err => {
