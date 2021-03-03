@@ -8,6 +8,8 @@ import { CreateItemsetComponent } from './create-itemset/create-itemset.componen
 import { CreateRunesetComponent } from './create-runeset/create-runeset.component';
 import { CreateSummonerspellsetComponent } from './create-summonerspellset/create-summonerspellset.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { ItemByIdComponent } from './item-by-id/item-by-id.component';
+import { ItemByNameComponent } from './item-by-name/item-by-name.component';
 import { ItemlistComponent } from './itemlist/itemlist.component';
 import { ItemsetlistComponent } from './itemsetlist/itemsetlist.component';
 import { RunelistComponent } from './runelist/runelist.component';
@@ -20,6 +22,8 @@ const routes: Routes = [{path: "", component: HomePageComponent},
                         {path: "championname", component: ChampionByNameComponent},
                         {path: "championid", component: ChampionByIdComponent},
                         {path: "itemlist", component: ItemlistComponent},
+                        {path: "itemname", component: ItemByNameComponent},
+                        {path: "itemid", component: ItemByIdComponent},
                         {path: "createitemset", component: CreateItemsetComponent},
                         {path: "itemsetlist", component: ItemsetlistComponent},
                         {path: "runelist", component: RunelistComponent},

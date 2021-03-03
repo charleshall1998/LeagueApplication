@@ -1,1 +1,16 @@
-<p>item-by-name works!</p>
+<div>
+    <span>Enter Item Name</span>
+    <input type="text" [(ngModel)]="itemName">
+
+    <button (click)="search()">Search</button>
+</div> 
+
+<div id="item">
+    <p>
+        {{item.itemName}}
+        <br/>
+        Description: {{item.itemDescription}}
+        <br/>
+        Cost: {{item.itemCost}} gold
+    </p>
+</div>

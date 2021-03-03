@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Item } from '../Item';
+import { LeagueService } from '../league.service';
 
 @Component({
   selector: 'app-item-by-name',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemByNameComponent implements OnInit {
 
-  constructor() { }
+  item : Item;
+  itemName : string;
+
+  constructor(private leagueService : LeagueService) { }
 
   ngOnInit(): void {
+    
+  }
+
+  search(): void {
+    this.leagueService.getItemByName(this.itemName).subscribe( item => {
+      this.item = item;
+    });
   }
 
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Item } from '../Item';
+import { LeagueService } from '../league.service';
 
 @Component({
   selector: 'app-item-by-id',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemByIdComponent implements OnInit {
 
-  constructor() { }
+  item : Item;
+  itemId : number;
 
-  ngOnInit(): void {
+  constructor(private leagueService : LeagueService) { }
+
+  ngOnInit(): void { }
+
+  search() : void {
+    this.leagueService.getItemById(this.itemId).subscribe( item => {
+      this.item = item;
+    });
   }
 
 }
