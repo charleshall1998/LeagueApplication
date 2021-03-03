@@ -1,1 +1,14 @@
-<p>summonerspell-by-name works!</p>
+<div>
+    <span>Enter Summoner Spell Name</span>
+    <input type="text" [(ngModel)]="summonerSpellName">
+
+    <button (click)="search()">Search</button>
+</div> 
+
+<div id="summonerspell">
+    <p>
+        {{summonerSpell.summonerSpellName}}
+        <br/>
+        Description: {{summonerSpell.summonerSpellDescription}}
+    </p>
+</div>

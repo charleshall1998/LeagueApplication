@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LeagueService } from '../league.service';
+import { SummonerSpell } from '../SummonerSpell';
 
 @Component({
   selector: 'app-summonerspell-by-name',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SummonerspellByNameComponent implements OnInit {
 
-  constructor() { }
+  summonerSpell : SummonerSpell;
+  summonerSpellName : string;
+
+  constructor(private leagueService : LeagueService) { }
 
   ngOnInit(): void {
+    
+  }
+
+  search(): void {
+    this.leagueService.getSummonerSpellByName(this.summonerSpellName).subscribe( summonerSpell => {
+      this.summonerSpell = summonerSpell;
+    });
   }
 
 }
