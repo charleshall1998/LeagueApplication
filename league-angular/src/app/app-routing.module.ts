@@ -28,6 +28,7 @@ import { UpdateRunesetComponent } from './update-runeset/update-runeset.componen
 import { UpdateSummonerspellsetComponent } from './update-summonerspellset/update-summonerspellset.component';
 
 const routes: Routes = [{path: "", component: HomePageComponent},
+                        {path: "home", component: HomePageComponent},
                         {path: "championlist", component: ChampionlistComponent},
                         {path: "championname", component: ChampionByNameComponent},
                         {path: "championid", component: ChampionByIdComponent},
