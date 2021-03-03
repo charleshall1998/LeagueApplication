@@ -6,7 +6,7 @@
 
 .navbar {
     overflow: hidden;
-    background-color: black; 
+    background-color: #0E1726; 
   }
   
   .navbar a {
@@ -35,14 +35,14 @@
   }
   
   .navbar a:hover, .subnav:hover .subnavbtn {
-    background-color: #161F6D;
+    background-color: #070E1D;
   }
   
   .subnav-content {
     display: none;
     position: absolute;
     left: 0;
-    background-color: #161F6D;
+    background-color: #070E1D;
     width: 100%;
     z-index: 1;
   }
@@ -54,7 +54,7 @@
   }
   
   .subnav-content a:hover {
-    background-color: #eee;
+    background-color: #BCC9E0;
     color: black;
   }
   

@@ -3,6 +3,7 @@ import { Champion } from '../Champion';
 import { LeagueService } from '../league.service';
 
 
+
 @Component({
   selector: 'app-champion',
   templateUrl: './champion.component.html',
@@ -11,9 +12,13 @@ import { LeagueService } from '../league.service';
 export class ChampionComponent implements OnInit {
 
   @Input() champion : Champion;
+  src : string;
 
   constructor(private leagueService : LeagueService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    this.src = "./assets/images/champions/" + this.champion.championName + ".png";
+    console.log(this.src);
+  }
 
 }
