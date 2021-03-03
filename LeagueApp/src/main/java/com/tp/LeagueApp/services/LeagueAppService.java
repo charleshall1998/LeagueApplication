@@ -32,6 +32,8 @@ public class LeagueAppService {
     @Autowired
     SummonerSpellSetDao summonerSpellSetDao;
 
+
+    //TODO Write checks in service layer (Empty string, invalid names/id's etc.)
     //Base component methods
     //Champions
     public List<Champion> getAllChampions() {

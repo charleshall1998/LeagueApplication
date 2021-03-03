@@ -26,6 +26,12 @@ import { DeleteItemsetComponent } from './delete-itemset/delete-itemset.componen
 import { HomePageComponent } from './home-page/home-page.component';
 import { DeleteRunesetComponent } from './delete-runeset/delete-runeset.component';
 import { DeleteSummonerspellsetComponent } from './delete-summonerspellset/delete-summonerspellset.component';
+import { ChampionByNameComponent } from './champion-by-name/champion-by-name.component';
+import { ChampionByIdComponent } from './champion-by-id/champion-by-id.component';
+import { ItemByNameComponent } from './item-by-name/item-by-name.component';
+import { ItemByIdComponent } from './item-by-id/item-by-id.component';
+import { SummonerspellByNameComponent } from './summonerspell-by-name/summonerspell-by-name.component';
+import { SummonerspellByIdComponent } from './summonerspell-by-id/summonerspell-by-id.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +56,13 @@ import { DeleteSummonerspellsetComponent } from './delete-summonerspellset/delet
     DeleteItemsetComponent,
     HomePageComponent,
     DeleteRunesetComponent,
-    DeleteSummonerspellsetComponent
+    DeleteSummonerspellsetComponent,
+    ChampionByNameComponent,
+    ChampionByIdComponent,
+    ItemByNameComponent,
+    ItemByIdComponent,
+    SummonerspellByNameComponent,
+    SummonerspellByIdComponent
     ],
   imports: [
     BrowserModule,

@@ -1,0 +1,22 @@
+<div>
+    <span>Enter Champion ID</span>
+    <input type="number" [(ngModel)]="championId">
+
+    <button (click)="search()">Search</button>
+</div>  
+
+<div id="champion">
+    <p>
+        {{champion.championName}}
+        <br/>
+        {{champion.championDescription}}
+        <br/>
+        KDA: {{champion.avgKDA}}
+        <br/>
+        Win Rate: {{champion.winRate}}
+        <br/>
+        Pick Rate: {{champion.pickRate}}
+        <br/>
+        Ban Rate: {{champion.banRate}}
+    </p>
+</div>

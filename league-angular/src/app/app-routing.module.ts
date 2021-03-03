@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ChampionByIdComponent } from './champion-by-id/champion-by-id.component';
+import { ChampionByNameComponent } from './champion-by-name/champion-by-name.component';
 import { ChampionComponent } from './champion/champion.component';
 import { ChampionlistComponent } from './championlist/championlist.component';
 import { CreateItemsetComponent } from './create-itemset/create-itemset.component';
@@ -15,7 +17,8 @@ import { SummonerspellsetlistComponent } from './summonerspellsetlist/summonersp
 
 const routes: Routes = [{path: "", component: HomePageComponent},
                         {path: "championlist", component: ChampionlistComponent},
-                        {path: "championname", component: ChampionComponent},
+                        {path: "championname", component: ChampionByNameComponent},
+                        {path: "championid", component: ChampionByIdComponent},
                         {path: "itemlist", component: ItemlistComponent},
                         {path: "createitemset", component: CreateItemsetComponent},
                         {path: "itemsetlist", component: ItemsetlistComponent},

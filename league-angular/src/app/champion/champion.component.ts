@@ -14,14 +14,6 @@ export class ChampionComponent implements OnInit {
 
   constructor(private leagueService : LeagueService) { }
 
-  ngOnInit(): void {
-    // this.leagueService.getChampionByName("Aatrox").subscribe( champ => {
-    //   this.champion = champ;
-    // });
-
-    // this.leagueService.getChampionById(2).subscribe( champ => {
-    //   this.champion = champ;
-    // });
-  }
+  ngOnInit(): void { }
 
 }

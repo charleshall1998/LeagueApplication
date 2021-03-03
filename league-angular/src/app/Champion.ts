@@ -5,5 +5,5 @@ export interface Champion {
     winRate : number;
     pickRate : number;
     banRate : number;
-    kda : number;
+    avgKDA : number;
 }
