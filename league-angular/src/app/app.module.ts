@@ -34,6 +34,9 @@ import { SummonerspellByNameComponent } from './summonerspell-by-name/summonersp
 import { SummonerspellByIdComponent } from './summonerspell-by-id/summonerspell-by-id.component';
 import { RuneByNameComponent } from './rune-by-name/rune-by-name.component';
 import { RuneByIdComponent } from './rune-by-id/rune-by-id.component';
+import { UpdateItemsetComponent } from './update-itemset/update-itemset.component';
+import { UpdateRunesetComponent } from './update-runeset/update-runeset.component';
+import { UpdateSummonerspellsetComponent } from './update-summonerspellset/update-summonerspellset.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +69,10 @@ import { RuneByIdComponent } from './rune-by-id/rune-by-id.component';
     SummonerspellByNameComponent,
     SummonerspellByIdComponent,
     RuneByNameComponent,
-    RuneByIdComponent
+    RuneByIdComponent,
+    UpdateItemsetComponent,
+    UpdateRunesetComponent,
+    UpdateSummonerspellsetComponent
     ],
   imports: [
     BrowserModule,
