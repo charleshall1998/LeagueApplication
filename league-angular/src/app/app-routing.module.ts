@@ -11,6 +11,8 @@ import { ItemByIdComponent } from './item-by-id/item-by-id.component';
 import { ItemByNameComponent } from './item-by-name/item-by-name.component';
 import { ItemlistComponent } from './itemlist/itemlist.component';
 import { ItemsetlistComponent } from './itemsetlist/itemsetlist.component';
+import { RuneByIdComponent } from './rune-by-id/rune-by-id.component';
+import { RuneByNameComponent } from './rune-by-name/rune-by-name.component';
 import { RunelistComponent } from './runelist/runelist.component';
 import { RunesetlistComponent } from './runesetlist/runesetlist.component';
 import { SummonerspellByIdComponent } from './summonerspell-by-id/summonerspell-by-id.component';
@@ -29,6 +31,8 @@ const routes: Routes = [{path: "", component: HomePageComponent},
                         {path: "createitemset", component: CreateItemsetComponent},
                         {path: "itemsetlist", component: ItemsetlistComponent},
                         {path: "runelist", component: RunelistComponent},
+                        {path: "runename", component: RuneByNameComponent},
+                        {path: "runeid", component: RuneByIdComponent},
                         {path: "createruneset", component: CreateRunesetComponent},
                         {path: "runesetlist", component: RunesetlistComponent},
                         {path: "summonerspelllist", component: SummonerspelllistComponent},

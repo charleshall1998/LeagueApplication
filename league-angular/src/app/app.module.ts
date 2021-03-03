@@ -32,6 +32,8 @@ import { ItemByNameComponent } from './item-by-name/item-by-name.component';
 import { ItemByIdComponent } from './item-by-id/item-by-id.component';
 import { SummonerspellByNameComponent } from './summonerspell-by-name/summonerspell-by-name.component';
 import { SummonerspellByIdComponent } from './summonerspell-by-id/summonerspell-by-id.component';
+import { RuneByNameComponent } from './rune-by-name/rune-by-name.component';
+import { RuneByIdComponent } from './rune-by-id/rune-by-id.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,9 @@ import { SummonerspellByIdComponent } from './summonerspell-by-id/summonerspell-
     ItemByNameComponent,
     ItemByIdComponent,
     SummonerspellByNameComponent,
-    SummonerspellByIdComponent
+    SummonerspellByIdComponent,
+    RuneByNameComponent,
+    RuneByIdComponent
     ],
   imports: [
     BrowserModule,
