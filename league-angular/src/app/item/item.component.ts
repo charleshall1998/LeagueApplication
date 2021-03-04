@@ -11,10 +11,12 @@ import { LeagueService } from '../league.service';
 export class ItemComponent implements OnInit {
 
   @Input() item : Item;
+  src : string;
 
   constructor(private leagueService : LeagueService) { }
 
   ngOnInit(): void {
+    this.src = "./assets/images/items/" + this.item.itemName + ".png";
   }
 
 }
