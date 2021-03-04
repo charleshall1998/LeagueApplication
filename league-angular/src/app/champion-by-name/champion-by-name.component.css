@@ -1,0 +1,53 @@
+.search {
+    text-align: center;
+    padding-top: 5%;
+    padding-bottom: 1%;
+}
+
+.championName {
+    font-size: 7vmin;
+    text-align: center;
+}
+
+.champion-info {
+    padding-left: 10%;
+    padding-right: 10%;
+    font-size: 3vmin;
+}
+
+input {
+    color: white;
+    background-color: #202B43;
+    height: 5vmin;
+    width: 40vmin;
+    border-radius: 5px;
+    border: 0px solid;
+    font-size: 3vmin;
+}
+
+input:focus {
+    outline: none;
+}
+
+.searchButton {
+    font-family: 'Alegreya Sans SC';
+    display: inline-block;
+    background-color: #df3d52;
+    border-radius: 20px;
+    color: #eeeeee;
+    text-align: center;
+    font-size: 2vmin;
+    padding: 10px;
+    width: 10%;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5vmin;
+}
+
+.searchButton:hover {
+    background-color: #f05c72;
+}
+
+.searchButton:focus {
+    outline: none;
+}

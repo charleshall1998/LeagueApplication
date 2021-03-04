@@ -1,23 +1,21 @@
 
-<div>
-    <span>Enter Champion Name</span>
+<div class="search">
+    <p>Enter Champion Name</p>
     <input type="text" [(ngModel)]="championName">
 
-    <button (click)="search()">Search</button>
+    <button class="searchButton" (click)="search()">Search</button>
 </div>  
 
-<div id="champion">
-    <p>
-        {{champion.championName}}
-        <br/>
-        {{champion.championDescription}}
-        <br/>
-        KDA: {{champion.avgKDA}}
-        <br/>
-        Win Rate: {{champion.winRate}}
-        <br/>
-        Pick Rate: {{champion.pickRate}}
-        <br/>
-        Ban Rate: {{champion.banRate}}
-    </p>
+<div class="championName">
+    <h1>{{champion.championName}}</h1>
+</div>
+
+<img id="championSplash" class="splash" [src]="src">
+
+<div class="champion-info">
+    <p>{{champion.championDescription}}</p>
+    <p>KDA: {{champion.avgKDA}}%</p>
+    <p>Win Rate: {{champion.winRate}}%</p>
+    <p>Pick Rate: {{champion.pickRate}}%</p>
+    <p>Ban Rate: {{champion.banRate}}%</p>
 </div>

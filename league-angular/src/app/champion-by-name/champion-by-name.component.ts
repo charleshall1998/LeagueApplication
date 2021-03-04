@@ -11,7 +11,7 @@ export class ChampionByNameComponent implements OnInit {
 
   champion : Champion;
   championName : string;
-
+  src : string;
   constructor(private leagueService : LeagueService) { }
 
   ngOnInit(): void {
@@ -20,6 +20,7 @@ export class ChampionByNameComponent implements OnInit {
   search(): void {
     this.leagueService.getChampionByName(this.championName).subscribe( champ => {
       this.champion = champ;
+      this.src = "./assets/images/splash/"+this.championName+".jpg";
     });
   }
 

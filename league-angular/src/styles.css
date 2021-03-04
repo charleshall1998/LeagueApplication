@@ -85,3 +85,10 @@ html, body {
     height: 15vmin;
   }
  
+  button:focus {
+    outline: none;
+  }
+
+  input:focus {
+    outline: none;
+  }
