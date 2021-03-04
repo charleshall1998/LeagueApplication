@@ -117,6 +117,14 @@ public class PostgresItemSetDao implements ItemSetDao {
         template.update("update \"ItemSets\" set \"itemSetName\" = ?, \"championId\" = ? where \"itemSetId\" = ?",
                 toUpdate.getItemSetName(), toUpdate.getChampionId(), toUpdate.getItemSetId());
 
+        //Delete all previous entries from the bridge table
+        template.update("delete from \"ItemSetItems\" where \"itemSetId\" = ?;", toUpdate.getItemSetId());
+
+        //Insert new entries into bridge table
+        for(Integer itemIdToAdd : toUpdate.getItemIdList()) {
+            template.update("insert into \"ItemSetItems\" (\"itemSetId\", \"itemId\") values ('"+toUpdate.getItemSetId()+"', '"+itemIdToAdd+"')");
+        }
+
     }
 
     //DELETE

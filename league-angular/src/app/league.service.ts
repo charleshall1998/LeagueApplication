@@ -146,6 +146,17 @@ export class LeagueService {
       );
   }
 
+  updateItemSet(postData : Object) : Observable<ItemSet> {
+    return this.http.put<ItemSet>(this.baseUrl + "/update/itemSet/", postData)
+    .pipe(
+      tap(x => console.log(x)),
+      catchError(err => {
+        console.log(err);
+        return of(null);
+      })
+      );
+  }
+
   deleteItemSet(toDelete : number) : Observable<ItemSet> {
     return this.http.delete<ItemSet>(this.baseUrl + "/delete/itemSet/id/" + toDelete)
     .pipe(

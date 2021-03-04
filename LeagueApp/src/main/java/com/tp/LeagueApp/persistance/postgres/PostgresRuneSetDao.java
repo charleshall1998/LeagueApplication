@@ -117,6 +117,13 @@ public class PostgresRuneSetDao implements RuneSetDao {
         template.update("update \"RuneSets\" set \"runeSetName\" = ?, \"championId\" = ? where \"runeSetId\" = ?",
                 toUpdate.getRuneSetName(), toUpdate.getChampionId(), toUpdate.getRuneSetId());
 
+        //Delete all previous entries from bridge table
+        template.update("delete from \"RuneSetRunes\" where \"runeSetId\" = ?;", toUpdate.getRuneSetId());
+
+        //Add insert new entries into bridge
+        for(Integer runeIdToAdd : toUpdate.getRuneIdList()) {
+            template.update("insert into \"RuneSetRunes\" (\"runeSetId\", \"runeId\") values ('"+toUpdate.getRuneSetId()+"', '"+runeIdToAdd+"')");
+        }
     }
 
     //DELETE

@@ -116,6 +116,13 @@ public class PostgresSummonerSpellSetDao implements SummonerSpellSetDao {
         template.update("update \"SummonerSpellSets\" set \"summSpellSetName\" = ?, \"championId\" = ? where \"summSpellSetId\" = ?",
                 toUpdate.getSummonerSpellSetName(), toUpdate.getChampionId(), toUpdate.getSummonerSpellSetId());
 
+        //Delete all previous entries from bridge table
+        template.update("delete from \"SummonerSpellSetSummonerSpells\" where \"summSpellSetId\" = ?;", toUpdate.getSummonerSpellSetId());
+
+        //Add insert new entries into bridge
+        for(Integer summSpellIdToAdd : toUpdate.getSummonerSpellIdList()) {
+            template.update("insert into \"SummonerSpellSetSummonerSpells\" (\"summSpellSetId\", \"summSpellId\") values ('"+toUpdate.getSummonerSpellSetId()+"', '"+summSpellIdToAdd+"')");
+        }
     }
 
     //DELETE
