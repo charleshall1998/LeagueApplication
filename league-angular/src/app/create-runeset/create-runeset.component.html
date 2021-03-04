@@ -1,17 +1,27 @@
-<span>Rune Set Name</span>
-<input type="text" [(ngModel)]="runeSetName">
-<span>Champion ID</span>
-<input type="number" [(ngModel)]="championId">
-<br/>
-<span>Runes:</span>
-<br/>
-<span>Rune 1</span>
-<input id="rune1" type="number">
-<span>Rune 2</span>
-<input id="rune2" type="number">
-<span>Rune 3</span>
-<input id="rune3" type="number">
-<span>Rune 4</span>
-<input id="rune4" type="number">
+<br>
+<div class="create-input-container">
+    
+    <h1>Create a new Rune Set</h1>
 
-<button (click)="createRuneSet()">Create</button>
+    <div class="item-group">
+        <p>Rune Set Name</p>
+        <input type="text" [(ngModel)]="runeSetName">
+        <p>Rune 1</p>
+        <input id="rune1" type="number">
+        <p>Rune 3</p>
+        <input id="rune3" type="number">
+    </div>
+
+    <div class="item-group">
+        <p>Champion ID</p>
+        <input type="number" [(ngModel)]="championId">
+        <p>Rune 2</p>
+        <input id="rune2" type="number">
+        <p>Rune 4</p>
+        <input id="rune4" type="number">
+    </div>
+
+    <br>
+
+    <button (click)="createRuneSet()" id="createButton">Create</button>
+</div>

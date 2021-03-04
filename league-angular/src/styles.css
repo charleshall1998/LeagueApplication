@@ -80,4 +80,8 @@ html, body {
       text-align: center;
   }
 
+  .imgSquare {
+    width: 15vmin;
+    height: 15vmin;
+  }
  

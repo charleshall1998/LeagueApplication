@@ -1,0 +1,40 @@
+.create-input-container {
+    text-align: center;
+    border: 5px solid #0c1420;
+    border-radius: 15px;
+    width: 50%;
+    margin: auto;
+}
+
+input {
+    color: white;
+    background-color: #202B43;
+    height: 3vmin;
+    border-radius: 5px;
+    border: 0px solid;
+}
+
+.item-group {
+    display: inline-block;
+    margin: 3vmin;
+}
+
+
+#createButton {
+    font-family: 'Alegreya Sans SC';
+    display: inline-block;
+    background-color: #df3d52;
+    border-radius: 20px;
+    color: #eeeeee;
+    text-align: center;
+    font-size: 2vmin;
+    padding: 10px;
+    width: 10%;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5vmin;
+}
+
+#createButton:hover {
+    background-color: #f05c72;
+  }

@@ -1,14 +1,23 @@
-<span>Summoner Spell Set Name</span>
-<input type="text" [(ngModel)]="summonerSpellSetName">
-<span>Champion ID</span>
-<input type="number" [(ngModel)]="championId">
-<br/>
-<span>Summoner Spell:</span>
-<br/>
-<span>Summoner Spell 1</span>
-<input id="summonerSpell1" type="number">
-<span>Summoner Spell 2</span>
-<input id="summonerSpell2" type="number">
-<br/>
+<br>
+<div class="create-input-container">
+    
+    <h1>Create a new Summoner Spell Set</h1>
 
-<button (click)="createSummonerSpellSet()">Create</button>
+    <div class="item-group">
+        <p>Summoner Spell Set Name</p>
+        <input type="text" [(ngModel)]="summonerSpellSetName">
+        <p>Summoner Spell 1</p>
+        <input id="summonerSpell1" type="number">
+    </div>
+
+    <div class="item-group">
+        <p>Champion ID</p>
+        <input type="number" [(ngModel)]="championId">
+        <p>Summoner Spell 2</p>
+        <input id="summonerSpell2" type="number">
+    </div>
+
+    <br>
+
+    <button (click)="createSummonerSpellSet()" id="createButton">Create</button>
+</div>

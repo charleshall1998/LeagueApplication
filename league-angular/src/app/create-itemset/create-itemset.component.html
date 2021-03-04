@@ -1,22 +1,33 @@
-<span>Item Set Name</span>
-<input type="text" [(ngModel)]="itemSetName">
-<span>Champion ID</span>
-<input type="number" [(ngModel)]="championId">
-<br/>
-<span>Items:</span>
-<br/>
-<span>Item 1</span>
-<input id="item1" type="number">
-<span>Item 2</span>
-<input id="item2" type="number">
-<span>Item 3</span>
-<input id="item3" type="number">
-<span>Item 4</span>
-<input id="item4" type="number">
-<span>Item 5</span>
-<input id="item5" type="number">
-<span>Item 6</span>
-<input id="item6" type="number">
-<br/>
+<br>
+<div class="create-input-container">
+    
+    <h1>Create a new Item Set</h1>
+    
+    <div class="item-group">
+        <p>Item Set Name</p>
+        <input type="text" [(ngModel)]="itemSetName">
+        <p>Item 1</p>
+        <input id="item1" type="number">
+        <p>Item 3</p>
+        <input id="item3" type="number">
+        <p>Item 5</p>
+        <input id="item5" type="number">
+    </div>
 
-<button (click)="createItemSet()">Create</button>
+    <div class="item-group">
+        <p>Champion ID</p>
+        <input type="number" [(ngModel)]="championId">
+        <p>Item 2</p>
+        <input id="item2" type="number">
+        <p>Item 4</p>
+        <input id="item4" type="number">
+        <p>Item 6</p>
+        <input id="item6" type="number">
+    </div>
+
+    <br>
+
+    <button (click)="createItemSet()" id="createButton">Create</button>
+</div>
+
+
