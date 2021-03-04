@@ -18,7 +18,6 @@ export class ChampionComponent implements OnInit {
 
   ngOnInit(): void { 
     this.src = "./assets/images/champions/" + this.champion.championName + ".png";
-    console.log(this.src);
   }
 
 }

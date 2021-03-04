@@ -10,10 +10,13 @@ import { Rune } from '../Rune';
 export class RuneComponent implements OnInit {
 
   @Input() rune : Rune;
+  src : string;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.src = "./assets/images/runes/" + this.rune.runeName + ".png";
+    console.log(this.src);
   }
 
 }

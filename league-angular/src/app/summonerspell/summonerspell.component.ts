@@ -9,10 +9,12 @@ import { SummonerSpell } from '../SummonerSpell';
 export class SummonerspellComponent implements OnInit {
 
   @Input() summonerSpell : SummonerSpell;
+  src : string;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.src = "./assets/images/summonerspells/" + this.summonerSpell.summonerSpellName + ".png";
   }
 
 }
