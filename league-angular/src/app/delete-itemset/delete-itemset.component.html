@@ -1,1 +1,6 @@
-<p>delete-itemset works!</p>
+<div id="userInput">
+    <span>Enter set ID to delete</span>
+    <input type="number" [(ngModel)]="itemSetId">
+</div>
+
+<button (click)="deleteItemSet()">Delete</button>
