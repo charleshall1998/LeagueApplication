@@ -1,1 +1,6 @@
-<p>delete-runeset works!</p>
+<div id="userInput">
+    <span>Enter set ID to delete</span>
+    <input type="number" [(ngModel)]="runeSetId">
+</div>
+
+<button (click)="deleteRuneSet()">Delete</button>

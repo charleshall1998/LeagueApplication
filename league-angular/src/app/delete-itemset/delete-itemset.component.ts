@@ -17,6 +17,7 @@ export class DeleteItemsetComponent implements OnInit {
 
   deleteItemSet() {
     this.service.deleteItemSet(this.itemSetId).subscribe();
+    alert("Item Set Deleted!");
   }
 
 }

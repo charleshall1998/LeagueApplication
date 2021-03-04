@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LeagueService } from '../league.service';
 
 @Component({
   selector: 'app-delete-runeset',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeleteRunesetComponent implements OnInit {
 
-  constructor() { }
+  runeSetId : number;
+
+  constructor(private service : LeagueService) { }
 
   ngOnInit(): void {
   }
 
+  deleteRuneSet() {
+    this.service.deleteRuneSet(this.runeSetId).subscribe();
+    alert("Rune Set Deleted!");
+  }
 }

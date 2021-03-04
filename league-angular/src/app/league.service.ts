@@ -244,6 +244,18 @@ export class LeagueService {
       );
   }
 
+  deleteRuneSet(toDelete : number) : Observable<RuneSet> {
+    return this.http.delete<RuneSet>(this.baseUrl + "/delete/runeSet/id/" + toDelete)
+    .pipe(
+      tap(x => console.log(x)),
+      catchError(err => {
+        console.log(err);
+        return of(null);
+      })
+    );
+  }
+  
+
 
   //************
   //Summoner Spell Methods
