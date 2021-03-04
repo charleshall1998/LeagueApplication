@@ -343,4 +343,15 @@ export class LeagueService {
       );
   }
 
+  deleteSummonerSpellSet(toDelete : number) : Observable<SummonerSpellSet> {
+    return this.http.delete<SummonerSpellSet>(this.baseUrl + "/delete/summonerSpellSet/id/" + toDelete)
+    .pipe(
+      tap(x => console.log(x)),
+      catchError(err => {
+        console.log(err);
+        return of(null);
+      })
+    );
+  }
+
 }

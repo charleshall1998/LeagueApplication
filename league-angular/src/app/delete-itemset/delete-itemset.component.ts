@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { LeagueService } from '../league.service';
 
 @Component({
@@ -10,13 +11,13 @@ export class DeleteItemsetComponent implements OnInit {
 
   itemSetId : number;
 
-  constructor(private service : LeagueService) { }
+  constructor(private service : LeagueService, private router : Router) { }
 
   ngOnInit(): void {
   }
 
   deleteItemSet() {
-    this.service.deleteItemSet(this.itemSetId).subscribe();
+    this.service.deleteItemSet(this.itemSetId).subscribe((_) => {this.router.navigate(["/itemsetlist"])});
     alert("Item Set Deleted!");
   }
 

@@ -29,7 +29,8 @@ export class CreateItemsetComponent implements OnInit {
     }
 
     let toAdd : ItemSet = {itemSetName: this.itemSetName, championId: this.championId, itemIdList: this.itemIdList}
-    this.service.createItemSet(toAdd).subscribe((_) => {this.router.navigate([""])});
+    this.service.createItemSet(toAdd).subscribe((_) => {this.router.navigate(["/itemsetlist"])});
+    alert("Item Set: " + this.itemSetName + " created!");
   }
 
 }

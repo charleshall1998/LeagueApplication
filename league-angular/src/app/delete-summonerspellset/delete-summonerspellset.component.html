@@ -1,1 +1,6 @@
-<p>delete-summonerspellset works!</p>
+<div id="userInput">
+    <span>Enter set ID to delete</span>
+    <input type="number" [(ngModel)]="summonerSpellSetId">
+</div>
+
+<button (click)="deleteSummonerSpellSet()">Delete</button>

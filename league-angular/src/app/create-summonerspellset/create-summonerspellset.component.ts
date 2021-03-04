@@ -29,7 +29,8 @@ export class CreateSummonerspellsetComponent implements OnInit {
     }
 
     let toAdd : SummonerSpellSet = {summonerSpellSetName: this.summonerSpellSetName, championId: this.championId, summonerSpellIdList: this.summonerSpellIdList}
-    this.service.createSummonerSpellSet(toAdd).subscribe((_) => {this.router.navigate([""])});
+    this.service.createSummonerSpellSet(toAdd).subscribe((_) => {this.router.navigate(["/summonerspellsetlist"])});
+    alert("Summoner Spell Set: " + this.summonerSpellSetName + " created!");
   }
 
 }
