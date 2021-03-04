@@ -39,7 +39,7 @@ html, body {
     border-radius: 20px;
     color: #eeeeee;
     text-align: center;
-    font-size: 100%;
+    font-size: 3vmin;
     padding: 20px;
     width: 20%;
     transition: all 0.5s;
