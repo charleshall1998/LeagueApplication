@@ -15,7 +15,6 @@ export class ChampionByNameComponent implements OnInit {
   constructor(private leagueService : LeagueService) { }
 
   ngOnInit(): void {
-    
   }
 
   search(): void {

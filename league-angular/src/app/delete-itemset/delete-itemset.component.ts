@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LeagueService } from '../league.service';
 
 @Component({
   selector: 'app-delete-itemset',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeleteItemsetComponent implements OnInit {
 
-  constructor() { }
+  itemSetId : number;
+
+  constructor(private service : LeagueService) { }
 
   ngOnInit(): void {
+  }
+
+  deleteItemSet() {
+    //this.service.deleteItemSet(this.itemSetId).subscribe();
   }
 
 }
