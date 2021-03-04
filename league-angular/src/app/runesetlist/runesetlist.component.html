@@ -3,23 +3,25 @@
     <p class="caption">Rune Sets</p>
 </div>
 
-<a routerLink='/createruneset'> 
-    <button type="button"> 
-        Create Rune Set
-    </button> 
-</a>
+<div class="setButtons">
+    <a routerLink='/createruneset'> 
+        <button type="button" class="setButton"> 
+            Create Rune Set
+        </button> 
+    </a>
 
-<a routerLink='/deleteruneset'> 
-    <button type="button"> 
-        Delete Rune Set
-    </button> 
-</a>
+    <a routerLink='/deleteruneset'> 
+        <button type="button" class="setButton"> 
+            Delete Rune Set
+        </button> 
+    </a>
 
-<a routerLink='/updateruneset'> 
-    <button type="button"> 
-        Update Rune Set
-    </button> 
-</a>
+    <a routerLink='/updateruneset'> 
+        <button type="button" class="setButton"> 
+            Update Rune Set
+        </button> 
+    </a>
+</div>
 
 <app-runeset *ngFor="let runeSet of runeSets" [runeSet]="runeSet">
 </app-runeset>

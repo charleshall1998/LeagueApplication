@@ -3,23 +3,25 @@
     <p class="caption">Summoner Spell Sets</p>
 </div>
 
-<a routerLink='/createsummonerspellset'> 
-    <button type="button"> 
-        Create Summoner Spell Set
-    </button> 
-</a>
+<div class="setButtons">
+    <a routerLink='/createsummonerspellset'> 
+        <button type="button" class="setButton"> 
+            Create Summoner Spell Set
+        </button> 
+    </a>
 
-<a routerLink='/deletesummonerspellset'> 
-    <button type="button"> 
-        Delete Summoner Spell Set
-    </button> 
-</a>
+    <a routerLink='/deletesummonerspellset'> 
+        <button type="button" class="setButton"> 
+            Delete Summoner Spell Set
+        </button> 
+    </a>
 
-<a routerLink='/updatesummonerspellset'> 
-    <button type="button"> 
-        Update Summoner Spell Set
-    </button> 
-</a>
+    <a routerLink='/updatesummonerspellset'> 
+        <button type="button" class="setButton"> 
+            Update Summoner Spell Set
+        </button> 
+    </a>
+</div>
 
 <app-summonerspellset *ngFor="let summonerSpellSet of summonerSpellSets" [summonerSpellSet]="summonerSpellSet">
 </app-summonerspellset>

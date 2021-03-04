@@ -1,25 +1,27 @@
 <div class="image-container">
-<img id="garen" alt="garen" class="splash" src="./assets/images/splash/garen.jpg">
-<p class="caption">Item Sets</p>
+    <img id="garen" alt="garen" class="splash" src="./assets/images/splash/garen.jpg">
+    <p class="caption">Item Sets</p>
 </div>
 
-<a routerLink='/createitemset'> 
-    <button type="button"> 
-        Create Item Set
-    </button> 
-</a>
+<div class="setButtons">
+    <a routerLink='/createitemset'> 
+        <button type="button" class="setButton"> 
+            Create Item Set
+        </button> 
+    </a>
 
-<a routerLink='/deleteitemset'> 
-    <button type="button"> 
-        Delete Item Set
-    </button> 
-</a>
+    <a routerLink='/deleteitemset'> 
+        <button type="button" class="setButton"> 
+            Delete Item Set
+        </button> 
+    </a>
 
-<a routerLink='/updateitemset'> 
-    <button type="button"> 
-        Update Item Set
-    </button> 
-</a>
+    <a routerLink='/updateitemset'> 
+        <button type="button" class="setButton"> 
+            Update Item Set
+        </button> 
+    </a>
+</div>
 
 <app-itemset *ngFor="let itemSet of itemSets" [itemSet]="itemSet">
 </app-itemset>

@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 html {
     background-color: #141C2E;
-    font-family: Montserrat, "Open Sans", Helvetica, Arial, sans-serif;
+    font-family: 'Alegreya Sans SC';
     color: rgb(236, 234, 234);
 }
 
@@ -19,6 +19,7 @@ html, body {
 }
 
 .caption {
+    font-family: 'Alegreya Sans SC';
     width:100%;
     background:rgba(0,0,0,0.5);
     color:#ffffff;
@@ -30,5 +31,53 @@ html, body {
     font-size: 10vmin;
     text-transform:uppercase;
 }
+
+.setButton {
+    font-family: 'Alegreya Sans SC';
+    display: inline-block;
+    background-color: #df3d52;
+    border-radius: 20px;
+    color: #eeeeee;
+    text-align: center;
+    font-size: 100%;
+    padding: 20px;
+    width: 20%;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+
+  .setButton span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+
+  .setButton span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+
+  .setButton:hover {
+    background-color: #f05c72;
+  }
+
+  .setButton:hover span {
+    padding-right: 25px;
+  }
+
+  .setButton:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
+  .setButtons {
+      text-align: center;
+  }
 
  
