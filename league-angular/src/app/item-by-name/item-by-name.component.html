@@ -1,6 +1,39 @@
 <div class="search">
-    <p class="itemName">Enter Item Name</p>
-    <input type="text" [(ngModel)]="itemName">
+    <p class="itemName">Select Item Name</p>
+    <select name="items" [(ngModel)]="itemName">
+        <option value="Abyssal Mask">Abyssal Mask</option>
+        <option value="Aegis of the Legion">Aegis of the Legion</option>
+        <option value="Aether Wisp">Aether Wisp</option>
+        <option value="Amplifying Tome">Amplifying Tome</option>
+        <option value="Archangels Staff">Archangel's Staff</option>
+        <option value="Ardent Censer">Ardent Censer</option>
+        <option value="B.F. Sword">B.F. Sword</option>
+        <option value="Bamis Cinder">Bami's Cinder</option>
+        <option value="Bandleglass Mirror">Bandleglass Mirror</option>
+        <option value="Banshees Veil">Banshee's Veil</option>
+        <option value="Berzerkers Greaves">Berzerker's Greaves</option>
+        <option value="Black Cleaver">Black Cleaver</option>
+        <option value="Blade of the Ruined King">Blade of the Ruined King</option>
+        <option value="Bloodthirster">Bloodthirster</option>
+        <option value="Boots of Swiftness">Boots of Swiftness</option>
+        <option value="Bulwark of the Mountain">Bulwark of the Mountain</option>
+        <option value="Chempunk Chainsword">Chempunk Chainsword</option>
+        <option value="Chemtech Putrifier">Chemtech Putrifier</option>
+        <option value="Cosmic Drive">Cosmic Drive</option>
+        <option value="Dead Mans Plate">Dead Man's Plate</option>
+        <option value="Deaths Dance">Death's Dance</option>
+        <option value="Demonic Embrace">Demonic Embrace</option>
+        <option value="Divine Sunderer">Divine Sunderer</option>
+        <option value="Duskblade of Darktharr">Duskblade of Darktharr</option>
+        <option value="Eclipse">Eclipse</option>
+        <option value="Edge of Night">Edge of Night</option>
+        <option value="Essence Reaver">Essence Reaver</option>
+        <option value="Everfrost">Everfrost</option>
+        <option value="Force of Nature">Force of Nature</option>
+        <option value="Frostfire Gauntlet">Frostfire Gauntlet</option>
+        <option value="Frozen Heart">Frozen Heart</option>
+        <option value="Galeforce">Galeforce</option>
+    </select>
 
     <button (click)="search()" class="searchButton">Search</button>
 </div> 

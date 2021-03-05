@@ -6,7 +6,7 @@
     margin: auto;
 }
 
-input {
+select, input {
     color: white;
     background-color: #202B43;
     height: 3vmin;
@@ -14,7 +14,11 @@ input {
     border: 0px solid;
 }
 
-input:focus {
+select {
+    width: 19vmin;
+}
+
+select:focus, input:focus {
     outline: none;
 }
 

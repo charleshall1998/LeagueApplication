@@ -1,5 +1,5 @@
 export interface ItemSet {
-    id? : number;
+    itemSetId? : number;
     itemSetName : string;
     championId : number;
     itemIdList : number[];

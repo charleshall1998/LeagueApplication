@@ -1,7 +1,38 @@
 
 <div class="search">
-    <p class="championName">Enter Champion Name</p>
-    <input type="text" [(ngModel)]="championName">
+    <p class="championName">Select Champion Name</p>
+    <select name="champions" [(ngModel)]="championName">
+        <option value="Aatrox">Aatrox</option>
+        <option value="Ahri">Ahri</option>
+        <option value="Akali">Akali</option>
+        <option value="Alistar">Alistar</option>
+        <option value="Amumu">Amumu</option>
+        <option value="Anivia">Anivia</option>
+        <option value="Annie">Annie</option>
+        <option value="Aphelios">Aphelios</option>
+        <option value="Ashe">Ashe</option>
+        <option value="Aurelion Sol">Aurelion Sol</option>
+        <option value="Azir">Azir</option>
+        <option value="Bard">Bard</option>
+        <option value="Blitzcrank">Blitzcrank</option>
+        <option value="Brand">Brand</option>
+        <option value="Braum">Braum</option>
+        <option value="Caitlyn">Caitlyn</option>
+        <option value="Camille">Camille</option>
+        <option value="Cassiopeia">Cassiopeia</option>
+        <option value="Corki">Corki</option>
+        <option value="Darius">Darius</option>
+        <option value="Diana">Diana</option>
+        <option value="Dr. Mundo">Dr. Mundo</option>
+        <option value="Draven">Draven</option>
+        <option value="Ekko">Ekko</option>
+        <option value="Elise">Elise</option>
+        <option value="Evelynn">Evelynn</option>
+        <option value="Ezreal">Ezreal</option>
+        <option value="Fiddlesticks">Fiddlesticks</option>
+        <option value="Fiora">Fiora</option>
+        <option value="Fizz">Fizz</option>
+    </select>
 
     <button class="searchButton" (click)="search()">Search</button>
 </div>  

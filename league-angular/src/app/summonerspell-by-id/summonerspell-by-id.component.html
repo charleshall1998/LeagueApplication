@@ -1,6 +1,16 @@
 <div class="search">
     <p class="summonerSpellName">Enter Summoner Spell ID</p>
-    <input type="text" [(ngModel)]="summonerSpellId">
+    <select name="items" [(ngModel)]="summonerSpellId">
+        <option value="1">Heal</option>
+        <option value="2">Ghost</option>
+        <option value="3">Barrier</option>
+        <option value="4">Exhaust</option>
+        <option value="5">Flash</option>
+        <option value="6">Teleport</option>
+        <option value="7">Smite</option>
+        <option value="8">Cleanse</option>
+        <option value="9">Ignite</option>
+    </select>
 
     <button (click)="search()" class="searchButton">Search</button>
 </div> 

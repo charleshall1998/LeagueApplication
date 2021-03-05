@@ -146,8 +146,8 @@ export class LeagueService {
       );
   }
 
-  updateItemSet(postData : Object) : Observable<ItemSet> {
-    return this.http.put<ItemSet>(this.baseUrl + "/update/itemSet/", postData)
+  updateItemSet(postData : ItemSet) : Observable<ItemSet> {
+    return this.http.put<ItemSet>(this.baseUrl + "/update/itemSet", postData, this.httpOptions)
     .pipe(
       tap(x => console.log(x)),
       catchError(err => {

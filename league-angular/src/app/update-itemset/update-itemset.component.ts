@@ -13,14 +13,26 @@ export class UpdateItemsetComponent implements OnInit {
   constructor(private service : LeagueService, private router : Router) { }
 
   body : ItemSet;
+  itemSetId : number;
+  itemSetName : string;
+  championId : number;
+  itemIdList : number[];
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   updateItemSet() {
-    // this.body = { itemSetId: 1, itemSetName}
-    // this.service.deleteItemSet(this.itemSetId, this.body).subscribe((_) => {this.router.navigate(["/itemsetlist"])});
-    // alert("Item Set Deleted!");
+
+    this.itemIdList = [];
+
+    for(let i = 1; i < 7; i++) {
+      let id = "item" + i;
+      let item =  (document.getElementById(id) as HTMLInputElement).value;
+      this.itemIdList.push(parseInt(item));
+    }
+
+    this.body = {itemSetId:this.itemSetId, itemSetName: this.itemSetName, championId: this.championId, itemIdList: this.itemIdList }
+    this.service.updateItemSet(this.body).subscribe((_) => {this.router.navigate(["/itemsetlist"])});
+    alert("Item Set updated!");
   }
 
 }

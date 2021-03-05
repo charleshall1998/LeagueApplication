@@ -15,7 +15,7 @@
     font-size: 3vmin;
 }
 
-input {
+select {
     color: white;
     background-color: #202B43;
     height: 5vmin;
@@ -25,7 +25,7 @@ input {
     font-size: 3vmin;
 }
 
-input:focus {
+select:focus {
     outline: none;
 }
 
