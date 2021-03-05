@@ -11,7 +11,7 @@ export class ItemByIdComponent implements OnInit {
 
   item : Item;
   itemId : number;
-
+  src : string;
   constructor(private leagueService : LeagueService) { }
 
   ngOnInit(): void { }
@@ -19,6 +19,7 @@ export class ItemByIdComponent implements OnInit {
   search() : void {
     this.leagueService.getItemById(this.itemId).subscribe( item => {
       this.item = item;
+      this.src = "./assets/images/items/"+this.item.itemName+".png";
     });
   }
 

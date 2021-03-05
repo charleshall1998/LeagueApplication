@@ -11,6 +11,7 @@ export class ChampionByIdComponent implements OnInit {
 
   champion : Champion;
   championId : number;
+  src : string;
 
   constructor(private leagueService : LeagueService) { }
 
@@ -19,6 +20,7 @@ export class ChampionByIdComponent implements OnInit {
   search() : void {
     this.leagueService.getChampionById(this.championId).subscribe( champ => {
       this.champion = champ;
+      this.src = "./assets/images/splash/"+this.champion.championName+".jpg";
     });
   }
 

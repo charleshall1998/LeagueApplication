@@ -11,6 +11,7 @@ export class RuneByNameComponent implements OnInit {
 
   rune : Rune;
   runeName : string;
+  src : string;
 
   constructor(private leagueService : LeagueService) { }
 
@@ -21,6 +22,7 @@ export class RuneByNameComponent implements OnInit {
   search(): void {
     this.leagueService.getRuneByName(this.runeName).subscribe( rune => {
       this.rune = rune;
+      this.src = "./assets/images/runes/"+this.runeName+".png";
     });
   }
 

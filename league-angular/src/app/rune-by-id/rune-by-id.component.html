@@ -1,15 +1,17 @@
-<div>
-    <span>Enter Rune ID</span>
+<div class="search">
+    <p class="runeName">Enter Rune ID</p>
     <input type="text" [(ngModel)]="runeId">
 
-    <button (click)="search()">Search</button>
+    <button (click)="search()" class="searchButton">Search</button>
 </div> 
 
-<div id="rune">
-    <p>
-        {{rune.runeName}}
-        <br/>
-        Description: {{rune.runeDescription}}
-    </p>
+<div class="runeName">
+    <h2>{{rune.runeName}}</h2>
+</div>
+
+<img class="runeSquare" [src]="src">
+
+<div class="rune-info">
+    <p>Description: {{rune.runeDescription}}</p>
 </div>
 

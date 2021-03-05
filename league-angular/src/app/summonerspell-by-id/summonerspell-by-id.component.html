@@ -1,14 +1,16 @@
-<div>
-    <span>Enter Summoner Spell ID</span>
-    <input type="number" [(ngModel)]="summonerSpellId">
+<div class="search">
+    <p class="summonerSpellName">Enter Summoner Spell ID</p>
+    <input type="text" [(ngModel)]="summonerSpellId">
 
-    <button (click)="search()">Search</button>
+    <button (click)="search()" class="searchButton">Search</button>
 </div> 
 
-<div id="summonerspell">
-    <p>
-        {{summonerSpell.summonerSpellName}}
-        <br/>
-        Description: {{summonerSpell.summonerSpellDescription}}
-    </p>
+<div class="summonerSpellName">
+    <h2>{{summonerSpell.summonerSpellName}}</h2>
+</div>
+
+<img class="summonerSpellSquare" [src]="src">
+
+<div class="summonerSpell-info">
+    <p>Description: {{summonerSpell.summonerSpellDescription}}</p>
 </div>

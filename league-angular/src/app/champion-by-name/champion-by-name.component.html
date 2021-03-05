@@ -1,6 +1,6 @@
 
 <div class="search">
-    <p>Enter Champion Name</p>
+    <p class="championName">Enter Champion Name</p>
     <input type="text" [(ngModel)]="championName">
 
     <button class="searchButton" (click)="search()">Search</button>
@@ -10,7 +10,7 @@
     <h1>{{champion.championName}}</h1>
 </div>
 
-<img id="championSplash" class="splash" [src]="src">
+<img id="championSplash" class="splash" [src]="src" >
 
 <div class="champion-info">
     <p>{{champion.championDescription}}</p>

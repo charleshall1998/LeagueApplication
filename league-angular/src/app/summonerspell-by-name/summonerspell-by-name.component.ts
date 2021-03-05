@@ -11,16 +11,16 @@ export class SummonerspellByNameComponent implements OnInit {
 
   summonerSpell : SummonerSpell;
   summonerSpellName : string;
+  src : string;
 
   constructor(private leagueService : LeagueService) { }
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void { }
 
   search(): void {
     this.leagueService.getSummonerSpellByName(this.summonerSpellName).subscribe( summonerSpell => {
       this.summonerSpell = summonerSpell;
+      this.src = "./assets/images/summonerspells/"+this.summonerSpellName+".png";
     });
   }
 

@@ -11,6 +11,7 @@ export class SummonerspellByIdComponent implements OnInit {
 
   summonerSpell : SummonerSpell;
   summonerSpellId : number;
+  src : string;
 
   constructor(private leagueService : LeagueService) { }
 
@@ -19,6 +20,7 @@ export class SummonerspellByIdComponent implements OnInit {
   search() : void {
     this.leagueService.getSummonerSpellById(this.summonerSpellId).subscribe( summonerSpell => {
       this.summonerSpell = summonerSpell;
+      this.src = "./assets/images/summonerspells/"+this.summonerSpell.summonerSpellName+".png";
     });
   }
 

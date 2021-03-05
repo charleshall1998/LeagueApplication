@@ -1,16 +1,17 @@
-<div>
-    <span>Enter Item Name</span>
+<div class="search">
+    <p class="itemName">Enter Item Name</p>
     <input type="text" [(ngModel)]="itemName">
 
-    <button (click)="search()">Search</button>
+    <button (click)="search()" class="searchButton">Search</button>
 </div> 
 
-<div id="item">
-    <p>
-        {{item.itemName}}
-        <br/>
-        Description: {{item.itemDescription}}
-        <br/>
-        Cost: {{item.itemCost}} gold
-    </p>
+<div class="itemName">
+    <h2>{{item.itemName}}</h2>
+</div>
+
+<img class="itemSquare" [src]="src">
+
+<div class="item-info">
+    <p>Description: {{item.itemDescription}}</p>
+    <p>Cost: {{item.itemCost}} gold</p>
 </div>
