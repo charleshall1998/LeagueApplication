@@ -16,17 +16,17 @@
     font-size: 3vmin;
 }
 
-input {
+input, select {
     color: white;
     background-color: #202B43;
     height: 5vmin;
     width: 40vmin;
     border-radius: 5px;
     border: 0px solid;
-    font-size: 3vmin;
+    font-size: 2.5vmin;
 }
 
-input:focus {
+input:focus, select:focus {
     outline: none;
 }
 
