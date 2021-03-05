@@ -1,5 +1,5 @@
 export interface SummonerSpellSet {
-    id? : number;
+    summonerSpellSetId? : number;
     summonerSpellSetName : string;
     championId : number;
     summonerSpellIdList : number[];

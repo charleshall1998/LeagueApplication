@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LeagueService } from '../league.service';
+import { SummonerSpellSet } from '../SummonerSpellSet';
 
 @Component({
   selector: 'app-update-summonerspellset',
@@ -7,9 +10,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateSummonerspellsetComponent implements OnInit {
 
-  constructor() { }
+  body : SummonerSpellSet;
+  summonerSpellSetId : number;
+  summonerSpellSetName : string;
+  championId : number;
+  summonerSpellIdList : number[];
+
+  constructor(private service : LeagueService, private router : Router) { }
 
   ngOnInit(): void {
+  }
+
+  updateSummonerSpellSet() {
+    
+    this.summonerSpellIdList = [];
+
+    for(let i = 1; i < 3; i++) {
+      let id = "summonerSpell" + i;
+      let rune =  (document.getElementById(id) as HTMLInputElement).value;
+      this.summonerSpellIdList.push(parseInt(rune));
+    }
+
+    this.body = {summonerSpellSetId: this.summonerSpellSetId, summonerSpellSetName: this.summonerSpellSetName, championId: this.championId, summonerSpellIdList: this.summonerSpellIdList }
+    this.service.updateSummonerSpellSet(this.body).subscribe((_) => {this.router.navigate(["/summonerspellsetlist"])});
   }
 
 }

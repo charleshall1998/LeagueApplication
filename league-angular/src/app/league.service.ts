@@ -365,6 +365,17 @@ export class LeagueService {
       );
   }
 
+  updateSummonerSpellSet(postData : SummonerSpellSet) : Observable<SummonerSpellSet> {
+    return this.http.put<SummonerSpellSet>(this.baseUrl + "/update/summonerSpellSet", postData, this.httpOptions)
+    .pipe(
+      tap(x => console.log(x)),
+      catchError(err => {
+        console.log(err);
+        return of(null);
+      })
+      );
+  }
+
   deleteSummonerSpellSet(toDelete : number) : Observable<SummonerSpellSet> {
     return this.http.delete<SummonerSpellSet>(this.baseUrl + "/delete/summonerSpellSet/id/" + toDelete)
     .pipe(
