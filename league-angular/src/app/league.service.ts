@@ -255,6 +255,17 @@ export class LeagueService {
       );
   }
 
+  updateRuneSet(postData : RuneSet) : Observable<RuneSet> {
+    return this.http.put<RuneSet>(this.baseUrl + "/update/runeSet", postData, this.httpOptions)
+    .pipe(
+      tap(x => console.log(x)),
+      catchError(err => {
+        console.log(err);
+        return of(null);
+      })
+      );
+  }
+
   deleteRuneSet(toDelete : number) : Observable<RuneSet> {
     return this.http.delete<RuneSet>(this.baseUrl + "/delete/runeSet/id/" + toDelete)
     .pipe(

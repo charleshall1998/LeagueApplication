@@ -32,7 +32,6 @@ export class UpdateItemsetComponent implements OnInit {
 
     this.body = {itemSetId:this.itemSetId, itemSetName: this.itemSetName, championId: this.championId, itemIdList: this.itemIdList }
     this.service.updateItemSet(this.body).subscribe((_) => {this.router.navigate(["/itemsetlist"])});
-    alert("Item Set updated!");
   }
 
 }

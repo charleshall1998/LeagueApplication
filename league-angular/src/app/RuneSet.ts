@@ -1,5 +1,5 @@
 export interface RuneSet {
-    id? : number;
+    runeSetId? : number;
     runeSetName : string;
     championId : number;
     runeIdList : number[];
