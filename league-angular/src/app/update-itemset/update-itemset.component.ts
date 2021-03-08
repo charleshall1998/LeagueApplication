@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ItemSet } from '../ItemSet';
 import { LeagueService } from '../league.service';
 
@@ -10,7 +10,7 @@ import { LeagueService } from '../league.service';
 })
 export class UpdateItemsetComponent implements OnInit {
 
-  constructor(private service : LeagueService, private router : Router) { }
+  constructor(private service : LeagueService, private router : Router, private route : ActivatedRoute) { }
 
   body : ItemSet;
   itemSetId : number;
@@ -18,7 +18,9 @@ export class UpdateItemsetComponent implements OnInit {
   championId : number;
   itemIdList : number[];
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    this.itemSetId = parseInt(this.route.snapshot.paramMap.get('id'));
+  }
 
   updateItemSet() {
 
