@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LeagueService } from '../league.service';
 import { RuneSet } from '../RuneSet';
 
@@ -16,9 +16,11 @@ export class UpdateRunesetComponent implements OnInit {
   championId : number;
   runeIdList : number[];
 
-  constructor(private service : LeagueService, private router : Router) { }
+  constructor(private service : LeagueService, private router : Router, private route : ActivatedRoute) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    this.runeSetId = parseInt(this.route.snapshot.paramMap.get('id'));
+  }
 
   updateRuneSet() {
 

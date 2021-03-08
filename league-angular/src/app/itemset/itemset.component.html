@@ -11,12 +11,10 @@
     <p>{{itemSet.championId}}</p>
 
     <button type="button" class="setButton" (click)="deleteItemSet(itemSet.itemSetId)"> 
-        Delete Item Set
+        Delete
     </button> 
 
-    <a routerLink='/updateitemset'> 
-        <button type="button" class="setButton"> 
-            Update Item Set
-        </button> 
-    </a>
+    <button type="button" class="setButton" [routerLink]="['/updateitemset', itemSet.itemSetId]"> 
+        Update
+    </button> 
 </div>

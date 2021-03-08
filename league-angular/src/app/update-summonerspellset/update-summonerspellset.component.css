@@ -50,10 +50,5 @@ select:focus, input:focus {
 
 .column {
     float: left;
-    width: 33.3%;
-}
-
-.column1 {
-    float: left;
     width: 50%;
 }

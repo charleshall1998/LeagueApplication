@@ -1,6 +1,6 @@
 <div class="runeset-info-container">
     <h1>{{runeSet.runeSetName}}</h1>
-    <h2>ID: {{runeSet.runeSetId}}</h2>
+
     <hr>
     <h2>Runes:</h2>
     <p>{{runeSet.runeIdList}}</p>
@@ -9,12 +9,10 @@
     <p>{{runeSet.championId}}</p>
 
     <button type="button" class="setButton" (click)="deleteRuneSet(runeSet.runeSetId)"> 
-        Delete Rune Set
+        Delete
     </button> 
 
-    <a routerLink='/updateruneset'> 
-        <button type="button" class="setButton"> 
-            Update Rune Set
-        </button> 
-    </a>
+    <button type="button" class="setButton" [routerLink]="['/updateruneset', runeSet.runeSetId]"> 
+        Update
+    </button> 
 </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LeagueService } from '../league.service';
 import { SummonerSpellSet } from '../SummonerSpellSet';
 
@@ -16,9 +16,10 @@ export class UpdateSummonerspellsetComponent implements OnInit {
   championId : number;
   summonerSpellIdList : number[];
 
-  constructor(private service : LeagueService, private router : Router) { }
+  constructor(private service : LeagueService, private router : Router, private route : ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.summonerSpellSetId = parseInt(this.route.snapshot.paramMap.get('id'));
   }
 
   updateSummonerSpellSet() {

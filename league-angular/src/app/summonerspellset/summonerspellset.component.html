@@ -1,6 +1,5 @@
 <div class="summonerspellset-info-container">
     <h1>{{summonerSpellSet.summonerSpellSetName}}</h1>
-    <h2>ID: {{summonerSpellSet.summonerSpellSetId}}</h2>
     <hr>
     
     <h2>Summoner Spells:</h2>
@@ -11,13 +10,11 @@
 
     <div class="itemSetButton">
         <button type="button" class="setButton" (click)="deleteSummonerSpellSet(summonerSpellSet.summonerSpellSetId)"> 
-            Delete Summoner Spell Set
+            Delete
         </button> 
 
-        <a routerLink='/updatesummonerspellset'> 
-            <button type="button" class="setButton"> 
-                Update Summoner Spell Set
-            </button> 
-        </a>
+        <button type="button" class="setButton" [routerLink]="['/updatesummonerspellset', summonerSpellSet.summonerSpellSetId]"> 
+            Update
+        </button> 
     </div>
 </div>
