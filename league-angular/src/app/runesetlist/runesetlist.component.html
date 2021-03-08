@@ -9,18 +9,6 @@
             Create Rune Set
         </button> 
     </a>
-
-    <a routerLink='/deleteruneset'> 
-        <button type="button" class="setButton"> 
-            Delete Rune Set
-        </button> 
-    </a>
-
-    <a routerLink='/updateruneset'> 
-        <button type="button" class="setButton"> 
-            Update Rune Set
-        </button> 
-    </a>
 </div>
 
 <app-runeset *ngFor="let runeSet of runeSets" [runeSet]="runeSet">

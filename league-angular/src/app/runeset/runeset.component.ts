@@ -1,5 +1,7 @@
 import { Input } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LeagueService } from '../league.service';
 import { RuneSet } from '../RuneSet';
 
 @Component({
@@ -11,9 +13,14 @@ export class RunesetComponent implements OnInit {
 
   @Input() runeSet : RuneSet;
 
-  constructor() { }
+  constructor(private service : LeagueService, private router : Router) { }
 
   ngOnInit(): void {
+  }
+
+  deleteRuneSet(runeSetId : number) {
+    confirm("Are you sure you want to delete this set?");
+    this.service.deleteRuneSet(runeSetId).subscribe((_) => {this.router.navigate(["/runesetlist"])});
   }
 
 }

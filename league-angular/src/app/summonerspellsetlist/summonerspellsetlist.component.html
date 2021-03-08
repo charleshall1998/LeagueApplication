@@ -9,18 +9,6 @@
             Create Summoner Spell Set
         </button> 
     </a>
-
-    <a routerLink='/deletesummonerspellset'> 
-        <button type="button" class="setButton"> 
-            Delete Summoner Spell Set
-        </button> 
-    </a>
-
-    <a routerLink='/updatesummonerspellset'> 
-        <button type="button" class="setButton"> 
-            Update Summoner Spell Set
-        </button> 
-    </a>
 </div>
 
 <app-summonerspellset *ngFor="let summonerSpellSet of summonerSpellSets" [summonerSpellSet]="summonerSpellSet">

@@ -9,4 +9,14 @@
 
     <h2>Champion:</h2>
     <p>{{itemSet.championId}}</p>
+
+    <button type="button" class="setButton" (click)="deleteItemSet(itemSet.itemSetId)"> 
+        Delete Item Set
+    </button> 
+
+    <a routerLink='/updateitemset'> 
+        <button type="button" class="setButton"> 
+            Update Item Set
+        </button> 
+    </a>
 </div>

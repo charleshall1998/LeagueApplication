@@ -9,18 +9,6 @@
             Create Item Set
         </button> 
     </a>
-
-    <a routerLink='/deleteitemset'> 
-        <button type="button" class="setButton"> 
-            Delete Item Set
-        </button> 
-    </a>
-
-    <a routerLink='/updateitemset'> 
-        <button type="button" class="setButton"> 
-            Update Item Set
-        </button> 
-    </a>
 </div>
 
 <app-itemset *ngFor="let itemSet of itemSets" [itemSet]="itemSet">

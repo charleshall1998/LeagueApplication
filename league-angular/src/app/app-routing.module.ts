@@ -8,7 +8,6 @@ import { CreateRunesetComponent } from './create-runeset/create-runeset.componen
 import { CreateSummonerspellsetComponent } from './create-summonerspellset/create-summonerspellset.component';
 import { DeleteItemsetComponent } from './delete-itemset/delete-itemset.component';
 import { DeleteRunesetComponent } from './delete-runeset/delete-runeset.component';
-import { DeleteSummonerspellsetComponent } from './delete-summonerspellset/delete-summonerspellset.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ItemByIdComponent } from './item-by-id/item-by-id.component';
 import { ItemByNameComponent } from './item-by-name/item-by-name.component';
@@ -52,7 +51,6 @@ const routes: Routes = [{path: "", component: HomePageComponent},
                         {path: "createsummonerspellset", component: CreateSummonerspellsetComponent},
                         {path: "summonerspellsetlist", component: SummonerspellsetlistComponent},
                         {path: "updatesummonerspellset", component: UpdateSummonerspellsetComponent},
-                        {path: "deletesummonerspellset", component: DeleteSummonerspellsetComponent}
                       ];
                         
 

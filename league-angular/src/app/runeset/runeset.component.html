@@ -7,4 +7,14 @@
 
     <h2>Champion:</h2>
     <p>{{runeSet.championId}}</p>
+
+    <button type="button" class="setButton" (click)="deleteRuneSet(runeSet.runeSetId)"> 
+        Delete Rune Set
+    </button> 
+
+    <a routerLink='/updateruneset'> 
+        <button type="button" class="setButton"> 
+            Update Rune Set
+        </button> 
+    </a>
 </div>

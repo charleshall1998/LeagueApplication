@@ -8,4 +8,16 @@
     
     <h2>Champion:</h2>
     <p>{{summonerSpellSet.championId}}</p>
+
+    <div class="itemSetButton">
+        <button type="button" class="setButton" (click)="deleteSummonerSpellSet(summonerSpellSet.summonerSpellSetId)"> 
+            Delete Summoner Spell Set
+        </button> 
+
+        <a routerLink='/updatesummonerspellset'> 
+            <button type="button" class="setButton"> 
+                Update Summoner Spell Set
+            </button> 
+        </a>
+    </div>
 </div>
