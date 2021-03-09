@@ -3,10 +3,14 @@
 
     <hr>
     <h2>Runes:</h2>
-    <p>{{runeSet.runeIdList}}</p>
+    <img id="rune1" alt="rune1" [src]="runeSrc1">
+    <img id="rune2" alt="rune2" [src]="runeSrc2">
+    <img id="rune3" alt="rune3" [src]="runeSrc3">
+    <img id="rune4" alt="rune4" [src]="runeSrc4">
 
     <h2>Champion:</h2>
-    <p>{{runeSet.championId}}</p>
+    <img id="champSquare" alt="champSquare" [src]="champSrc">
+    <br>
 
     <button type="button" class="setButton" (click)="deleteRuneSet(runeSet.runeSetId)"> 
         Delete

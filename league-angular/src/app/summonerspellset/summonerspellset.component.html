@@ -3,10 +3,11 @@
     <hr>
     
     <h2>Summoner Spells:</h2>
-    <p>{{summonerSpellSet.summonerSpellIdList}}</p>
-    
+    <img id="summonerspell1" alt="summonerspell1" [src]="summonerSpellSrc1">
+    <img id="summonerspell2" alt="summonerspell2" [src]="summonerSpellSrc2">
+
     <h2>Champion:</h2>
-    <p>{{summonerSpellSet.championId}}</p>
+    <img id="champSquare" alt="champSquare" [src]="champSrc">
 
     <div class="itemSetButton">
         <button type="button" class="setButton" (click)="deleteSummonerSpellSet(summonerSpellSet.summonerSpellSetId)"> 

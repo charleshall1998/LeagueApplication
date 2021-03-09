@@ -1,15 +1,19 @@
 <div class="itemset-info-container">
     <h1>{{itemSet.itemSetName}}</h1>
-    <h2>ID: {{itemSet.itemSetId}}</h2>
     <hr>
     
     <h2>Items:</h2>
-    <p>{{itemSet.itemIdList}}</p>
-
+    <img id="item1" alt="item1" [src]="itemSrc1">
+    <img id="item2" alt="item2" [src]="itemSrc2">
+    <img id="item3" alt="item3" [src]="itemSrc3">
+    <img id="item4" alt="item4" [src]="itemSrc4">
+    <img id="item5" alt="item5" [src]="itemSrc5">
+    <img id="item6" alt="item6" [src]="itemSrc6">
 
     <h2>Champion:</h2>
-    <p>{{itemSet.championId}}</p>
-
+    <img id="champSquare" alt="champSquare" [src]="champSrc">
+    <br>
+    
     <button type="button" class="setButton" (click)="deleteItemSet(itemSet.itemSetId)"> 
         Delete
     </button> 
