@@ -11,7 +11,8 @@
     <img id="item6" alt="item6" [src]="itemSrc6">
 
     <h2>Champion:</h2>
-    <img id="champSquare" alt="champSquare" [src]="champSrc">
+    <p>{{champName}}</p>
+    <img id="champSquare" alt="champSquare" [src]="champSrc" [title]="champName">
     <br>
     
     <button type="button" class="setButton" (click)="deleteItemSet(itemSet.itemSetId)"> 

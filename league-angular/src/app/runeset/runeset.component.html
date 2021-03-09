@@ -9,7 +9,8 @@
     <img id="rune4" alt="rune4" [src]="runeSrc4">
 
     <h2>Champion:</h2>
-    <img id="champSquare" alt="champSquare" [src]="champSrc">
+    <p>{{champName}}</p>
+    <img id="champSquare" alt="champSquare" [src]="champSrc" [title]="champName">
     <br>
 
     <button type="button" class="setButton" (click)="deleteRuneSet(runeSet.runeSetId)"> 

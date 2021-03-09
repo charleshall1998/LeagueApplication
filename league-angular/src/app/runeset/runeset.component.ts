@@ -29,6 +29,7 @@ export class RunesetComponent implements OnInit {
     this.runeSrc3 = this.getRuneSrc(this.runeSet.runeIdList[2]);
     this.runeSrc4 = this.getRuneSrc(this.runeSet.runeIdList[3]);
 
+    this.champName = this.getChampName(this.runeSet.championId);
     this.champSrc = this.getChampSrc(this.runeSet.championId);
 
   }
@@ -196,6 +197,136 @@ export class RunesetComponent implements OnInit {
     }
 
     return champSrc;
+  }
+
+  getChampName(id : number) : string {
+    
+    let champName = " ";
+
+    switch(id) {
+      case 1 : {
+        champName = "Aatrox";
+        break;
+      }
+      case 2 : {
+        champName = "Ahri";
+        break
+      }
+      case 3 : {
+        champName = "Akali";
+        break;
+      }
+      case 4 : {
+        champName = "Alistar";
+        break;
+      }
+      case 5 : {
+        champName = "Amumu";
+        break;
+      }
+      case 6 : {
+        champName = "Anivia";
+        break;
+      }
+      case 7 : {
+        champName = "Annie";
+        break;
+      }
+      case 8 : {
+        champName = "Aphelios";
+        break;
+      }
+      case 9 : {
+        champName = "Ashe";
+        break;
+      }
+      case 10 : {
+        champName = "Aurelion Sol";
+        break;
+      }
+      case 11 : {
+        champName = "Azir";
+        break;
+      }
+      case 12 : {
+        champName = "Bard";
+        break;
+      }
+      case 13 : {
+        champName = "Blitzcrank";
+        break;
+      }
+      case 14 : {
+        champName = "Brand";
+        break;
+      }
+      case 15 : {
+        champName = "Braum";
+        break;
+      }
+      case 16 : {
+        champName = "Caitlyn";
+        break;
+      }
+      case 17 : {
+        champName = "Camille";
+        break;
+      }
+      case 18 : {
+        champName = "Cassiopeia";
+        break;
+      }
+      case 19 : {
+        champName = "Corki";
+        break
+      }
+      case 20 : {
+        champName = "Darius";
+        break;
+      }
+      case 21 : {
+        champName = "Diana";
+        break;
+      }
+      case 22 : {
+        champName = "Dr. Mundo";
+        break;
+      }
+      case 23 : {
+        champName = "Draven";
+        break;
+      }
+      case 24 : {
+        champName = "Ekko";
+        break;
+      }
+      case 25 : {
+        champName = "Elise";
+        break;
+      }
+      case 26 : {
+        champName = "Evelynn";
+        break;
+      }
+      case 27 : {
+        this.champName = "Ezreal";
+        break
+      }
+      case 28 : {
+        champName = "Fiddlesticks";
+        break;
+      }
+      case 29 : {
+        champName = "Fiora";
+        break
+      }
+      case 30 : {
+        champName = "Fizz";
+        break;
+      }
+    }
+
+    return champName;
   }
 
   getRuneSrc(id : number) : string {

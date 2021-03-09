@@ -3,11 +3,23 @@
     <hr>
     
     <h2>Summoner Spells:</h2>
-    <img id="summonerspell1" alt="summonerspell1" [src]="summonerSpellSrc1">
-    <img id="summonerspell2" alt="summonerspell2" [src]="summonerSpellSrc2">
+
+    <div class="row">
+        <div class="column">
+            <p>{{summonerSpellName1}}</p>
+            <img id="summonerspell1" alt="summonerspell1" [src]="summonerSpellSrc1" [title]="summonerSpellName1">
+        </div>
+
+        <div class="column">
+            <p>{{summonerSpellName2}}</p>
+            <img id="summonerspell2" alt="summonerspell2" [src]="summonerSpellSrc2" [title]="summonerSpellName2">
+        </div>
+    </div>
+
 
     <h2>Champion:</h2>
-    <img id="champSquare" alt="champSquare" [src]="champSrc">
+    <p>{{champName}}</p>
+    <img id="champSquare" alt="champSquare" [src]="champSrc" [title]="champName">
 
     <div class="itemSetButton">
         <button type="button" class="setButton" (click)="deleteSummonerSpellSet(summonerSpellSet.summonerSpellSetId)"> 

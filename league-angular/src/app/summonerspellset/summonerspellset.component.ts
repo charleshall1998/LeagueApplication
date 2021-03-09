@@ -12,18 +12,28 @@ import { SummonerSpellSet } from '../SummonerSpellSet';
 export class SummonerspellsetComponent implements OnInit {
 
   @Input() summonerSpellSet : SummonerSpellSet;
+
   champSrc : string = " ";
   champName : string = " ";
+
+  summonerSpellName1 : string = " ";
+  summonerSpellName2 : string = " ";
+
   summonerSpellSrc1 : string = " ";
   summonerSpellSrc2 : string = " ";
 
   constructor(private service : LeagueService, private router : Router) { }
 
   ngOnInit(): void {
+    this.summonerSpellName1 = this.getSummSpellName(this.summonerSpellSet.summonerSpellIdList[0]);
+    this.summonerSpellName2 = this.getSummSpellName(this.summonerSpellSet.summonerSpellIdList[1]);
+
     this.summonerSpellSrc1 = this.getSummSpellSrc(this.summonerSpellSet.summonerSpellIdList[0]);
     this.summonerSpellSrc2 = this.getSummSpellSrc(this.summonerSpellSet.summonerSpellIdList[1]);
-    
+
+    this.champName = this.getChampName(this.summonerSpellSet.championId);
     this.champSrc = this.getChampSrc(this.summonerSpellSet.championId);
+    
   }
 
   deleteSummonerSpellSet(summonerSpellSetId : number) {
@@ -191,6 +201,136 @@ export class SummonerspellsetComponent implements OnInit {
     return champSrc;
   }
 
+  getChampName(id : number) : string {
+    
+    let champName = " ";
+
+    switch(id) {
+      case 1 : {
+        champName = "Aatrox";
+        break;
+      }
+      case 2 : {
+        champName = "Ahri";
+        break
+      }
+      case 3 : {
+        champName = "Akali";
+        break;
+      }
+      case 4 : {
+        champName = "Alistar";
+        break;
+      }
+      case 5 : {
+        champName = "Amumu";
+        break;
+      }
+      case 6 : {
+        champName = "Anivia";
+        break;
+      }
+      case 7 : {
+        champName = "Annie";
+        break;
+      }
+      case 8 : {
+        champName = "Aphelios";
+        break;
+      }
+      case 9 : {
+        champName = "Ashe";
+        break;
+      }
+      case 10 : {
+        champName = "Aurelion Sol";
+        break;
+      }
+      case 11 : {
+        champName = "Azir";
+        break;
+      }
+      case 12 : {
+        champName = "Bard";
+        break;
+      }
+      case 13 : {
+        champName = "Blitzcrank";
+        break;
+      }
+      case 14 : {
+        champName = "Brand";
+        break;
+      }
+      case 15 : {
+        champName = "Braum";
+        break;
+      }
+      case 16 : {
+        champName = "Caitlyn";
+        break;
+      }
+      case 17 : {
+        champName = "Camille";
+        break;
+      }
+      case 18 : {
+        champName = "Cassiopeia";
+        break;
+      }
+      case 19 : {
+        champName = "Corki";
+        break
+      }
+      case 20 : {
+        champName = "Darius";
+        break;
+      }
+      case 21 : {
+        champName = "Diana";
+        break;
+      }
+      case 22 : {
+        champName = "Dr. Mundo";
+        break;
+      }
+      case 23 : {
+        champName = "Draven";
+        break;
+      }
+      case 24 : {
+        champName = "Ekko";
+        break;
+      }
+      case 25 : {
+        champName = "Elise";
+        break;
+      }
+      case 26 : {
+        champName = "Evelynn";
+        break;
+      }
+      case 27 : {
+        this.champName = "Ezreal";
+        break
+      }
+      case 28 : {
+        champName = "Fiddlesticks";
+        break;
+      }
+      case 29 : {
+        champName = "Fiora";
+        break
+      }
+      case 30 : {
+        champName = "Fizz";
+        break;
+      }
+    }
+
+    return champName;
+  }
+
   getSummSpellSrc(id : number) : string {
 
     let summSpellSrc = "./assets/images/summonerspells/";
@@ -235,5 +375,51 @@ export class SummonerspellsetComponent implements OnInit {
     }
 
     return summSpellSrc;
+  }
+
+  getSummSpellName(id : number) : string {
+
+    let summSpellName = " ";
+
+    switch(id) {
+        case 1 : {
+          summSpellName = "Heal";
+          break;
+        }
+        case 2 : {
+          summSpellName = "Ghost";
+          break;
+        }
+        case 3 : {
+          summSpellName = "Barrier";
+          break;
+        }
+        case 4 : {
+          summSpellName = "Exhaust";
+          break;
+        }
+        case 5 : {
+          summSpellName = "Flash";
+          break;
+        }
+        case 6 : {
+          summSpellName = "Teleport";
+          break;
+        }
+        case 7 : {
+          summSpellName = "Smite";
+          break;
+        }
+        case 8 : {
+          summSpellName = "Cleanse";
+          break;
+        }
+        case 9 : {
+          summSpellName = "Ignite";
+          break;
+        }
+    }
+
+    return summSpellName;
   }
 }
