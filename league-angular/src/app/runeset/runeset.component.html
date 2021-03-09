@@ -3,11 +3,24 @@
 
     <hr>
     <h2>Runes:</h2>
-    <img id="rune1" alt="rune1" [src]="runeSrc1">
-    <img id="rune2" alt="rune2" [src]="runeSrc2">
-    <img id="rune3" alt="rune3" [src]="runeSrc3">
-    <img id="rune4" alt="rune4" [src]="runeSrc4">
-
+    <div class="row">
+        <div class="column">
+            <p>{{runeName1}}</p>
+            <img id="rune1" alt="rune1" [src]="runeSrc1" class="runeImg">
+        </div>
+        <div class="column">
+            <p>{{runeName2}}</p>
+            <img id="rune2" alt="rune2" [src]="runeSrc2" class="runeImg">
+        </div>
+        <div class="column">
+            <p>{{runeName3}}</p>
+            <img id="rune3" alt="rune3" [src]="runeSrc3" class="runeImg">
+        </div>
+        <div class="column">
+            <p>{{runeName4}}</p>
+            <img id="rune4" alt="rune4" [src]="runeSrc4" class="runeImg">
+        </div>
+    </div>
     <h2>Champion:</h2>
     <p>{{champName}}</p>
     <img id="champSquare" alt="champSquare" [src]="champSrc" [title]="champName">

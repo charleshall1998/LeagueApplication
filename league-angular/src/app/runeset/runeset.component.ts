@@ -14,6 +14,12 @@ export class RunesetComponent implements OnInit {
   @Input() runeSet : RuneSet;
   champSrc : string = " ";
   champName : string = " ";
+
+  runeName1 : string = " ";
+  runeName2 : string = " ";
+  runeName3 : string = " ";
+  runeName4 : string = " ";
+
   runeSrc1 : string = " ";
   runeSrc2 : string = " ";
   runeSrc3 : string = " ";
@@ -23,6 +29,11 @@ export class RunesetComponent implements OnInit {
   constructor(private service : LeagueService, private router : Router) { }
 
   ngOnInit(): void {
+
+    this.runeName1 = this.getRuneName(this.runeSet.runeIdList[0]);
+    this.runeName2 = this.getRuneName(this.runeSet.runeIdList[1]);
+    this.runeName3 = this.getRuneName(this.runeSet.runeIdList[2]);
+    this.runeName4 = this.getRuneName(this.runeSet.runeIdList[3]);
 
     this.runeSrc1 = this.getRuneSrc(this.runeSet.runeIdList[0]);
     this.runeSrc2 = this.getRuneSrc(this.runeSet.runeIdList[1]);
@@ -446,6 +457,125 @@ export class RunesetComponent implements OnInit {
     }
 
     return runeSrc;
+  }
+
+  getRuneName(id : number) : string {
+
+    let runeName = " ";
+
+    switch(id) {
+        case 1 : {
+          runeName = "Press the Attack";
+          break;
+        }
+        case 2 : {
+          runeName = "Lethal Tempo";
+          break;
+        }
+        case 3 : {
+          runeName = "Fleet Footwork";
+          break;
+        }
+        case 4 : {
+          runeName = "Conqueror";
+          break;
+        }
+        case 5 : {
+          runeName = "Overheal";
+          break;
+        }
+        case 6 : {
+          runeName = "Triumph";
+          break;
+        }
+        case 7 : {
+          runeName = "Presence of Mind";
+          break;
+        }
+        case 8 : {
+          runeName = "Alacrity";
+          break;
+        }
+        case 9 : {
+          runeName = "Tenacity";
+          break;
+        }
+        case 10 : {
+          runeName = "Bloodline";
+          break;
+        }
+        case 11: {
+          runeName = "Coup de Grace";
+          break;
+        }
+        case 12: {
+          runeName = "Cutdown";
+          break;
+        }
+        case 13: {
+          runeName = "Last Stand";
+          break;
+        }
+        case 14: {
+          runeName = "Electrocute";
+          break;
+        }
+        case 15: {
+          runeName = "Predator";
+          break;
+        }
+        case 16: {
+          runeName = "Dark Harvest";
+          break;
+        }
+        case 17: {
+          runeName = "Hail of Blades";
+          break;
+        }
+        case 18: {
+          runeName = "Cheap Shot";
+          break;
+        }
+        case 19: {
+          runeName = "Taste of Blood";
+          break;
+        }
+        case 20: {
+          runeName = "Sudden Impact";
+          break;
+        }
+        case 21: {
+          runeName = "Zombie Ward";
+          break;
+        }
+        case 22: {
+          runeName = "Ghost Poro";
+          break;
+        }
+        case 23: {
+          runeName = "Eyeball Collection";
+          break;
+        }
+        case 24: {
+          runeName = "Ravenous Hunter";
+          break;
+        }
+        case 25: {
+          runeName = "Ingenious Hunter";
+          break;
+        }
+        case 26: {
+          runeName = "Relentless Hunter";
+          break;
+        }
+        case 27: {
+          runeName = "Ultimate Hunter";
+          break;
+        }
+      
+    }
+
+    return runeName;
   }
   
 
