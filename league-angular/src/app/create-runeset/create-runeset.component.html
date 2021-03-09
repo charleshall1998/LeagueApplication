@@ -5,9 +5,9 @@
 
     <div class="item-group">
         <p>Rune Set Name</p>
-        <input type="text" [(ngModel)]="runeSetName">
+        <input type="text" [(ngModel)]="runeSetName" required>
         <p>Rune 1</p>
-        <select name="runes" id="rune1">
+        <select name="runes" id="rune1" required>
             <option value="1">Press the Attack</option>
             <option value="2">Lethal Tempo</option>
             <option value="3">Fleet Footwork</option>
@@ -37,7 +37,7 @@
             <option value="27">Ultimate Hunter</option>
         </select>        
         <p>Rune 3</p>
-        <select name="runes" id="rune3">
+        <select name="runes" id="rune3" required>
             <option value="1">Press the Attack</option>
             <option value="2">Lethal Tempo</option>
             <option value="3">Fleet Footwork</option>
@@ -70,7 +70,7 @@
 
     <div class="item-group">
         <p>Champion</p>
-        <select name="champions" [(ngModel)]="championId">
+        <select name="champions" [(ngModel)]="championId" required>
             <option value="1">Aatrox</option>
             <option value="2">Ahri</option>
             <option value="3">Akali</option>
@@ -103,7 +103,7 @@
             <option value="30">Fizz</option>
         </select>
         <p>Rune 2</p>
-        <select name="runes" id="rune2">
+        <select name="runes" id="rune2" required>
             <option value="1">Press the Attack</option>
             <option value="2">Lethal Tempo</option>
             <option value="3">Fleet Footwork</option>
@@ -133,7 +133,7 @@
             <option value="27">Ultimate Hunter</option>
         </select>
         <p>Rune 4</p>
-        <select name="runes" id="rune4">
+        <select name="runes" id="rune4" required>
             <option value="1">Press the Attack</option>
             <option value="2">Lethal Tempo</option>
             <option value="3">Fleet Footwork</option>

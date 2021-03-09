@@ -30,7 +30,6 @@ export class CreateRunesetComponent implements OnInit {
 
     let toAdd : RuneSet = {runeSetName: this.runeSetName, championId: this.championId, runeIdList: this.runeIdList}
     this.service.createRuneSet(toAdd).subscribe((_) => {this.router.navigate(["/runesetlist"])});
-    alert("Rune Set: " + this.runeSetName + " created!");
   }
 
 }
