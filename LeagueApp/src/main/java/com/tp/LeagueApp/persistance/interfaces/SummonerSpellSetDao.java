@@ -8,7 +8,8 @@ import java.util.List;
 public interface SummonerSpellSetDao {
 
     //CREATE
-    SummonerSpellSet createNewSummonerSpellSet(SummonerSpellSet toAdd) throws NullSetException, EmptySummonerSpellListException, InvalidSummonerSpellException;
+    SummonerSpellSet createNewSummonerSpellSet(SummonerSpellSet toAdd) throws NullSetException, EmptySummonerSpellListException,
+            InvalidSummonerSpellException, DuplicateComponentException;
 
     //READ
     List<SummonerSpellSet> getAllSummonerSpellSets();

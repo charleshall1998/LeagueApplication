@@ -8,7 +8,8 @@ import java.util.List;
 public interface RuneSetDao {
 
     //CREATE
-    RuneSet createNewRuneSet(RuneSet toAdd) throws NullSetException, EmptyRuneListException, InvalidRuneException;
+    RuneSet createNewRuneSet(RuneSet toAdd) throws NullSetException, EmptyRuneListException
+            , InvalidRuneException, DuplicateComponentException;
 
     //READ
     List<RuneSet> getAllRuneSets();

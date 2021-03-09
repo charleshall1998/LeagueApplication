@@ -8,7 +8,8 @@ import java.util.List;
 public interface ItemSetDao {
 
     //CREATE
-    ItemSet createNewItemSet(ItemSet toAdd) throws NullSetException, InvalidItemException, EmptyItemListException;
+    ItemSet createNewItemSet(ItemSet toAdd) throws NullSetException, InvalidItemException,
+            EmptyItemListException, DuplicateComponentException;
 
     //READ
     List<ItemSet> getAllItemSets();

@@ -37,6 +37,7 @@ public class PostgresRuneSetDaoTests {
                 "values ('Test','Test Description', '1','1','1','1')");
 
         template.update("insert into \"Runes\" (\"runeName\", \"runeDescription\") values ('Test', 'Test Description')");
+        template.update("insert into \"Runes\" (\"runeName\", \"runeDescription\") values ('Test1', 'Test Description')");
 
     }
 
@@ -47,12 +48,13 @@ public class PostgresRuneSetDaoTests {
         runeSetToAdd.setChampionId(1);
         List<Integer> testList = new ArrayList<>();
         testList.add(1);
+        testList.add(2);
         runeSetToAdd.setRuneIdList(testList);
 
         RuneSet returnedRuneSet = null;
         try {
             returnedRuneSet = toTest.createNewRuneSet(runeSetToAdd);
-        } catch (NullSetException | InvalidRuneException | EmptyRuneListException e) {
+        } catch (NullSetException | InvalidRuneException | EmptyRuneListException | DuplicateComponentException e) {
             fail();
         }
 
@@ -95,6 +97,21 @@ public class PostgresRuneSetDaoTests {
         testRuneSet.setRuneIdList(testList);
 
         assertThrows(InvalidRuneException.class, () -> toTest.createNewRuneSet(testRuneSet));
+    }
+
+    @Test
+    public void createNewRuneSetDuplicateComponentTest() {
+        RuneSet testRuneSet = new RuneSet();
+        testRuneSet.setRuneSetId(1);
+        testRuneSet.setRuneSetName("Test");
+        testRuneSet.setChampionId(1);
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testList.add(2);
+        testRuneSet.setRuneIdList(testList);
+
+        assertThrows(DuplicateComponentException.class, () -> toTest.createNewRuneSet(testRuneSet));
     }
 
     @Test
@@ -154,6 +171,9 @@ public class PostgresRuneSetDaoTests {
         newUpdateRuneSet.setRuneSetId(1);
         newUpdateRuneSet.setRuneSetName("New Update");
         newUpdateRuneSet.setChampionId(2);
+        List<Integer> updateRuneList = new ArrayList<>();
+        updateRuneList.add(1);
+        newUpdateRuneSet.setRuneIdList(updateRuneList);
 
         try {
             toTest.updateRuneSet(newUpdateRuneSet);
@@ -187,6 +207,9 @@ public class PostgresRuneSetDaoTests {
         newUpdateRuneSet.setRuneSetId(100000);
         newUpdateRuneSet.setRuneSetName("New Update");
         newUpdateRuneSet.setChampionId(2);
+        List<Integer> updateRuneList = new ArrayList<>();
+        updateRuneList.add(1);
+        newUpdateRuneSet.setRuneIdList(updateRuneList);
 
         assertThrows(InvalidSetException.class, () -> toTest.updateRuneSet(newUpdateRuneSet));
     }
@@ -197,6 +220,9 @@ public class PostgresRuneSetDaoTests {
         toCheck.setRuneSetId(null);
         toCheck.setRuneSetName("Test");
         toCheck.setChampionId(1);
+        List<Integer> updateRuneList = new ArrayList<>();
+        updateRuneList.add(1);
+        toCheck.setRuneIdList(updateRuneList);
 
         assertThrows(NullIdException.class, () -> toTest.updateRuneSet(toCheck));
     }

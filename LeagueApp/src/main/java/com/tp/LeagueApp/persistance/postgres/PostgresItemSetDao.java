@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.HashSet;
 import java.util.List;
 
 @Component
@@ -20,12 +21,15 @@ public class PostgresItemSetDao implements ItemSetDao {
 
     //CREATE
     @Override
-    public ItemSet createNewItemSet(ItemSet toAdd) throws NullSetException, InvalidItemException, EmptyItemListException {
+    public ItemSet createNewItemSet(ItemSet toAdd) throws NullSetException, InvalidItemException,
+            EmptyItemListException, DuplicateComponentException {
 
         if(toAdd == null)
             throw new NullSetException("ERROR: Tried to create a null item set.");
         if(toAdd.getItemIdList().size() == 0)
             throw new EmptyItemListException("ERROR: Empty item list.");
+        if(checkDuplicateList(toAdd.getItemIdList()) == false)
+            throw new DuplicateComponentException("ERROR: Duplicate id's in item list.");
 
         //Add validate items
         if(!validateItemList(toAdd.getItemIdList()))
@@ -45,6 +49,16 @@ public class PostgresItemSetDao implements ItemSetDao {
         toAdd.setItemSetId(itemSetId);
 
         return toAdd;
+    }
+
+    private boolean checkDuplicateList(List<Integer> toCheck) {
+        java.util.HashSet unique = new HashSet();
+        for (Integer id : toCheck){
+            if(!unique.add(id)){
+                return false;
+            }
+        }
+        return true;
     }
 
     private boolean validateItemList(List<Integer> toCheck) {

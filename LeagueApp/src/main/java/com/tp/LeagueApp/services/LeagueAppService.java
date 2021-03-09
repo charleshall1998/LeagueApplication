@@ -89,7 +89,7 @@ public class LeagueAppService {
 
     //Various Sets methods
     //Item Sets
-    public ItemSet createNewItemSet(ItemSet toAdd) throws NullSetException, InvalidItemException, EmptyItemListException {
+    public ItemSet createNewItemSet(ItemSet toAdd) throws NullSetException, InvalidItemException, EmptyItemListException, DuplicateComponentException {
         return itemSetDao.createNewItemSet(toAdd);
     }
 
@@ -110,7 +110,7 @@ public class LeagueAppService {
     }
 
     //Rune Sets
-    public RuneSet createNewRuneSet(RuneSet toAdd) throws NullSetException, EmptyRuneListException, InvalidRuneException {
+    public RuneSet createNewRuneSet(RuneSet toAdd) throws NullSetException, EmptyRuneListException, InvalidRuneException, DuplicateComponentException {
         return runeSetDao.createNewRuneSet(toAdd);
     }
 
@@ -131,7 +131,7 @@ public class LeagueAppService {
     }
 
     //Summoner Spell Sets
-    public SummonerSpellSet createNewSummonerSpellSet(SummonerSpellSet toAdd) throws NullSetException, InvalidSummonerSpellException, EmptySummonerSpellListException {
+    public SummonerSpellSet createNewSummonerSpellSet(SummonerSpellSet toAdd) throws NullSetException, InvalidSummonerSpellException, EmptySummonerSpellListException, DuplicateComponentException {
         return summonerSpellSetDao.createNewSummonerSpellSet(toAdd);
     }
 

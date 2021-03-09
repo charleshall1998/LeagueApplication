@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.HashSet;
 import java.util.List;
 
 @Component
@@ -21,12 +22,14 @@ public class PostgresRuneSetDao implements RuneSetDao {
 
     //CREATE
     @Override
-    public RuneSet createNewRuneSet(RuneSet toAdd) throws NullSetException, InvalidRuneException, EmptyRuneListException {
+    public RuneSet createNewRuneSet(RuneSet toAdd) throws NullSetException, InvalidRuneException, EmptyRuneListException, DuplicateComponentException {
 
         if(toAdd == null)
             throw new NullSetException("ERROR: Tried to create a null rune set.");
         if(toAdd.getRuneIdList().size() == 0)
             throw new EmptyRuneListException("ERROR: Empty rune list.");
+        if(checkDuplicateList(toAdd.getRuneIdList()) == false)
+            throw new DuplicateComponentException("ERROR: Duplicate id's in item list.");
 
         //Add validate items
         if(!validateRuneList(toAdd.getRuneIdList()))
@@ -46,6 +49,16 @@ public class PostgresRuneSetDao implements RuneSetDao {
         toAdd.setRuneSetId(runeSetId);
 
         return toAdd;
+    }
+
+    private boolean checkDuplicateList(List<Integer> toCheck) {
+        java.util.HashSet unique = new HashSet();
+        for (Integer id : toCheck){
+            if(!unique.add(id)){
+                return false;
+            }
+        }
+        return true;
     }
 
     private boolean validateRuneList(List<Integer> toCheck) {

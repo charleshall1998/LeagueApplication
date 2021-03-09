@@ -38,6 +38,8 @@ public class PostgresItemSetDaoTests {
                 "values ('Test','Test Description', '1','1','1','1')");
 
         template.update("insert into \"Items\" (\"itemName\", \"itemDescription\", \"itemCost\") values ('Test', 'Test Description', '1000')");
+        template.update("insert into \"Items\" (\"itemName\", \"itemDescription\", \"itemCost\") values ('Test1', 'Test Description1', '1000')");
+
     }
 
     @Test
@@ -47,12 +49,13 @@ public class PostgresItemSetDaoTests {
         itemSetToAdd.setChampionId(1);
         List<Integer> testList = new ArrayList<>();
         testList.add(1);
+        testList.add(2);
         itemSetToAdd.setItemIdList(testList);
 
         ItemSet returnedItemSet = null;
         try {
             returnedItemSet = toTest.createNewItemSet(itemSetToAdd);
-        } catch (NullSetException | InvalidItemException | EmptyItemListException e) {
+        } catch (NullSetException | InvalidItemException | EmptyItemListException | DuplicateComponentException e) {
             fail();
         }
 
@@ -95,6 +98,21 @@ public class PostgresItemSetDaoTests {
         testItemSet.setItemIdList(testList);
 
         assertThrows(InvalidItemException.class, () -> toTest.createNewItemSet(testItemSet));
+    }
+
+    @Test
+    public void createNewItemSetDuplicateComponentTest() {
+        ItemSet testItemSet = new ItemSet();
+        testItemSet.setItemSetId(1);
+        testItemSet.setItemSetName("Test");
+        testItemSet.setChampionId(1);
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testList.add(2);
+        testItemSet.setItemIdList(testList);
+
+        assertThrows(DuplicateComponentException.class, () -> toTest.createNewItemSet(testItemSet));
     }
 
     @Test
@@ -153,6 +171,9 @@ public class PostgresItemSetDaoTests {
         newUpdateItemSet.setItemSetId(1);
         newUpdateItemSet.setItemSetName("New Update");
         newUpdateItemSet.setChampionId(2);
+        List<Integer> updateItemList = new ArrayList<>();
+        updateItemList.add(1);
+        newUpdateItemSet.setItemIdList(updateItemList);
 
         try {
             toTest.updateItemSet(newUpdateItemSet);

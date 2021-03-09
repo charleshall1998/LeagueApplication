@@ -37,6 +37,7 @@ public class PostgresSummonerSpellSetDaoTests {
                 "values ('Test','Test Description', '1','1','1','1')");
 
         template.update("insert into \"SummonerSpells\" (\"summSpellName\", \"summSpellDescription\") values ('Test', 'Test Description')");
+        template.update("insert into \"SummonerSpells\" (\"summSpellName\", \"summSpellDescription\") values ('Test1', 'Test Description')");
 
     }
 
@@ -47,12 +48,13 @@ public class PostgresSummonerSpellSetDaoTests {
         summSetToAdd.setChampionId(1);
         List<Integer> testList = new ArrayList<>();
         testList.add(1);
+        testList.add(2);
         summSetToAdd.setSummonerSpellIdList(testList);
 
         SummonerSpellSet returnedSummonerSpellSet = null;
         try {
             returnedSummonerSpellSet = toTest.createNewSummonerSpellSet(summSetToAdd);
-        } catch (NullSetException | EmptySummonerSpellListException | InvalidSummonerSpellException e) {
+        } catch (NullSetException | EmptySummonerSpellListException | InvalidSummonerSpellException | DuplicateComponentException e) {
             fail();
         }
 
@@ -95,6 +97,21 @@ public class PostgresSummonerSpellSetDaoTests {
         testSummSpellSet.setSummonerSpellIdList(testList);
 
         assertThrows(InvalidSummonerSpellException.class, () -> toTest.createNewSummonerSpellSet(testSummSpellSet));
+    }
+
+    @Test
+    public void createNewSummonerSpellSetDuplicateComponentTest() {
+        SummonerSpellSet testSummSpellSet = new SummonerSpellSet();
+        testSummSpellSet.setSummonerSpellSetId(1);
+        testSummSpellSet.setSummonerSpellSetName("Test");
+        testSummSpellSet.setChampionId(1);
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testList.add(2);
+        testSummSpellSet.setSummonerSpellIdList(testList);
+
+        assertThrows(DuplicateComponentException.class, () -> toTest.createNewSummonerSpellSet(testSummSpellSet));
     }
 
     @Test
@@ -153,6 +170,9 @@ public class PostgresSummonerSpellSetDaoTests {
         newUpdateSummonerSpellSet.setSummonerSpellSetId(1);
         newUpdateSummonerSpellSet.setSummonerSpellSetName("New Update");
         newUpdateSummonerSpellSet.setChampionId(2);
+        List<Integer> updateSummonerSpellList = new ArrayList<>();
+        updateSummonerSpellList.add(1);
+        newUpdateSummonerSpellSet.setSummonerSpellIdList(updateSummonerSpellList);
 
         try {
             toTest.updateSummonerSpellSet(newUpdateSummonerSpellSet);

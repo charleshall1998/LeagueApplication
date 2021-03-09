@@ -25,7 +25,7 @@ public class ItemSetController {
         try {
             toReturn = service.createNewItemSet(toAdd);
         }
-        catch(EmptyItemListException | NullSetException | InvalidItemException e) {
+        catch(EmptyItemListException | NullSetException | InvalidItemException | DuplicateComponentException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
 

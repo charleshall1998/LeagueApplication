@@ -371,7 +371,7 @@ public class ServicesTests {
         ItemSet returnedItemSet = null;
         try {
             returnedItemSet = service.createNewItemSet(itemSetToAdd);
-        } catch (NullSetException | InvalidItemException | EmptyItemListException e) {
+        } catch (NullSetException | InvalidItemException | EmptyItemListException | DuplicateComponentException e) {
             fail();
         }
 
@@ -465,6 +465,8 @@ public class ServicesTests {
     @Test
     public void updateItemSetGoldenPathTest() {
         template.update("insert into \"ItemSets\" (\"itemSetName\", \"championId\") values (\'Testing Item Set\', \'1\')");
+        template.update("insert into \"Items\" (\"itemName\", \"itemDescription\", \"itemCost\") values ('Test', 'Test Description', '1000')");
+
         template.update("insert into \"Champions\" (\"championName\", \"championDescription\",\"winRate\",\"pickRate\",\"banRate\",\"avgKDA\")\n" +
                 "values ('Test','Test Description', '1','1','1','1')");
 
@@ -472,6 +474,9 @@ public class ServicesTests {
         newUpdateItemSet.setItemSetId(1);
         newUpdateItemSet.setItemSetName("New Update");
         newUpdateItemSet.setChampionId(2);
+        List<Integer> updateItemList = new ArrayList<>();
+        updateItemList.add(1);
+        newUpdateItemSet.setItemIdList(updateItemList);
 
         try {
             service.updateItemSet(newUpdateItemSet);
@@ -564,7 +569,7 @@ public class ServicesTests {
         RuneSet returnedRuneSet = null;
         try {
             returnedRuneSet = service.createNewRuneSet(runeSetToAdd);
-        } catch (NullSetException | InvalidRuneException | EmptyRuneListException e) {
+        } catch (NullSetException | InvalidRuneException | EmptyRuneListException | DuplicateComponentException e) {
             fail();
         }
 
@@ -659,6 +664,7 @@ public class ServicesTests {
     @Test
     public void updateRuneSetGoldenPathTest() {
         template.update("insert into \"RuneSets\" (\"runeSetName\", \"championId\") values (\'Testing Rune Set\', \'1\')");
+        template.update("insert into \"Runes\" (\"runeName\", \"runeDescription\") values ('Test', 'Test Description')");
         template.update("insert into \"Champions\" (\"championName\", \"championDescription\",\"winRate\",\"pickRate\",\"banRate\",\"avgKDA\")\n" +
                 "values ('Test','Test Description', '1','1','1','1')");
 
@@ -666,6 +672,9 @@ public class ServicesTests {
         newUpdateRuneSet.setRuneSetId(1);
         newUpdateRuneSet.setRuneSetName("New Update");
         newUpdateRuneSet.setChampionId(2);
+        List<Integer> updateRuneList = new ArrayList<>();
+        updateRuneList.add(1);
+        newUpdateRuneSet.setRuneIdList(updateRuneList);
 
         try {
             service.updateRuneSet(newUpdateRuneSet);
@@ -758,7 +767,7 @@ public class ServicesTests {
         SummonerSpellSet returnedSummonerSpellSet = null;
         try {
             returnedSummonerSpellSet = service.createNewSummonerSpellSet(summSetToAdd);
-        } catch (NullSetException | EmptySummonerSpellListException | InvalidSummonerSpellException e) {
+        } catch (NullSetException | EmptySummonerSpellListException | InvalidSummonerSpellException | DuplicateComponentException e) {
             fail();
         }
 
@@ -852,6 +861,7 @@ public class ServicesTests {
     @Test
     public void updateSummonerSpellSetGoldenPathTest() {
         template.update("insert into \"SummonerSpellSets\" (\"summSpellSetName\", \"championId\") values (\'Testing Summoner Spell Set\', \'1\')");
+        template.update("insert into \"SummonerSpells\" (\"summSpellName\", \"summSpellDescription\") values ('Test', 'Test Description')");
         template.update("insert into \"Champions\" (\"championName\", \"championDescription\",\"winRate\",\"pickRate\",\"banRate\",\"avgKDA\")\n" +
                 "values ('Test','Test Description', '1','1','1','1')");
 
@@ -859,6 +869,9 @@ public class ServicesTests {
         newUpdateSummonerSpellSet.setSummonerSpellSetId(1);
         newUpdateSummonerSpellSet.setSummonerSpellSetName("New Update");
         newUpdateSummonerSpellSet.setChampionId(2);
+        List<Integer> updateSummonerSpellList = new ArrayList<>();
+        updateSummonerSpellList.add(1);
+        newUpdateSummonerSpellSet.setSummonerSpellIdList(updateSummonerSpellList);
 
         try {
             service.updateSummonerSpellSet(newUpdateSummonerSpellSet);

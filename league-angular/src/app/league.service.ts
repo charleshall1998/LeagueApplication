@@ -106,7 +106,7 @@ export class LeagueService {
     .pipe(
       tap(x => console.log(x)),
       catchError(err => {
-        console.log(err);
+        alert(err.error);
         return of(null);
       })
     );
@@ -151,7 +151,7 @@ export class LeagueService {
     .pipe(
       tap(x => console.log(x)),
       catchError(err => {
-        console.log(err);
+        alert(err.error);
         return of(null);
       })
       );
@@ -162,7 +162,7 @@ export class LeagueService {
     .pipe(
       tap(x => console.log(x)),
       catchError(err => {
-        console.log(err);
+        alert(err.error);
         return of(null);
       })
       );
@@ -215,7 +215,7 @@ export class LeagueService {
     .pipe(
       tap(x => console.log(x)),
       catchError(err => {
-        console.log(err);
+        alert(err.error);
         return of(null);
       })
     );
@@ -260,7 +260,7 @@ export class LeagueService {
     .pipe(
       tap(x => console.log(x)),
       catchError(err => {
-        console.log(err);
+        alert(err.error);
         return of(null);
       })
       );
@@ -271,7 +271,7 @@ export class LeagueService {
     .pipe(
       tap(x => console.log(x)),
       catchError(err => {
-        console.log(err);
+        alert(err.error);
         return of(null);
       })
     );
@@ -282,17 +282,6 @@ export class LeagueService {
   //************
   //Summoner Spell Methods
   //************
-  createSummonerSpellSet(toAdd : SummonerSpellSet) : Observable<SummonerSpellSet> {
-    return this.http.post<SummonerSpellSet>(this.baseUrl + "/new/summonerSpellSet", toAdd, this.httpOptions)
-    .pipe(
-      tap(x => console.log(x)),
-      catchError(err => {
-        console.log(err);
-        return of(null);
-      })
-    );
-  }
-
   getAllSummonerSpells() : Observable<SummonerSpell[]> {
     return this.http.get<SummonerSpell[]>(this.baseUrl + "/summonerSpells")
     .pipe(
@@ -331,6 +320,17 @@ export class LeagueService {
   //************
   //Summoner Spell Set Methods
   //************
+  createSummonerSpellSet(toAdd : SummonerSpellSet) : Observable<SummonerSpellSet> {
+    return this.http.post<SummonerSpellSet>(this.baseUrl + "/new/summonerSpellSet", toAdd, this.httpOptions)
+    .pipe(
+      tap(x => console.log(x)),
+      catchError(err => {
+        alert(err.error);
+        return of(null);
+      })
+    );
+  }
+
   getAllSummonerSpellSets() : Observable<SummonerSpellSet[]> {
     return this.http.get<SummonerSpellSet[]>(this.baseUrl + "/summonerSpellSets")
     .pipe(
@@ -370,7 +370,7 @@ export class LeagueService {
     .pipe(
       tap(x => console.log(x)),
       catchError(err => {
-        console.log(err);
+        alert(err.error);
         return of(null);
       })
       );
@@ -381,7 +381,7 @@ export class LeagueService {
     .pipe(
       tap(x => console.log(x)),
       catchError(err => {
-        console.log(err);
+        alert(err.error);
         return of(null);
       })
     );

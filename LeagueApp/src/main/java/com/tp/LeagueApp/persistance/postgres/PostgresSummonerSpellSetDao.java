@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.HashSet;
 import java.util.List;
 
 @Component
@@ -20,12 +21,16 @@ public class PostgresSummonerSpellSetDao implements SummonerSpellSetDao {
 
     //CREATE
     @Override
-    public SummonerSpellSet createNewSummonerSpellSet(SummonerSpellSet toAdd) throws NullSetException, EmptySummonerSpellListException, InvalidSummonerSpellException {
+    public SummonerSpellSet createNewSummonerSpellSet(SummonerSpellSet toAdd) throws NullSetException, EmptySummonerSpellListException,
+            InvalidSummonerSpellException, DuplicateComponentException {
 
         if(toAdd == null)
             throw new NullSetException("ERROR: Tried to create a null summoner spell set.");
         if(toAdd.getSummonerSpellIdList().size() == 0)
             throw new EmptySummonerSpellListException("ERROR: Empty item list.");
+        if(checkDuplicateList(toAdd.getSummonerSpellIdList()) == false)
+            throw new DuplicateComponentException("ERROR: Duplicate id's in item list.");
+
 
         //Add validate items
         if(!validateSummonerSpellList(toAdd.getSummonerSpellIdList()))
@@ -45,6 +50,16 @@ public class PostgresSummonerSpellSetDao implements SummonerSpellSetDao {
         toAdd.setSummonerSpellSetId(summSpellSetId);
 
         return toAdd;
+    }
+
+    private boolean checkDuplicateList(List<Integer> toCheck) {
+        java.util.HashSet unique = new HashSet();
+        for (Integer id : toCheck){
+            if(!unique.add(id)){
+                return false;
+            }
+        }
+        return true;
     }
 
     private boolean validateSummonerSpellList(List<Integer> toCheck) {
