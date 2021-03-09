@@ -32,6 +32,8 @@ export class UpdateItemsetComponent implements OnInit {
       this.itemIdList.push(parseInt(item));
     }
 
+    this.championId = parseInt((document.getElementById("championId") as HTMLInputElement).value);
+
     this.body = {itemSetId:this.itemSetId, itemSetName: this.itemSetName, championId: this.championId, itemIdList: this.itemIdList }
     this.service.updateItemSet(this.body).subscribe((_) => {this.router.navigate(["/itemsetlist"])});
   }

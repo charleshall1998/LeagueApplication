@@ -32,6 +32,8 @@ export class UpdateSummonerspellsetComponent implements OnInit {
       this.summonerSpellIdList.push(parseInt(rune));
     }
 
+    this.championId = parseInt((document.getElementById("championId") as HTMLInputElement).value);
+
     this.body = {summonerSpellSetId: this.summonerSpellSetId, summonerSpellSetName: this.summonerSpellSetName, championId: this.championId, summonerSpellIdList: this.summonerSpellIdList }
     this.service.updateSummonerSpellSet(this.body).subscribe((_) => {this.router.navigate(["/summonerspellsetlist"])});
   }

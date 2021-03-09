@@ -9,12 +9,9 @@
             <input type="text" [(ngModel)]="runeSetName">
         </div>
         <div class="column">
-            <p></p>
-        </div>
-        <div class="column">
             <p>Champion</p>
-            <select name="champions" [(ngModel)]="championId">
-                <option value="1">Aatrox</option>
+            <select name="champions" id="championId">
+                <option value="1" selected>Aatrox</option>
                 <option value="2">Ahri</option>
                 <option value="3">Akali</option>
                 <option value="4">Alistar</option>
@@ -52,7 +49,7 @@
         <div class="column">
             <p>Rune 1</p>
             <select name="runes" id="rune1">
-                <option value="1">Press the Attack</option>
+                <option value="1" selected>Press the Attack</option>
                 <option value="2">Lethal Tempo</option>
                 <option value="3">Fleet Footwork</option>
                 <option value="4">Conqueror</option>
@@ -85,7 +82,7 @@
             <p>Rune 2</p>
             <select name="runes" id="rune2">
                 <option value="1">Press the Attack</option>
-                <option value="2">Lethal Tempo</option>
+                <option value="2" selected>Lethal Tempo</option>
                 <option value="3">Fleet Footwork</option>
                 <option value="4">Conqueror</option>
                 <option value="5">Overheal</option>
@@ -113,12 +110,15 @@
                 <option value="27">Ultimate Hunter</option>
             </select> 
         </div>
+    </div>
+
+    <div class="row">
         <div class="column">
             <p>Rune 3</p>
             <select name="runes" id="rune3">
                 <option value="1">Press the Attack</option>
                 <option value="2">Lethal Tempo</option>
-                <option value="3">Fleet Footwork</option>
+                <option value="3" selected>Fleet Footwork</option>
                 <option value="4">Conqueror</option>
                 <option value="5">Overheal</option>
                 <option value="6">Triumph</option>
@@ -144,9 +144,6 @@
                 <option value="26">Relentless Hunter</option>
                 <option value="27">Ultimate Hunter</option>
             </select>         
-        </div>
-        <div class="column">
-            <p></p>
         </div>
         <div class="column">
             <p>Rune 4</p>
@@ -154,7 +151,7 @@
                 <option value="1">Press the Attack</option>
                 <option value="2">Lethal Tempo</option>
                 <option value="3">Fleet Footwork</option>
-                <option value="4">Conqueror</option>
+                <option value="4" selected>Conqueror</option>
                 <option value="5">Overheal</option>
                 <option value="6">Triumph</option>
                 <option value="7">Presence of Mind</option>
@@ -179,9 +176,6 @@
                 <option value="26">Relentless Hunter</option>
                 <option value="27">Ultimate Hunter</option>
             </select>         
-        </div>
-        <div class="column">
-            <p></p>
         </div>
     </div>
 

@@ -44,8 +44,7 @@ select:focus, input:focus {
 
 .row {
     display: inline-block;
-    margin: 4vmin;
-    padding: 5vmin;
+    width: 60%;
 }
 
 .column {

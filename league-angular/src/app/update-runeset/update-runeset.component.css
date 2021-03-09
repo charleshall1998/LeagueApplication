@@ -2,7 +2,7 @@
     text-align: center;
     border: 5px solid #0c1420;
     border-radius: 15px;
-    width: 50%;
+    width: 60%;
     margin: auto;
 }
 
@@ -12,7 +12,6 @@ select, input {
     height: 3vmin;
     border-radius: 5px;
     border: 0px solid;
-    margin: 2vmin;
 }
 
 select {
@@ -43,13 +42,12 @@ select:focus, input:focus {
     background-color: #f05c72;
 }
 
-
 .row {
     display: inline-block;
-    margin: 2vmin;
+    width: 60%;
 }
 
 .column {
     float: left;
-    width: 33.3%;
+    width: 50%;
 }

@@ -46,10 +46,20 @@ select:focus, input:focus {
 
 .row {
     display: inline-block;
-    margin: 2vmin;
+    width: 80%
 }
 
 .column {
     float: left;
     width: 33.3%;
+}
+
+.row1 {
+    display: inline-block;
+    width: 60%;
+}
+
+.column1 {
+    float: left;
+    width: 50%;
 }
