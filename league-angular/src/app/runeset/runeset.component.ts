@@ -48,6 +48,7 @@ export class RunesetComponent implements OnInit {
   deleteRuneSet(runeSetId : number) : void {
     confirm("Are you sure you want to delete this set?");
     this.service.deleteRuneSet(runeSetId).subscribe((_) => {this.router.navigate(["/runesetlist"])});
+    window.location.reload();
   }
 
   getChampSrc(id : number) : string {

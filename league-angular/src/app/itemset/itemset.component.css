@@ -9,3 +9,13 @@
 p {
     font-size: 2.5vmin;
 }
+
+.row {
+    display: inline-block;
+    width: 100%;
+}
+
+.column {
+    float: left;
+    width: 33.3%;
+}

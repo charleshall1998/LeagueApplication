@@ -3,12 +3,35 @@
     <hr>
     
     <h2>Items:</h2>
-    <img id="item1" alt="item1" [src]="itemSrc1">
-    <img id="item2" alt="item2" [src]="itemSrc2">
-    <img id="item3" alt="item3" [src]="itemSrc3">
-    <img id="item4" alt="item4" [src]="itemSrc4">
-    <img id="item5" alt="item5" [src]="itemSrc5">
-    <img id="item6" alt="item6" [src]="itemSrc6">
+    <div class="row">
+        <div class="column">
+            <p>{{itemName1}}</p>
+            <img id="item1" alt="item1" [src]="itemSrc1">
+        </div>
+        <div class="column">            
+            <p>{{itemName2}}</p>
+            <img id="item2" alt="item2" [src]="itemSrc2">
+        </div>
+        <div class="column">
+            <p>{{itemName3}}</p>
+            <img id="item3" alt="item3" [src]="itemSrc3">
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="column">           
+            <p>{{itemName4}}</p>
+            <img id="item4" alt="item4" [src]="itemSrc4">
+        </div>
+        <div class="column"> 
+            <p>{{itemName5}}</p>
+            <img id="item5" alt="item5" [src]="itemSrc5">
+        </div>
+        <div class="column">
+            <p>{{itemName6}}</p>
+            <img id="item6" alt="item6" [src]="itemSrc6">
+        </div>
+    </div>
 
     <h2>Champion:</h2>
     <p>{{champName}}</p>

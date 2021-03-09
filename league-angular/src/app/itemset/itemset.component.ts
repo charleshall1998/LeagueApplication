@@ -15,6 +15,14 @@ export class ItemsetComponent implements OnInit {
   @Input() itemSet : ItemSet;
   champSrc : string = " ";
   champName : string = " ";
+
+  itemName1 : string = " ";
+  itemName2 : string = " ";
+  itemName3 : string = " ";
+  itemName4 : string = " ";
+  itemName5 : string = " ";
+  itemName6 : string = " ";
+
   itemSrc1 : string = " ";
   itemSrc2 : string = " ";
   itemSrc3 : string = " ";
@@ -25,6 +33,13 @@ export class ItemsetComponent implements OnInit {
   constructor(private service : LeagueService, private router : Router) { }
 
   ngOnInit(): void {
+    this.itemName1 = this.getItemName(this.itemSet.itemIdList[0]);
+    this.itemName2 = this.getItemName(this.itemSet.itemIdList[1]);
+    this.itemName3 = this.getItemName(this.itemSet.itemIdList[2]);
+    this.itemName4 = this.getItemName(this.itemSet.itemIdList[3]);
+    this.itemName5 = this.getItemName(this.itemSet.itemIdList[4]);
+    this.itemName6 = this.getItemName(this.itemSet.itemIdList[5]);
+
     this.itemSrc1 = this.getItemSrc(this.itemSet.itemIdList[0]);
     this.itemSrc2 = this.getItemSrc(this.itemSet.itemIdList[1]);
     this.itemSrc3 = this.getItemSrc(this.itemSet.itemIdList[2]);
@@ -39,6 +54,7 @@ export class ItemsetComponent implements OnInit {
   deleteItemSet(itemSetId : number) {
     confirm("Are you sure you want to delete this set?");
     this.service.deleteItemSet(itemSetId).subscribe((_) => {this.router.navigate(["/itemsetlist"])});
+    window.location.reload();
   }
 
   getChampSrc(id : number) : string {
@@ -361,7 +377,7 @@ export class ItemsetComponent implements OnInit {
         break;
       }
       case 7 : {
-        itemSrc += "B.F. Swaord.png";
+        itemSrc += "B.F. Sword.png";
         break;
       }
       case 8 : {
@@ -373,7 +389,7 @@ export class ItemsetComponent implements OnInit {
         break;
       }
       case 10 : {
-        itemSrc += "Banshess Veil.png";
+        itemSrc += "Banshees Veil.png";
         break;
       }
       case 11 : {
@@ -397,7 +413,7 @@ export class ItemsetComponent implements OnInit {
         break;
       }
       case 16 : {
-        itemSrc += "Bulwarkof the Mountain.png";
+        itemSrc += "Bulwark of the Mountain.png";
         break;
       }
       case 17 : {
@@ -467,6 +483,145 @@ export class ItemsetComponent implements OnInit {
     }
 
     return itemSrc;
+
+  }
+
+  getItemName(id : number) : string {
+
+    let itemName = " ";
+
+    switch(id) {
+      case 1 : {
+        itemName = "Abyssal Mask";
+        break;
+      }
+      case 2 : {
+        itemName = "Aegis of the Legion";
+        break;
+      }
+      case 3 : {
+        itemName = "Aether Wisp";
+        break;
+      }
+      case 4 : {
+        itemName = "Amplifying Tome";
+        break;
+      }
+      case 5 : {
+        itemName = "Archangel's Staff";
+        break;
+      }
+      case 6 : {
+        itemName = "Ardent Censer";
+        break;
+      }
+      case 7 : {
+        itemName = "B.F. Sword";
+        break;
+      }
+      case 8 : {
+        itemName = "Bami's Cinder";
+        break;
+      }
+      case 9 : {
+        itemName = "Bandleglass Mirror";
+        break;
+      }
+      case 10 : {
+        itemName = "Banshee's Veil";
+        break;
+      }
+      case 11 : {
+        itemName = "Berzerker's Greaves";
+        break;
+      }
+      case 12 : {
+        itemName = "Black Cleaver";
+        break;
+      }
+      case 13 : {
+        itemName = "Blade of the Ruined King";
+        break;
+      }
+      case 14 : {
+        itemName = "Bloodthirster";
+        break;
+      }
+      case 15 : {
+        itemName = "Boots of Swiftness";
+        break;
+      }
+      case 16 : {
+        itemName = "Bulwark of the Mountain";
+        break;
+      }
+      case 17 : {
+        itemName = "Chempunk Chainsword";
+        break;
+      }
+      case 18 : {
+        itemName = "Chemtech Putrifier";
+        break;
+      }
+      case 19 : {
+        itemName = "Cosmic Drive";
+        break;
+      }
+      case 20 : {
+        itemName = "Dead Man's Plate";
+        break;
+      }
+      case 21 : {
+        itemName = "Death's Dance";
+        break;
+      }
+      case 22 : {
+        itemName = "Demonic Embrace";
+        break;
+      }
+      case 23 : {
+        itemName = "Divine Sunderer";
+        break;
+      }
+      case 24 : {
+        itemName = "Duskblade of Draktharr";
+        break;
+      }
+      case 25 : {
+        itemName = "Eclipse";
+        break;
+      }
+      case 26 : {
+        itemName = "Edge of Night";
+        break;
+      }
+      case 27 : {
+        itemName = "Essence Reaver";
+        break;
+      }
+      case 28 : {
+        itemName = "Everfrost";
+        break;
+      }
+      case 29 : {
+        itemName = "Force of Nature";
+        break;
+      }
+      case 30 : {
+        itemName = "Frostfire Gauntlet";
+        break;
+      }
+      case 31 : {
+        itemName = "Frozen Heart";
+        break;
+      }
+      case 32 : {
+        itemName = "Galeforce";
+        break;
+      }
+    }
+
+    return itemName;
 
   }
 }
