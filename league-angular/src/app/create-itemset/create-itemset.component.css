@@ -22,12 +22,6 @@ select:focus, input:focus {
     outline: none;
 }
 
-.item-group {
-    display: inline-block;
-    margin: 3vmin;
-}
-
-
 #createButton {
     font-family: 'Alegreya Sans SC';
     display: inline-block;
@@ -45,4 +39,24 @@ select:focus, input:focus {
 
 #createButton:hover {
     background-color: #f05c72;
+}
+
+.row {
+    display: inline-block;
+    width: 80%
+}
+
+.column {
+    float: left;
+    width: 33.3%;
+}
+
+.row1 {
+    display: inline-block;
+    width: 60%;
+}
+
+.column1 {
+    float: left;
+    width: 50%;
 }
