@@ -16,7 +16,7 @@ public interface RuneSetDao {
     RuneSet getRuneSetById(Integer runeSetId) throws NullIdException, InvalidSetException;
 
     //UPDATE
-    void updateRuneSet(RuneSet toUpdate) throws NullSetException, NullIdException, InvalidSetException;
+    void updateRuneSet(RuneSet toUpdate) throws NullSetException, NullIdException, InvalidSetException, DuplicateComponentException;
 
     //CREATE
     void deleteRuneSetById(Integer toDeleteId) throws NullIdException, InvalidSetException;

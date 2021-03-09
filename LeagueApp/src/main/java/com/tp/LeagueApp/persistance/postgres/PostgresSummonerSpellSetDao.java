@@ -119,14 +119,16 @@ public class PostgresSummonerSpellSetDao implements SummonerSpellSetDao {
 
     //UPDATE
     @Override
-    public void updateSummonerSpellSet(SummonerSpellSet toUpdate) throws NullSetException, NullIdException, InvalidSetException {
+    public void updateSummonerSpellSet(SummonerSpellSet toUpdate) throws NullSetException, NullIdException, InvalidSetException, DuplicateComponentException {
 
         if(toUpdate == null)
             throw new NullSetException("ERROR: Tried to update summoner spell set with a null summoner spell set.");
         if(toUpdate.getSummonerSpellSetId() == null)
             throw new NullIdException("ERROR: Tried to update a summoner spell set with a null id.");
         if(!validateSummonerSpellSetId(toUpdate.getSummonerSpellSetId()))
-            throw new InvalidSetException("ERROR: Tried to delete a set that doesn't exist.");
+            throw new InvalidSetException("ERROR: Tried to update a set that doesn't exist.");
+        if(checkDuplicateList(toUpdate.getSummonerSpellIdList()) == false)
+            throw new DuplicateComponentException("ERROR: Tried to update a set with duplicate rune id's.");
 
         template.update("update \"SummonerSpellSets\" set \"summSpellSetName\" = ?, \"championId\" = ? where \"summSpellSetId\" = ?",
                 toUpdate.getSummonerSpellSetName(), toUpdate.getChampionId(), toUpdate.getSummonerSpellSetId());

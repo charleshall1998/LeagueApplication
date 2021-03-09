@@ -28,6 +28,8 @@ export class CreateSummonerspellsetComponent implements OnInit {
       this.summonerSpellIdList.push(parseInt(rune));
     }
 
+    this.championId = parseInt((document.getElementById("championId") as HTMLInputElement).value);
+
     let toAdd : SummonerSpellSet = {summonerSpellSetName: this.summonerSpellSetName, championId: this.championId, summonerSpellIdList: this.summonerSpellIdList}
     this.service.createSummonerSpellSet(toAdd).subscribe((_) => {this.router.navigate(["/summonerspellsetlist"])});
   }

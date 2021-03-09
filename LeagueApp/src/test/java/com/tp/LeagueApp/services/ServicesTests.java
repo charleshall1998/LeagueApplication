@@ -480,7 +480,7 @@ public class ServicesTests {
 
         try {
             service.updateItemSet(newUpdateItemSet);
-        } catch (NullSetException | NullIdException | InvalidSetException e) {
+        } catch (NullSetException | NullIdException | InvalidSetException | DuplicateComponentException e) {
             fail();
         }
 
@@ -678,7 +678,7 @@ public class ServicesTests {
 
         try {
             service.updateRuneSet(newUpdateRuneSet);
-        } catch (NullSetException | NullIdException | InvalidSetException e) {
+        } catch (NullSetException | NullIdException | InvalidSetException | DuplicateComponentException e) {
             fail();
         }
 
@@ -875,7 +875,7 @@ public class ServicesTests {
 
         try {
             service.updateSummonerSpellSet(newUpdateSummonerSpellSet);
-        } catch (NullSetException | NullIdException | InvalidSetException e) {
+        } catch (NullSetException | NullIdException | InvalidSetException | DuplicateComponentException e) {
             fail();
         }
 

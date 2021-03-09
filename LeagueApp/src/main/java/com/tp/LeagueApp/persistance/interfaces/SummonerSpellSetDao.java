@@ -16,7 +16,7 @@ public interface SummonerSpellSetDao {
     SummonerSpellSet getSummonerSpellSetById(Integer summonerSpellSetId) throws NullIdException, InvalidSetException;
 
     //UPDATE
-    void updateSummonerSpellSet(SummonerSpellSet toUpdate) throws NullSetException, NullIdException, InvalidSetException;
+    void updateSummonerSpellSet(SummonerSpellSet toUpdate) throws NullSetException, NullIdException, InvalidSetException, DuplicateComponentException;
 
     //DELETE
     void deleteSummonerSpellSetById(Integer toDeleteId) throws NullIdException, InvalidSetException;

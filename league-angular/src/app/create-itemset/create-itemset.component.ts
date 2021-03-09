@@ -28,6 +28,8 @@ export class CreateItemsetComponent implements OnInit {
       this.itemIdList.push(parseInt(item));
     }
 
+    this.championId = parseInt((document.getElementById("championId") as HTMLInputElement).value);
+
     let toAdd : ItemSet = {itemSetName: this.itemSetName, championId: this.championId, itemIdList: this.itemIdList}
     this.service.createItemSet(toAdd).subscribe((_) => {this.router.navigate(["/itemsetlist"])});
   }

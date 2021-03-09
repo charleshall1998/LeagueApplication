@@ -118,14 +118,16 @@ public class PostgresRuneSetDao implements RuneSetDao {
 
     //UPDATE
     @Override
-    public void updateRuneSet(RuneSet toUpdate) throws NullSetException, NullIdException, InvalidSetException {
+    public void updateRuneSet(RuneSet toUpdate) throws NullSetException, NullIdException, InvalidSetException, DuplicateComponentException {
 
         if(toUpdate == null)
             throw new NullSetException("ERROR: Tried to update rune set with a null rune set.");
         if(toUpdate.getRuneSetId() == null)
             throw new NullIdException("ERROR: Tried to update a rune set with a null id.");
         if(!validateRuneSetId(toUpdate.getRuneSetId()))
-            throw new InvalidSetException("ERROR: Tried to delete a set that doesn't exist.");
+            throw new InvalidSetException("ERROR: Tried to update a set that doesn't exist.");
+        if(checkDuplicateList(toUpdate.getRuneIdList()) == false)
+            throw new DuplicateComponentException("ERROR: Tried to update a set with duplicate rune id's");
 
         template.update("update \"RuneSets\" set \"runeSetName\" = ?, \"championId\" = ? where \"runeSetId\" = ?",
                 toUpdate.getRuneSetName(), toUpdate.getChampionId(), toUpdate.getRuneSetId());

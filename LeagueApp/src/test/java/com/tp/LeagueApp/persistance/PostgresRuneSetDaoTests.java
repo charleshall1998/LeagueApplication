@@ -177,7 +177,7 @@ public class PostgresRuneSetDaoTests {
 
         try {
             toTest.updateRuneSet(newUpdateRuneSet);
-        } catch (NullSetException | NullIdException | InvalidSetException e) {
+        } catch (NullSetException | NullIdException | InvalidSetException | DuplicateComponentException e) {
             fail();
         }
 
@@ -225,6 +225,21 @@ public class PostgresRuneSetDaoTests {
         toCheck.setRuneIdList(updateRuneList);
 
         assertThrows(NullIdException.class, () -> toTest.updateRuneSet(toCheck));
+    }
+
+    @Test
+    public void updateRuneSetDuplicateComponentTest() {
+        RuneSet testRuneSet = new RuneSet();
+        testRuneSet.setRuneSetId(1);
+        testRuneSet.setRuneSetName("Test");
+        testRuneSet.setChampionId(1);
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testList.add(2);
+        testRuneSet.setRuneIdList(testList);
+
+        assertThrows(DuplicateComponentException.class, () -> toTest.createNewRuneSet(testRuneSet));
     }
 
     @Test

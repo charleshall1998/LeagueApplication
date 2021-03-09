@@ -16,7 +16,7 @@ public interface ItemSetDao {
     ItemSet getItemSetById(Integer itemSetId) throws NullIdException, InvalidSetException;
 
     //UPDATE
-    void updateItemSet(ItemSet toUpdate) throws NullSetException, NullIdException, InvalidSetException;
+    void updateItemSet(ItemSet toUpdate) throws NullSetException, NullIdException, InvalidSetException, DuplicateComponentException;
 
     //DELETE
     void deleteItemSetById(Integer toDeleteId) throws NullIdException, InvalidSetException;

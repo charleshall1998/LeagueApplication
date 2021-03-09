@@ -177,7 +177,7 @@ public class PostgresItemSetDaoTests {
 
         try {
             toTest.updateItemSet(newUpdateItemSet);
-        } catch (NullSetException | NullIdException | InvalidSetException e) {
+        } catch (NullSetException | NullIdException | InvalidSetException | DuplicateComponentException e) {
             fail();
         }
 
@@ -219,6 +219,21 @@ public class PostgresItemSetDaoTests {
         toCheck.setChampionId(1);
 
         assertThrows(NullIdException.class, () -> toTest.updateItemSet(toCheck));
+    }
+
+    @Test
+    public void updateItemSetDuplicateComponentTest() {
+        ItemSet testItemSet = new ItemSet();
+        testItemSet.setItemSetId(1);
+        testItemSet.setItemSetName("Test");
+        testItemSet.setChampionId(1);
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testList.add(2);
+        testItemSet.setItemIdList(testList);
+
+        assertThrows(DuplicateComponentException.class, () -> toTest.createNewItemSet(testItemSet));
     }
 
     @Test

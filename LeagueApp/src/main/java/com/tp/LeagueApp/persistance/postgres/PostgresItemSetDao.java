@@ -119,14 +119,17 @@ public class PostgresItemSetDao implements ItemSetDao {
 
     //UPDATE
     @Override
-    public void updateItemSet(ItemSet toUpdate) throws NullSetException, NullIdException, InvalidSetException {
+    public void updateItemSet(ItemSet toUpdate) throws NullSetException, NullIdException,
+            InvalidSetException,DuplicateComponentException {
 
         if(toUpdate == null)
             throw new NullSetException("ERROR: Tried to update item set with a null item set.");
         if(toUpdate.getItemSetId() == null)
             throw new NullIdException("ERROR: Tried to update an item set with a null id.");
         if(!validateItemSetId(toUpdate.getItemSetId()))
-            throw new InvalidSetException("ERROR: Tried to delete a set that doesn't exist.");
+            throw new InvalidSetException("ERROR: Tried to update a set that doesn't exist.");
+        if(checkDuplicateList(toUpdate.getItemIdList()) == false)
+            throw new DuplicateComponentException("ERROR: Tried to update a set with duplicate item id's");
 
         template.update("update \"ItemSets\" set \"itemSetName\" = ?, \"championId\" = ? where \"itemSetId\" = ?",
                 toUpdate.getItemSetName(), toUpdate.getChampionId(), toUpdate.getItemSetId());

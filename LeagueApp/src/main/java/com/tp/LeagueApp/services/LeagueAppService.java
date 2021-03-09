@@ -101,7 +101,7 @@ public class LeagueAppService {
         return itemSetDao.getItemSetById(itemSetId);
     }
 
-    public void updateItemSet(ItemSet toUpdate) throws NullSetException, NullIdException, InvalidSetException {
+    public void updateItemSet(ItemSet toUpdate) throws NullSetException, NullIdException, InvalidSetException, DuplicateComponentException {
         itemSetDao.updateItemSet(toUpdate);
     }
 
@@ -122,7 +122,7 @@ public class LeagueAppService {
         return runeSetDao.getRuneSetById(runeSetId);
     }
 
-    public void updateRuneSet(RuneSet toUpdate) throws NullSetException, NullIdException, InvalidSetException {
+    public void updateRuneSet(RuneSet toUpdate) throws NullSetException, NullIdException, InvalidSetException, DuplicateComponentException {
         runeSetDao.updateRuneSet(toUpdate);
     }
 
@@ -143,7 +143,7 @@ public class LeagueAppService {
         return summonerSpellSetDao.getSummonerSpellSetById(summonerSpellSetId);
     }
 
-    public void updateSummonerSpellSet(SummonerSpellSet toUpdate) throws NullSetException, NullIdException, InvalidSetException {
+    public void updateSummonerSpellSet(SummonerSpellSet toUpdate) throws NullSetException, NullIdException, InvalidSetException, DuplicateComponentException {
         summonerSpellSetDao.updateSummonerSpellSet(toUpdate);
     }
 

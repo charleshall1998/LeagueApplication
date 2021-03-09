@@ -176,7 +176,7 @@ public class PostgresSummonerSpellSetDaoTests {
 
         try {
             toTest.updateSummonerSpellSet(newUpdateSummonerSpellSet);
-        } catch (NullSetException | NullIdException | InvalidSetException e) {
+        } catch (NullSetException | NullIdException | InvalidSetException | DuplicateComponentException e) {
             fail();
         }
 
@@ -218,6 +218,21 @@ public class PostgresSummonerSpellSetDaoTests {
         toCheck.setChampionId(1);
 
         assertThrows(NullIdException.class, () -> toTest.updateSummonerSpellSet(toCheck));
+    }
+
+    @Test
+    public void updateSummonerSpellSetDuplicateComponentTest() {
+        SummonerSpellSet testSummSpellSet = new SummonerSpellSet();
+        testSummSpellSet.setSummonerSpellSetId(1);
+        testSummSpellSet.setSummonerSpellSetName("Test");
+        testSummSpellSet.setChampionId(1);
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testList.add(2);
+        testSummSpellSet.setSummonerSpellIdList(testList);
+
+        assertThrows(DuplicateComponentException.class, () -> toTest.createNewSummonerSpellSet(testSummSpellSet));
     }
 
     @Test
