@@ -1,8 +1,6 @@
 package com.tp.LeagueApp.persistance.postgres;
 
-import com.tp.LeagueApp.exceptions.InvalidSetException;
-import com.tp.LeagueApp.exceptions.NullIdException;
-import com.tp.LeagueApp.exceptions.NullNameException;
+import com.tp.LeagueApp.exceptions.*;
 import com.tp.LeagueApp.models.Rune;
 import com.tp.LeagueApp.persistance.interfaces.RuneDao;
 import com.tp.LeagueApp.persistance.postgres.mappers.IntegerMapper;
@@ -30,10 +28,13 @@ public class PostgresRuneDao implements RuneDao {
     }
 
     @Override
-    public Rune getRuneByName(String runeName) throws NullNameException {
-
+    public Rune getRuneByName(String runeName) throws NullNameException, EmptyStringException, InvalidRuneException {
         if(runeName == null)
             throw new NullNameException("ERROR: Tried to get a rune with a null name.");
+        if(checkEmptyString(runeName) == false)
+            throw new EmptyStringException("ERROR: Tried to get a rune with empty name.");
+        if(!validateName(runeName))
+            throw new InvalidRuneException("ERROR: Tried to get a rune that doesn't exist.");
 
         List<Rune> toReturn = template.query("select * from \"Runes\" where \"runeName\" = ?;", new RuneMapper(), runeName);
 
@@ -41,11 +42,11 @@ public class PostgresRuneDao implements RuneDao {
     }
 
     @Override
-    public Rune getRuneById(Integer runeId) throws NullIdException, InvalidSetException {
+    public Rune getRuneById(Integer runeId) throws NullIdException, InvalidRuneException {
         if(runeId == null)
             throw new NullIdException("ERROR: Tried to get a rune with a null id.");
         if(!validateId(runeId))
-            throw new InvalidSetException("ERROR: Tried to get a rune that doesn't exist.");
+            throw new InvalidRuneException("ERROR: Tried to get a rune that doesn't exist.");
 
         List<Rune> toReturn = template.query("select * from \"Runes\" where \"runeId\" = ?;", new RuneMapper(), runeId);
 
@@ -66,5 +67,31 @@ public class PostgresRuneDao implements RuneDao {
 
         return exists;
     }
+
+    private boolean validateName(String toValidate) {
+
+        boolean exists = true;
+
+        Integer returnCount = template.queryForObject("select COUNT(*) from \"Runes\" where \"runeName\" in (?)",
+                new IntegerMapper("count"), toValidate);
+
+        Integer zero = 0;
+
+        if(returnCount.equals(zero))
+            exists = false;
+
+        return exists;
+    }
+
+    private boolean checkEmptyString(String toCheck) {
+        String toCheckCopy = toCheck;
+        toCheckCopy = toCheckCopy.replaceAll(" ", "");
+
+        if(toCheckCopy.length() == 0)
+            return false;
+
+        return true;
+    }
+
 
 }

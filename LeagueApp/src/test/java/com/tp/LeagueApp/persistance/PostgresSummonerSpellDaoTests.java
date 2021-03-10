@@ -1,8 +1,6 @@
 package com.tp.LeagueApp.persistance;
 
-import com.tp.LeagueApp.exceptions.InvalidSetException;
-import com.tp.LeagueApp.exceptions.NullIdException;
-import com.tp.LeagueApp.exceptions.NullNameException;
+import com.tp.LeagueApp.exceptions.*;
 import com.tp.LeagueApp.models.SummonerSpell;
 import com.tp.LeagueApp.persistance.postgres.PostgresSummonerSpellDao;
 import org.junit.jupiter.api.BeforeEach;
@@ -63,7 +61,7 @@ public class PostgresSummonerSpellDaoTests {
         try {
             toCheck = toTest.getSummonerSpellByName("Test");
         }
-        catch(NullNameException e) {
+        catch(NullNameException | EmptyStringException | InvalidSummonerSpellException e) {
             fail();
         }
 
@@ -79,6 +77,26 @@ public class PostgresSummonerSpellDaoTests {
     }
 
     @Test
+    public void getSummonerSpellByNameEmptyNameTest() {
+        assertThrows(EmptyStringException.class, () -> toTest.getSummonerSpellByName(""));
+    }
+
+    @Test
+    public void getSummonerSpellByNameEmptyNameSpaceTest() {
+        assertThrows(EmptyStringException.class, () -> toTest.getSummonerSpellByName(" "));
+    }
+
+    @Test
+    public void getSummonerSpellByNameEmptyNameMultipleSpacesTest() {
+        assertThrows(EmptyStringException.class, () -> toTest.getSummonerSpellByName("            "));
+    }
+
+    @Test
+    public void getSummonerSpellByNameInvalidNameTest() {
+        assertThrows(InvalidSummonerSpellException.class, () -> toTest.getSummonerSpellByName("ASDFGH"));
+    }
+
+    @Test
     public void getSummonerSpellByIdGoldenPath() {
         template.update("insert into \"SummonerSpells\" (\"summSpellName\", \"summSpellDescription\") values ('Test', 'Test Description')");
 
@@ -86,7 +104,7 @@ public class PostgresSummonerSpellDaoTests {
         try {
             toCheck = toTest.getSummonerSpellById(1);
         }
-        catch(NullIdException | InvalidSetException e) {
+        catch(NullIdException | InvalidSummonerSpellException e) {
             fail();
         }
 
@@ -102,8 +120,8 @@ public class PostgresSummonerSpellDaoTests {
     }
 
     @Test
-    public void getSummonerSpellSetByIdInvalidSetTest() {
-        assertThrows(InvalidSetException.class, () -> toTest.getSummonerSpellById(100000));
+    public void getSummonerSpellSetByIdInvalidSummonerSpellTest() {
+        assertThrows(InvalidSummonerSpellException.class, () -> toTest.getSummonerSpellById(100000));
     }
 
 }

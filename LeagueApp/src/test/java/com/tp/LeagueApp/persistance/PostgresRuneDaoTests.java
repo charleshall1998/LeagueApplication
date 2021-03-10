@@ -1,8 +1,6 @@
 package com.tp.LeagueApp.persistance;
 
-import com.tp.LeagueApp.exceptions.InvalidSetException;
-import com.tp.LeagueApp.exceptions.NullIdException;
-import com.tp.LeagueApp.exceptions.NullNameException;
+import com.tp.LeagueApp.exceptions.*;
 import com.tp.LeagueApp.models.Rune;
 import com.tp.LeagueApp.persistance.postgres.PostgresRuneDao;
 import org.junit.jupiter.api.BeforeEach;
@@ -63,7 +61,7 @@ public class PostgresRuneDaoTests {
         try {
             toCheck = toTest.getRuneByName("Test");
         }
-        catch(NullNameException e) {
+        catch(NullNameException | EmptyStringException | InvalidRuneException e) {
             fail();
         }
 
@@ -79,6 +77,26 @@ public class PostgresRuneDaoTests {
     }
 
     @Test
+    public void getRuneByNameEmptyNameTest() {
+        assertThrows(EmptyStringException.class, () -> toTest.getRuneByName(""));
+    }
+
+    @Test
+    public void getRuneByNameEmptyNameSpaceTest() {
+        assertThrows(EmptyStringException.class, () -> toTest.getRuneByName(" "));
+    }
+
+    @Test
+    public void getRuneByNameEmptyNameMultipleSpacesTest() {
+        assertThrows(EmptyStringException.class, () -> toTest.getRuneByName("            "));
+    }
+
+    @Test
+    public void getRuneByNameInvalidNameTest() {
+        assertThrows(InvalidRuneException.class, () -> toTest.getRuneByName("ASDFGH"));
+    }
+
+    @Test
     public void getRuneByIdGoldenPath() {
         template.update("insert into \"Runes\" (\"runeName\", \"runeDescription\") values ('Test', 'Test Description')");
 
@@ -86,7 +104,7 @@ public class PostgresRuneDaoTests {
         try {
             toCheck = toTest.getRuneById(1);
         }
-        catch(NullIdException | InvalidSetException e) {
+        catch(NullIdException | InvalidRuneException e) {
             fail();
         }
 
@@ -102,7 +120,7 @@ public class PostgresRuneDaoTests {
     }
 
     @Test
-    public void getRuneByIdInvalidSetTest() {
-        assertThrows(InvalidSetException.class, () -> toTest.getRuneById(100000));
+    public void getRuneByIdInvalidRuneTest() {
+        assertThrows(InvalidRuneException.class, () -> toTest.getRuneById(100000));
     }
 }

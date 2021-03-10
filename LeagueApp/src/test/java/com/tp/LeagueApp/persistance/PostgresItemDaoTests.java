@@ -1,7 +1,5 @@
 package com.tp.LeagueApp.persistance;
-import com.tp.LeagueApp.exceptions.InvalidSetException;
-import com.tp.LeagueApp.exceptions.NullIdException;
-import com.tp.LeagueApp.exceptions.NullNameException;
+import com.tp.LeagueApp.exceptions.*;
 import com.tp.LeagueApp.models.Item;
 import com.tp.LeagueApp.persistance.postgres.PostgresItemDao;
 import org.junit.jupiter.api.BeforeEach;
@@ -64,7 +62,7 @@ public class PostgresItemDaoTests {
         try {
             toCheck = toTest.getItemByName("Test");
         }
-        catch(NullNameException e) {
+        catch(NullNameException | EmptyStringException | InvalidItemException e) {
             fail();
         }
 
@@ -81,6 +79,26 @@ public class PostgresItemDaoTests {
     }
 
     @Test
+    public void getItemByNameEmptyNameTest() {
+        assertThrows(EmptyStringException.class, () -> toTest.getItemByName(""));
+    }
+
+    @Test
+    public void getItemByNameEmptyNameSpaceTest() {
+        assertThrows(EmptyStringException.class, () -> toTest.getItemByName(" "));
+    }
+
+    @Test
+    public void getItemByNameEmptyNameMultipleSpacesTest() {
+        assertThrows(EmptyStringException.class, () -> toTest.getItemByName("            "));
+    }
+
+    @Test
+    public void getItemByNameInvalidNameTest() {
+        assertThrows(InvalidItemException.class, () -> toTest.getItemByName("ASDFGH"));
+    }
+
+    @Test
     public void getItemByIdGoldenPath() {
         template.update("insert into \"Items\" (\"itemName\", \"itemDescription\", \"itemCost\") values ('Test', 'Test Description', '1000')");
 
@@ -88,7 +106,7 @@ public class PostgresItemDaoTests {
         try {
             toCheck = toTest.getItemById(1);
         }
-        catch(NullIdException | InvalidSetException e) {
+        catch(NullIdException | InvalidItemException e) {
             fail();
         }
 
@@ -105,7 +123,7 @@ public class PostgresItemDaoTests {
     }
 
     @Test
-    public void getItemByIdInvalidSetTest() {
-        assertThrows(InvalidSetException.class, () -> toTest.getItemById(100000));
+    public void getItemByIdInvalidItemTest() {
+        assertThrows(InvalidItemException.class, () -> toTest.getItemById(100000));
     }
 }

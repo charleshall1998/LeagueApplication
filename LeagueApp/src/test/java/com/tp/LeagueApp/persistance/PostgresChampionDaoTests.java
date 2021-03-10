@@ -1,8 +1,6 @@
 package com.tp.LeagueApp.persistance;
 
-import com.tp.LeagueApp.exceptions.InvalidSetException;
-import com.tp.LeagueApp.exceptions.NullIdException;
-import com.tp.LeagueApp.exceptions.NullNameException;
+import com.tp.LeagueApp.exceptions.*;
 import com.tp.LeagueApp.models.Champion;
 import com.tp.LeagueApp.persistance.postgres.PostgresChampionDao;
 import org.junit.jupiter.api.BeforeEach;
@@ -72,7 +70,7 @@ public class PostgresChampionDaoTests {
         Champion toCheck = null;
         try {
             toCheck = toTest.getChampionByName("Test");
-        } catch (NullNameException e) {
+        } catch (NullNameException | InvalidChampionException | EmptyStringException e) {
             fail();
         }
 
@@ -94,12 +92,32 @@ public class PostgresChampionDaoTests {
     }
 
     @Test
+    public void getChampionByNameEmptyNameTest() {
+        assertThrows(EmptyStringException.class, () -> toTest.getChampionByName(""));
+    }
+
+    @Test
+    public void getChampionByNameEmptyNameSpaceTest() {
+        assertThrows(EmptyStringException.class, () -> toTest.getChampionByName(" "));
+    }
+
+    @Test
+    public void getChampionByNameEmptyNameMultipleSpacesTest() {
+        assertThrows(EmptyStringException.class, () -> toTest.getChampionByName("            "));
+    }
+
+    @Test
+    public void getChampionByNameInvalidNameTest() {
+        assertThrows(InvalidChampionException.class, () -> toTest.getChampionByName("ASDFGH"));
+    }
+
+    @Test
     public void getChampionByIdGoldenPath() {
 
         Champion toCheck = null;
         try {
             toCheck = toTest.getChampionById(1);
-        } catch (NullIdException | InvalidSetException e) {
+        } catch (NullIdException | InvalidChampionException e) {
             fail();
         }
 
@@ -121,8 +139,8 @@ public class PostgresChampionDaoTests {
     }
 
     @Test
-    public void getChampionByIdInvalidSetTest() {
-        assertThrows(InvalidSetException.class, () -> toTest.getChampionById(100000));
+    public void getChampionByIdInvalidChampionTest() {
+        assertThrows(InvalidChampionException.class, () -> toTest.getChampionById(100000));
     }
 
 }

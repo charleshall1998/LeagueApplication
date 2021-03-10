@@ -74,7 +74,7 @@ public class ServicesTests {
         Champion toCheck = null;
         try {
             toCheck = service.getChampionByName("Test");
-        } catch (NullNameException e) {
+        } catch (NullNameException | EmptyStringException | InvalidChampionException e) {
             fail();
         }
 
@@ -101,7 +101,7 @@ public class ServicesTests {
         Champion toCheck = null;
         try {
             toCheck = service.getChampionById(1);
-        } catch (NullIdException | InvalidSetException e) {
+        } catch (NullIdException | InvalidChampionException e) {
             fail();
         }
 
@@ -123,8 +123,8 @@ public class ServicesTests {
     }
 
     @Test
-    public void getChampionByIdInvalidSetTest() {
-        assertThrows(InvalidSetException.class, () -> service.getChampionById(100000));
+    public void getChampionByIdInvalidChampionTest() {
+        assertThrows(InvalidChampionException.class, () -> service.getChampionById(100000));
     }
 
 
@@ -160,7 +160,7 @@ public class ServicesTests {
         try {
             toCheck = service.getItemByName("Test");
         }
-        catch(NullNameException e) {
+        catch(NullNameException | EmptyStringException | InvalidItemException e) {
             fail();
         }
 
@@ -184,7 +184,7 @@ public class ServicesTests {
         try {
             toCheck = service.getItemById(1);
         }
-        catch(NullIdException | InvalidSetException e) {
+        catch(NullIdException | InvalidItemException e) {
             fail();
         }
 
@@ -201,8 +201,8 @@ public class ServicesTests {
     }
 
     @Test
-    public void getItemByIdInvalidSetTest() {
-        assertThrows(InvalidSetException.class, () -> service.getItemById(100000));
+    public void getItemByIdInvalidItemTest() {
+        assertThrows(InvalidItemException.class, () -> service.getItemById(100000));
     }
 
 
@@ -235,7 +235,7 @@ public class ServicesTests {
         try {
             toCheck = service.getRuneByName("Test");
         }
-        catch(NullNameException e) {
+        catch(NullNameException | EmptyStringException | InvalidRuneException e) {
             fail();
         }
 
@@ -258,7 +258,7 @@ public class ServicesTests {
         try {
             toCheck = service.getRuneById(1);
         }
-        catch(NullIdException | InvalidSetException e) {
+        catch(NullIdException | InvalidRuneException e) {
             fail();
         }
 
@@ -274,8 +274,8 @@ public class ServicesTests {
     }
 
     @Test
-    public void getRuneByIdInvalidSetTest() {
-        assertThrows(InvalidSetException.class, () -> service.getRuneById(100000));
+    public void getRuneByIdInvalidRuneTest() {
+        assertThrows(InvalidRuneException.class, () -> service.getRuneById(100000));
     }
 
 
@@ -309,7 +309,7 @@ public class ServicesTests {
         try {
             toCheck = service.getSummonerSpellByName("Test");
         }
-        catch(NullNameException e) {
+        catch(NullNameException | EmptyStringException | InvalidSummonerSpellException e) {
             fail();
         }
 
@@ -332,7 +332,7 @@ public class ServicesTests {
         try {
             toCheck = service.getSummonerSpellById(1);
         }
-        catch(NullIdException | InvalidSetException e) {
+        catch(NullIdException | InvalidSummonerSpellException e) {
             fail();
         }
 
@@ -348,8 +348,8 @@ public class ServicesTests {
     }
 
     @Test
-    public void getSummonerSpellByIdInvalidSetTest() {
-        assertThrows(InvalidSetException.class, () -> service.getSummonerSpellById(100000));
+    public void getSummonerSpellByIdInvalidSummonerSpellTest() {
+        assertThrows(InvalidSummonerSpellException.class, () -> service.getSummonerSpellById(100000));
     }
 
 

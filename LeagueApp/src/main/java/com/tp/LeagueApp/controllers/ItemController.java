@@ -1,5 +1,6 @@
 package com.tp.LeagueApp.controllers;
 
+import com.tp.LeagueApp.exceptions.InvalidItemException;
 import com.tp.LeagueApp.models.Item;
 import com.tp.LeagueApp.services.LeagueAppService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ public class ItemController {
         try {
             toReturn = service.getItemByName(itemName);
         }
-        catch(Exception e) {
+        catch(Exception | InvalidItemException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
 
@@ -44,7 +45,7 @@ public class ItemController {
         try {
             toReturn = service.getItemById(itemId);
         }
-        catch(Exception e) {
+        catch(Exception | InvalidItemException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
 
