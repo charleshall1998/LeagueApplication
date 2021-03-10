@@ -10,7 +10,7 @@ import { LeagueService } from '../league.service';
 export class ItemByNameComponent implements OnInit {
 
   item : Item;
-  itemName : string;
+  itemName : string = " ";
   src : string;
 
   constructor(private leagueService : LeagueService) { }
@@ -20,6 +20,8 @@ export class ItemByNameComponent implements OnInit {
   }
 
   search(): void {
+    this.itemName = (document.getElementById("itemName") as HTMLInputElement).value;
+
     this.leagueService.getItemByName(this.itemName).subscribe( item => {
       this.item = item;
       this.src = "./assets/images/items/"+this.itemName+".png";

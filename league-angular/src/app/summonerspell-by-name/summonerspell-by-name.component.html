@@ -1,7 +1,7 @@
 <div class="search">
     <p class="summonerSpellName">Enter Summoner Spell</p>
-    <select name="summonerspells" [(ngModel)]="summonerSpellName">
-        <option value="Heal">Heal</option>
+    <select id="summonerSpellName" name="summonerspells">
+        <option value="Heal" selected>Heal</option>
         <option value="Ghost">Ghost</option>
         <option value="Barrier">Barrier</option>
         <option value="Exhaust">Exhaust</option>
@@ -16,7 +16,7 @@
 </div> 
 
 <div class="summonerSpellName">
-    <h2>{{summonerSpell.summonerSpellName}}</h2>
+    <h2 id="summSpellName">{{summonerSpell.summonerSpellName}}</h2>
 </div>
 
 <img class="summonerSpellSquare" [src]="src">

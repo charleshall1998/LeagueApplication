@@ -10,13 +10,15 @@ import { LeagueService } from '../league.service';
 export class ItemByIdComponent implements OnInit {
 
   item : Item;
-  itemId : number;
+  itemId : number = 0;
   src : string;
   constructor(private leagueService : LeagueService) { }
 
   ngOnInit(): void { }
 
   search() : void {
+    this.itemId = parseInt((document.getElementById("itemId") as HTMLInputElement).value);
+
     this.leagueService.getItemById(this.itemId).subscribe( item => {
       this.item = item;
       this.src = "./assets/images/items/"+this.item.itemName+".png";

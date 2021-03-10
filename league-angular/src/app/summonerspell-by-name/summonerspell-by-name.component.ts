@@ -18,6 +18,8 @@ export class SummonerspellByNameComponent implements OnInit {
   ngOnInit(): void { }
 
   search(): void {
+    this.summonerSpellName = (document.getElementById("summonerSpellName") as HTMLInputElement).value;
+
     this.leagueService.getSummonerSpellByName(this.summonerSpellName).subscribe( summonerSpell => {
       this.summonerSpell = summonerSpell;
       this.src = "./assets/images/summonerspells/"+this.summonerSpellName+".png";
