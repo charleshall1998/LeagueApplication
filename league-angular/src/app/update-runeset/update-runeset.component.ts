@@ -20,6 +20,15 @@ export class UpdateRunesetComponent implements OnInit {
 
   ngOnInit(): void { 
     this.runeSetId = parseInt(this.route.snapshot.paramMap.get('id'));
+
+    this.service.getRuneSetById(this.runeSetId).subscribe( runeSet => {
+      (document.getElementById("runeSetName") as HTMLInputElement).value = runeSet.runeSetName;
+      this.setSelected(runeSet.championId, "championId");
+      this.setSelected(runeSet.runeIdList[0], "rune1");
+      this.setSelected(runeSet.runeIdList[1], "rune2");
+      this.setSelected(runeSet.runeIdList[2], "rune3");
+      this.setSelected(runeSet.runeIdList[3], "rune4");
+    });
   }
 
   updateRuneSet() {
@@ -36,5 +45,16 @@ export class UpdateRunesetComponent implements OnInit {
 
     this.body = {runeSetId:this.runeSetId, runeSetName: this.runeSetName, championId: this.championId, runeIdList: this.runeIdList }
     this.service.updateRuneSet(this.body).subscribe((_) => {this.router.navigate(["/runesetlist"])});
+  }
+
+  setSelected(toSelectId : number, elementId : string) : void {
+    let selectElement : HTMLSelectElement = document.querySelector("#"+elementId);
+
+    for(let i = 0; i < selectElement.length; i++) {
+      if(parseInt(selectElement.options[i].value) == toSelectId) {
+        selectElement.selectedIndex = i;
+        break;
+      }
+    }
   }
 }

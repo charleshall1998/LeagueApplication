@@ -10,10 +10,6 @@ import { SummonerSpellSet } from '../SummonerSpellSet';
 })
 export class UpdateSummonerspellsetComponent implements OnInit {
 
-  preUpdateSetName : string;
-  preUpdateSetChampionId : number;
-  preUpdateSetIdList : number[];
-
   body : SummonerSpellSet;
   summonerSpellSetId : number;
   summonerSpellSetName : string;
@@ -30,7 +26,6 @@ export class UpdateSummonerspellsetComponent implements OnInit {
       this.setSelected(summSpellSet.championId, "championId");
       this.setSelected(summSpellSet.summonerSpellIdList[0], "summonerSpell1");
       this.setSelected(summSpellSet.summonerSpellIdList[1], "summonerSpell2");
-
     });
 
   }
