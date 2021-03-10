@@ -9,14 +9,14 @@ public interface ItemSetDao {
 
     //CREATE
     ItemSet createNewItemSet(ItemSet toAdd) throws NullSetException, InvalidItemException,
-            EmptyItemListException, DuplicateComponentException, MaxNameLengthException;
+            EmptyItemListException, DuplicateComponentException, MaxNameLengthException, EmptyStringException;
 
     //READ
     List<ItemSet> getAllItemSets();
     ItemSet getItemSetById(Integer itemSetId) throws NullIdException, InvalidSetException;
 
     //UPDATE
-    void updateItemSet(ItemSet toUpdate) throws NullSetException, NullIdException, InvalidSetException, DuplicateComponentException;
+    void updateItemSet(ItemSet toUpdate) throws NullSetException, NullIdException, InvalidSetException, DuplicateComponentException, EmptyStringException, MaxNameLengthException;
 
     //DELETE
     void deleteItemSetById(Integer toDeleteId) throws NullIdException, InvalidSetException;

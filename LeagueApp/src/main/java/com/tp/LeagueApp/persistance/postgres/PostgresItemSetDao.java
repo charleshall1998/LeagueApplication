@@ -22,7 +22,7 @@ public class PostgresItemSetDao implements ItemSetDao {
     //CREATE
     @Override
     public ItemSet createNewItemSet(ItemSet toAdd) throws NullSetException, InvalidItemException,
-            EmptyItemListException, DuplicateComponentException, MaxNameLengthException {
+            EmptyItemListException, DuplicateComponentException, MaxNameLengthException, EmptyStringException {
 
         if(toAdd == null)
             throw new NullSetException("ERROR: Tried to create a null item set.");
@@ -30,6 +30,8 @@ public class PostgresItemSetDao implements ItemSetDao {
             throw new EmptyItemListException("ERROR: Empty item list.");
         if(checkDuplicateList(toAdd.getItemIdList()) == false)
             throw new DuplicateComponentException("ERROR: Duplicate id's in item list.");
+        if(!checkEmptyString(toAdd.getItemSetName()))
+            throw new EmptyStringException("ERROR: Tried to make an item set with empty name.");
         if(toAdd.getItemSetName().length() > 50)
             throw new MaxNameLengthException("ERROR: Item Set name is too long (50 characters max).");
 
@@ -122,7 +124,7 @@ public class PostgresItemSetDao implements ItemSetDao {
     //UPDATE
     @Override
     public void updateItemSet(ItemSet toUpdate) throws NullSetException, NullIdException,
-            InvalidSetException,DuplicateComponentException {
+            InvalidSetException, DuplicateComponentException, EmptyStringException, MaxNameLengthException {
 
         if(toUpdate == null)
             throw new NullSetException("ERROR: Tried to update item set with a null item set.");
@@ -132,6 +134,10 @@ public class PostgresItemSetDao implements ItemSetDao {
             throw new InvalidSetException("ERROR: Tried to update a set that doesn't exist.");
         if(checkDuplicateList(toUpdate.getItemIdList()) == false)
             throw new DuplicateComponentException("ERROR: Tried to update a set with duplicate item id's");
+        if(!checkEmptyString(toUpdate.getItemSetName()))
+            throw new EmptyStringException("ERROR: Tried to make an item set with empty name.");
+        if(toUpdate.getItemSetName().length() > 50)
+            throw new MaxNameLengthException("ERROR: Item Set name is too long (50 characters max).");
 
         template.update("update \"ItemSets\" set \"itemSetName\" = ?, \"championId\" = ? where \"itemSetId\" = ?",
                 toUpdate.getItemSetName(), toUpdate.getChampionId(), toUpdate.getItemSetId());
@@ -173,5 +179,13 @@ public class PostgresItemSetDao implements ItemSetDao {
         return exists;
     }
 
+    private boolean checkEmptyString(String toCheck) {
+        String toCheckCopy = toCheck;
+        toCheckCopy = toCheckCopy.replaceAll(" ", "");
 
+        if(toCheckCopy.length() == 0)
+            return false;
+
+        return true;
+    }
 }

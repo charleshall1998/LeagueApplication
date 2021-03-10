@@ -22,7 +22,8 @@ public class PostgresRuneSetDao implements RuneSetDao {
 
     //CREATE
     @Override
-    public RuneSet createNewRuneSet(RuneSet toAdd) throws NullSetException, InvalidRuneException, EmptyRuneListException, DuplicateComponentException, MaxNameLengthException {
+    public RuneSet createNewRuneSet(RuneSet toAdd) throws NullSetException, InvalidRuneException,
+            EmptyRuneListException, DuplicateComponentException, MaxNameLengthException, EmptyStringException {
 
         if(toAdd == null)
             throw new NullSetException("ERROR: Tried to create a null rune set.");
@@ -30,6 +31,8 @@ public class PostgresRuneSetDao implements RuneSetDao {
             throw new EmptyRuneListException("ERROR: Empty rune list.");
         if(checkDuplicateList(toAdd.getRuneIdList()) == false)
             throw new DuplicateComponentException("ERROR: Duplicate id's in item list.");
+        if(!checkEmptyString(toAdd.getRuneSetName()))
+            throw new EmptyStringException("ERROR: Tried to make a rune set with empty name.");
         if(toAdd.getRuneSetName().length() > 50)
             throw new MaxNameLengthException("ERROR: Rune Set name is too long (50 characters max).");
 
@@ -120,7 +123,7 @@ public class PostgresRuneSetDao implements RuneSetDao {
 
     //UPDATE
     @Override
-    public void updateRuneSet(RuneSet toUpdate) throws NullSetException, NullIdException, InvalidSetException, DuplicateComponentException {
+    public void updateRuneSet(RuneSet toUpdate) throws NullSetException, NullIdException, InvalidSetException, DuplicateComponentException, EmptyStringException, MaxNameLengthException {
 
         if(toUpdate == null)
             throw new NullSetException("ERROR: Tried to update rune set with a null rune set.");
@@ -130,6 +133,10 @@ public class PostgresRuneSetDao implements RuneSetDao {
             throw new InvalidSetException("ERROR: Tried to update a set that doesn't exist.");
         if(checkDuplicateList(toUpdate.getRuneIdList()) == false)
             throw new DuplicateComponentException("ERROR: Tried to update a set with duplicate rune id's");
+        if(!checkEmptyString(toUpdate.getRuneSetName()))
+            throw new EmptyStringException("ERROR: Tried to make a rune set with empty name.");
+        if(toUpdate.getRuneSetName().length() > 50)
+            throw new MaxNameLengthException("ERROR: Rune Set name is too long (50 characters max).");
 
         template.update("update \"RuneSets\" set \"runeSetName\" = ?, \"championId\" = ? where \"runeSetId\" = ?",
                 toUpdate.getRuneSetName(), toUpdate.getChampionId(), toUpdate.getRuneSetId());
@@ -169,5 +176,15 @@ public class PostgresRuneSetDao implements RuneSetDao {
             exists = false;
 
         return exists;
+    }
+
+    private boolean checkEmptyString(String toCheck) {
+        String toCheckCopy = toCheck;
+        toCheckCopy = toCheckCopy.replaceAll(" ", "");
+
+        if(toCheckCopy.length() == 0)
+            return false;
+
+        return true;
     }
 }

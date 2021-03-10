@@ -441,7 +441,7 @@ public class ServicesTests {
         ItemSet returnedItemSet = null;
         try {
             returnedItemSet = service.createNewItemSet(itemSetToAdd);
-        } catch (NullSetException | InvalidItemException | EmptyItemListException | DuplicateComponentException | MaxNameLengthException e) {
+        } catch (NullSetException | InvalidItemException | EmptyItemListException | DuplicateComponentException | MaxNameLengthException | EmptyStringException e) {
             fail();
         }
 
@@ -484,6 +484,48 @@ public class ServicesTests {
         testItemSet.setItemIdList(testList);
 
         assertThrows(InvalidItemException.class, () -> service.createNewItemSet(testItemSet));
+    }
+
+    @Test
+    public void createNewItemSetEmptyStringTest() {
+        ItemSet testItemSet = new ItemSet();
+        testItemSet.setItemSetId(1);
+        testItemSet.setItemSetName("");
+        testItemSet.setChampionId(1);
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testItemSet.setItemIdList(testList);
+
+        assertThrows(EmptyStringException.class, () -> service.createNewItemSet(testItemSet));
+    }
+
+    @Test
+    public void createNewItemSetEmptyStringSpaceTest() {
+        ItemSet testItemSet = new ItemSet();
+        testItemSet.setItemSetId(1);
+        testItemSet.setItemSetName(" ");
+        testItemSet.setChampionId(1);
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testItemSet.setItemIdList(testList);
+
+        assertThrows(EmptyStringException.class, () -> service.createNewItemSet(testItemSet));
+    }
+
+    @Test
+    public void createNewItemSetEmptyStringMultipleSpacesTest() {
+        ItemSet testItemSet = new ItemSet();
+        testItemSet.setItemSetId(1);
+        testItemSet.setItemSetName("           ");
+        testItemSet.setChampionId(1);
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testItemSet.setItemIdList(testList);
+
+        assertThrows(EmptyStringException.class, () -> service.createNewItemSet(testItemSet));
     }
 
     @Test
@@ -564,7 +606,7 @@ public class ServicesTests {
 
         try {
             service.updateItemSet(newUpdateItemSet);
-        } catch (NullSetException | NullIdException | InvalidSetException | DuplicateComponentException e) {
+        } catch (NullSetException | NullIdException | InvalidSetException | DuplicateComponentException | EmptyStringException | MaxNameLengthException e) {
             fail();
         }
 
@@ -650,7 +692,7 @@ public class ServicesTests {
         RuneSet returnedRuneSet = null;
         try {
             returnedRuneSet = service.createNewRuneSet(runeSetToAdd);
-        } catch (NullSetException | InvalidRuneException | EmptyRuneListException | DuplicateComponentException | MaxNameLengthException e) {
+        } catch (NullSetException | InvalidRuneException | EmptyRuneListException | DuplicateComponentException | MaxNameLengthException | EmptyStringException e) {
             fail();
         }
 
@@ -773,7 +815,7 @@ public class ServicesTests {
 
         try {
             service.updateRuneSet(newUpdateRuneSet);
-        } catch (NullSetException | NullIdException | InvalidSetException | DuplicateComponentException e) {
+        } catch (NullSetException | NullIdException | InvalidSetException | DuplicateComponentException | EmptyStringException | MaxNameLengthException e) {
             fail();
         }
 
@@ -859,7 +901,7 @@ public class ServicesTests {
         SummonerSpellSet returnedSummonerSpellSet = null;
         try {
             returnedSummonerSpellSet = service.createNewSummonerSpellSet(summSetToAdd);
-        } catch (NullSetException | EmptySummonerSpellListException | InvalidSummonerSpellException | DuplicateComponentException | MaxNameLengthException e) {
+        } catch (NullSetException | EmptySummonerSpellListException | InvalidSummonerSpellException | DuplicateComponentException | MaxNameLengthException | EmptyStringException e) {
             fail();
         }
 
@@ -981,7 +1023,7 @@ public class ServicesTests {
 
         try {
             service.updateSummonerSpellSet(newUpdateSummonerSpellSet);
-        } catch (NullSetException | NullIdException | InvalidSetException | DuplicateComponentException e) {
+        } catch (NullSetException | NullIdException | InvalidSetException | DuplicateComponentException | EmptyStringException | MaxNameLengthException e) {
             fail();
         }
 

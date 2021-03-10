@@ -54,7 +54,7 @@ public class PostgresSummonerSpellSetDaoTests {
         SummonerSpellSet returnedSummonerSpellSet = null;
         try {
             returnedSummonerSpellSet = toTest.createNewSummonerSpellSet(summSetToAdd);
-        } catch (NullSetException | EmptySummonerSpellListException | InvalidSummonerSpellException | DuplicateComponentException | MaxNameLengthException e) {
+        } catch (NullSetException | EmptySummonerSpellListException | InvalidSummonerSpellException | DuplicateComponentException | MaxNameLengthException | EmptyStringException e) {
             fail();
         }
 
@@ -115,7 +115,49 @@ public class PostgresSummonerSpellSetDaoTests {
     }
 
     @Test
-    public void createNewSummonerSpellSetDMaxNameLengthExceededTest() {
+    public void createNewSummonerSpellSetEmptyStringTest() {
+        SummonerSpellSet testSummSpellSet = new SummonerSpellSet();
+        testSummSpellSet.setSummonerSpellSetId(1);
+        testSummSpellSet.setSummonerSpellSetName("");
+        testSummSpellSet.setChampionId(1);
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testSummSpellSet.setSummonerSpellIdList(testList);
+
+        assertThrows(EmptyStringException.class, () -> toTest.createNewSummonerSpellSet(testSummSpellSet));
+    }
+
+    @Test
+    public void createNewSummonerSpellSetEmptyStringSpaceTest() {
+        SummonerSpellSet testSummSpellSet = new SummonerSpellSet();
+        testSummSpellSet.setSummonerSpellSetId(1);
+        testSummSpellSet.setSummonerSpellSetName(" ");
+        testSummSpellSet.setChampionId(1);
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testSummSpellSet.setSummonerSpellIdList(testList);
+
+        assertThrows(EmptyStringException.class, () -> toTest.createNewSummonerSpellSet(testSummSpellSet));
+    }
+
+    @Test
+    public void createNewSummonerSpellSetEmptyStringMultipleSpacesTest() {
+        SummonerSpellSet testSummSpellSet = new SummonerSpellSet();
+        testSummSpellSet.setSummonerSpellSetId(1);
+        testSummSpellSet.setSummonerSpellSetName("          ");
+        testSummSpellSet.setChampionId(1);
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testSummSpellSet.setSummonerSpellIdList(testList);
+
+        assertThrows(EmptyStringException.class, () -> toTest.createNewSummonerSpellSet(testSummSpellSet));
+    }
+
+    @Test
+    public void createNewSummonerSpellSetMaxNameLengthExceededTest() {
         SummonerSpellSet testSummSpellSet = new SummonerSpellSet();
         testSummSpellSet.setSummonerSpellSetId(1);
         testSummSpellSet.setSummonerSpellSetName("abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz");
@@ -190,7 +232,7 @@ public class PostgresSummonerSpellSetDaoTests {
 
         try {
             toTest.updateSummonerSpellSet(newUpdateSummonerSpellSet);
-        } catch (NullSetException | NullIdException | InvalidSetException | DuplicateComponentException e) {
+        } catch (NullSetException | NullIdException | InvalidSetException | DuplicateComponentException | EmptyStringException | MaxNameLengthException e) {
             fail();
         }
 
@@ -247,6 +289,48 @@ public class PostgresSummonerSpellSetDaoTests {
         testSummSpellSet.setSummonerSpellIdList(testList);
 
         assertThrows(DuplicateComponentException.class, () -> toTest.createNewSummonerSpellSet(testSummSpellSet));
+    }
+
+    @Test
+    public void updateSummonerSpellSetEmptyStringTest() {
+        SummonerSpellSet testSummSpellSet = new SummonerSpellSet();
+        testSummSpellSet.setSummonerSpellSetId(1);
+        testSummSpellSet.setSummonerSpellSetName("");
+        testSummSpellSet.setChampionId(1);
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testSummSpellSet.setSummonerSpellIdList(testList);
+
+        assertThrows(EmptyStringException.class, () -> toTest.createNewSummonerSpellSet(testSummSpellSet));
+    }
+
+    @Test
+    public void updateSummonerSpellSetEmptyStringSpaceTest() {
+        SummonerSpellSet testSummSpellSet = new SummonerSpellSet();
+        testSummSpellSet.setSummonerSpellSetId(1);
+        testSummSpellSet.setSummonerSpellSetName(" ");
+        testSummSpellSet.setChampionId(1);
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testSummSpellSet.setSummonerSpellIdList(testList);
+
+        assertThrows(EmptyStringException.class, () -> toTest.createNewSummonerSpellSet(testSummSpellSet));
+    }
+
+    @Test
+    public void updateSummonerSpellSetEmptyStringMultipleSpacesTest() {
+        SummonerSpellSet testSummSpellSet = new SummonerSpellSet();
+        testSummSpellSet.setSummonerSpellSetId(1);
+        testSummSpellSet.setSummonerSpellSetName("         ");
+        testSummSpellSet.setChampionId(1);
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testSummSpellSet.setSummonerSpellIdList(testList);
+
+        assertThrows(EmptyStringException.class, () -> toTest.createNewSummonerSpellSet(testSummSpellSet));
     }
 
     @Test

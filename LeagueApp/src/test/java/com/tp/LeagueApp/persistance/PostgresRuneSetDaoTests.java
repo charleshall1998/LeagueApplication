@@ -3,6 +3,7 @@ package com.tp.LeagueApp.persistance;
 import com.tp.LeagueApp.exceptions.*;
 import com.tp.LeagueApp.models.RuneSet;
 import com.tp.LeagueApp.persistance.postgres.PostgresRuneSetDao;
+import net.bytebuddy.pool.TypePool;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,7 +55,7 @@ public class PostgresRuneSetDaoTests {
         RuneSet returnedRuneSet = null;
         try {
             returnedRuneSet = toTest.createNewRuneSet(runeSetToAdd);
-        } catch (NullSetException | InvalidRuneException | EmptyRuneListException | DuplicateComponentException | MaxNameLengthException e) {
+        } catch (NullSetException | InvalidRuneException | EmptyRuneListException | DuplicateComponentException | MaxNameLengthException | EmptyStringException e) {
             fail();
         }
 
@@ -115,6 +116,48 @@ public class PostgresRuneSetDaoTests {
     }
 
     @Test
+    public void createNewRuneSetEmptyStringTest() {
+        RuneSet testRuneSet = new RuneSet();
+        testRuneSet.setRuneSetId(1);
+        testRuneSet.setRuneSetName("");
+        testRuneSet.setChampionId(1);
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testRuneSet.setRuneIdList(testList);
+
+        assertThrows(EmptyStringException.class, () -> toTest.createNewRuneSet(testRuneSet));
+    }
+
+    @Test
+    public void createNewRuneSetEmptyStringSpaceTest() {
+        RuneSet testRuneSet = new RuneSet();
+        testRuneSet.setRuneSetId(1);
+        testRuneSet.setRuneSetName(" ");
+        testRuneSet.setChampionId(1);
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testRuneSet.setRuneIdList(testList);
+
+        assertThrows(EmptyStringException.class, () -> toTest.createNewRuneSet(testRuneSet));
+    }
+
+    @Test
+    public void createNewRuneSetEmptyStringMultipleSpacesTest() {
+        RuneSet testRuneSet = new RuneSet();
+        testRuneSet.setRuneSetId(1);
+        testRuneSet.setRuneSetName("          ");
+        testRuneSet.setChampionId(1);
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testRuneSet.setRuneIdList(testList);
+
+        assertThrows(EmptyStringException.class, () -> toTest.createNewRuneSet(testRuneSet));
+    }
+
+    @Test
     public void createNewRuneSetMaxNameLengthExceededTest() {
         RuneSet testRuneSet = new RuneSet();
         testRuneSet.setRuneSetId(1);
@@ -144,7 +187,6 @@ public class PostgresRuneSetDaoTests {
         assertEquals( 1, toCheck.get(1).getChampionId());
 
     }
-
 
     @Test
     public void getRuneSetByIdGoldenPath() {
@@ -191,7 +233,7 @@ public class PostgresRuneSetDaoTests {
 
         try {
             toTest.updateRuneSet(newUpdateRuneSet);
-        } catch (NullSetException | NullIdException | InvalidSetException | DuplicateComponentException e) {
+        } catch (NullSetException | NullIdException | InvalidSetException | DuplicateComponentException | EmptyStringException | MaxNameLengthException e) {
             fail();
         }
 
@@ -254,6 +296,48 @@ public class PostgresRuneSetDaoTests {
         testRuneSet.setRuneIdList(testList);
 
         assertThrows(DuplicateComponentException.class, () -> toTest.createNewRuneSet(testRuneSet));
+    }
+
+    @Test
+    public void updateRuneSetEmptyStringTest() {
+        RuneSet testRuneSet = new RuneSet();
+        testRuneSet.setRuneSetId(1);
+        testRuneSet.setRuneSetName("");
+        testRuneSet.setChampionId(1);
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testRuneSet.setRuneIdList(testList);
+
+        assertThrows(EmptyStringException.class, () -> toTest.createNewRuneSet(testRuneSet));
+    }
+
+    @Test
+    public void updateRuneSetEmptyStringSpaceTest() {
+        RuneSet testRuneSet = new RuneSet();
+        testRuneSet.setRuneSetId(1);
+        testRuneSet.setRuneSetName(" ");
+        testRuneSet.setChampionId(1);
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testRuneSet.setRuneIdList(testList);
+
+        assertThrows(EmptyStringException.class, () -> toTest.createNewRuneSet(testRuneSet));
+    }
+
+    @Test
+    public void updateRuneSetEmptyStringMultipleSpacesTest() {
+        RuneSet testRuneSet = new RuneSet();
+        testRuneSet.setRuneSetId(1);
+        testRuneSet.setRuneSetName("           ");
+        testRuneSet.setChampionId(1);
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testRuneSet.setRuneIdList(testList);
+
+        assertThrows(EmptyStringException.class, () -> toTest.createNewRuneSet(testRuneSet));
     }
 
     @Test

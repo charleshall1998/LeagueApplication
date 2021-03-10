@@ -22,7 +22,7 @@ public class PostgresSummonerSpellSetDao implements SummonerSpellSetDao {
     //CREATE
     @Override
     public SummonerSpellSet createNewSummonerSpellSet(SummonerSpellSet toAdd) throws NullSetException, EmptySummonerSpellListException,
-            InvalidSummonerSpellException, DuplicateComponentException, MaxNameLengthException {
+            InvalidSummonerSpellException, DuplicateComponentException, MaxNameLengthException, EmptyStringException {
 
         if(toAdd == null)
             throw new NullSetException("ERROR: Tried to create a null summoner spell set.");
@@ -30,6 +30,8 @@ public class PostgresSummonerSpellSetDao implements SummonerSpellSetDao {
             throw new EmptySummonerSpellListException("ERROR: Empty item list.");
         if(checkDuplicateList(toAdd.getSummonerSpellIdList()) == false)
             throw new DuplicateComponentException("ERROR: Duplicate id's in item list.");
+        if(!checkEmptyString(toAdd.getSummonerSpellSetName()))
+            throw new EmptyStringException("ERROR: Tried to make a summoner spell set with empty name.");
         if(toAdd.getSummonerSpellSetName().length() > 50)
             throw new MaxNameLengthException("ERROR: Summoner Spell Set name is too long (50 characters max).");
 
@@ -121,7 +123,7 @@ public class PostgresSummonerSpellSetDao implements SummonerSpellSetDao {
 
     //UPDATE
     @Override
-    public void updateSummonerSpellSet(SummonerSpellSet toUpdate) throws NullSetException, NullIdException, InvalidSetException, DuplicateComponentException {
+    public void updateSummonerSpellSet(SummonerSpellSet toUpdate) throws NullSetException, NullIdException, InvalidSetException, DuplicateComponentException, EmptyStringException, MaxNameLengthException {
 
         if(toUpdate == null)
             throw new NullSetException("ERROR: Tried to update summoner spell set with a null summoner spell set.");
@@ -131,6 +133,10 @@ public class PostgresSummonerSpellSetDao implements SummonerSpellSetDao {
             throw new InvalidSetException("ERROR: Tried to update a set that doesn't exist.");
         if(checkDuplicateList(toUpdate.getSummonerSpellIdList()) == false)
             throw new DuplicateComponentException("ERROR: Tried to update a set with duplicate rune id's.");
+        if(!checkEmptyString(toUpdate.getSummonerSpellSetName()))
+            throw new EmptyStringException("ERROR: Tried to make a summoner spell set with empty name.");
+        if(toUpdate.getSummonerSpellSetName().length() > 50)
+            throw new MaxNameLengthException("ERROR: Summoner Spell Set name is too long (50 characters max).");
 
         template.update("update \"SummonerSpellSets\" set \"summSpellSetName\" = ?, \"championId\" = ? where \"summSpellSetId\" = ?",
                 toUpdate.getSummonerSpellSetName(), toUpdate.getChampionId(), toUpdate.getSummonerSpellSetId());
@@ -170,6 +176,16 @@ public class PostgresSummonerSpellSetDao implements SummonerSpellSetDao {
             exists = false;
 
         return exists;
+    }
+
+    private boolean checkEmptyString(String toCheck) {
+        String toCheckCopy = toCheck;
+        toCheckCopy = toCheckCopy.replaceAll(" ", "");
+
+        if(toCheckCopy.length() == 0)
+            return false;
+
+        return true;
     }
 
 }

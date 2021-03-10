@@ -55,7 +55,7 @@ public class PostgresItemSetDaoTests {
         ItemSet returnedItemSet = null;
         try {
             returnedItemSet = toTest.createNewItemSet(itemSetToAdd);
-        } catch (NullSetException | InvalidItemException | EmptyItemListException | DuplicateComponentException | MaxNameLengthException e) {
+        } catch (NullSetException | InvalidItemException | EmptyItemListException | DuplicateComponentException | MaxNameLengthException | EmptyStringException e) {
             fail();
         }
 
@@ -113,6 +113,48 @@ public class PostgresItemSetDaoTests {
         testItemSet.setItemIdList(testList);
 
         assertThrows(DuplicateComponentException.class, () -> toTest.createNewItemSet(testItemSet));
+    }
+
+    @Test
+    public void createNewItemSetEmptyStringTest() {
+        ItemSet testItemSet = new ItemSet();
+        testItemSet.setItemSetId(1);
+        testItemSet.setItemSetName("");
+        testItemSet.setChampionId(1);
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testItemSet.setItemIdList(testList);
+
+        assertThrows(EmptyStringException.class, () -> toTest.createNewItemSet(testItemSet));
+    }
+
+    @Test
+    public void createNewItemSetEmptyStringSpaceTest() {
+        ItemSet testItemSet = new ItemSet();
+        testItemSet.setItemSetId(1);
+        testItemSet.setItemSetName(" ");
+        testItemSet.setChampionId(1);
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testItemSet.setItemIdList(testList);
+
+        assertThrows(EmptyStringException.class, () -> toTest.createNewItemSet(testItemSet));
+    }
+
+    @Test
+    public void createNewItemSetEmptyStringMultipleSpacesTest() {
+        ItemSet testItemSet = new ItemSet();
+        testItemSet.setItemSetId(1);
+        testItemSet.setItemSetName("           ");
+        testItemSet.setChampionId(1);
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testItemSet.setItemIdList(testList);
+
+        assertThrows(EmptyStringException.class, () -> toTest.createNewItemSet(testItemSet));
     }
 
     @Test
@@ -191,7 +233,7 @@ public class PostgresItemSetDaoTests {
 
         try {
             toTest.updateItemSet(newUpdateItemSet);
-        } catch (NullSetException | NullIdException | InvalidSetException | DuplicateComponentException e) {
+        } catch (NullSetException | NullIdException | InvalidSetException | DuplicateComponentException | EmptyStringException | MaxNameLengthException e) {
             fail();
         }
 
@@ -248,6 +290,48 @@ public class PostgresItemSetDaoTests {
         testItemSet.setItemIdList(testList);
 
         assertThrows(DuplicateComponentException.class, () -> toTest.createNewItemSet(testItemSet));
+    }
+
+    @Test
+    public void updateItemSetEmptyStringTest() {
+        ItemSet testItemSet = new ItemSet();
+        testItemSet.setItemSetId(1);
+        testItemSet.setItemSetName("");
+        testItemSet.setChampionId(1);
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testItemSet.setItemIdList(testList);
+
+        assertThrows(EmptyStringException.class, () -> toTest.createNewItemSet(testItemSet));
+    }
+
+    @Test
+    public void updateItemSetEmptyStringSpaceTest() {
+        ItemSet testItemSet = new ItemSet();
+        testItemSet.setItemSetId(1);
+        testItemSet.setItemSetName(" ");
+        testItemSet.setChampionId(1);
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testItemSet.setItemIdList(testList);
+
+        assertThrows(EmptyStringException.class, () -> toTest.createNewItemSet(testItemSet));
+    }
+
+    @Test
+    public void updateItemSetEmptyStringMultipleSpacesTest() {
+        ItemSet testItemSet = new ItemSet();
+        testItemSet.setItemSetId(1);
+        testItemSet.setItemSetName("          ");
+        testItemSet.setChampionId(1);
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testItemSet.setItemIdList(testList);
+
+        assertThrows(EmptyStringException.class, () -> toTest.createNewItemSet(testItemSet));
     }
 
     @Test
