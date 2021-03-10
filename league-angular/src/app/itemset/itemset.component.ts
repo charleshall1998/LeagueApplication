@@ -52,9 +52,10 @@ export class ItemsetComponent implements OnInit {
   }
 
   deleteItemSet(itemSetId : number) {
-    confirm("Are you sure you want to delete this set?");
-    this.service.deleteItemSet(itemSetId).subscribe((_) => {this.router.navigate(["/itemsetlist"])});
-    window.location.reload();
+    if(confirm("Are you sure you want to delete this set?")) {
+      this.service.deleteItemSet(itemSetId).subscribe((_) => {this.router.navigate(["/itemsetlist"])});
+      window.location.reload();
+    }
   }
 
   getChampSrc(id : number) : string {

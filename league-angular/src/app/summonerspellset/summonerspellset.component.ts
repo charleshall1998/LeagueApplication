@@ -37,9 +37,10 @@ export class SummonerspellsetComponent implements OnInit {
   }
 
   deleteSummonerSpellSet(summonerSpellSetId : number) {
-    confirm("Are you sure you want to delete this set?");
-    this.service.deleteSummonerSpellSet(summonerSpellSetId).subscribe((_) => {this.router.navigate(["/summonerspellsetlist"])});
-    window.location.reload();
+    if(confirm("Are you sure you want to delete this set?")) {
+      this.service.deleteSummonerSpellSet(summonerSpellSetId).subscribe((_) => {this.router.navigate(["/summonerspellsetlist"])});
+      window.location.reload();
+    }
   }
 
   getChampSrc(id : number) : string {

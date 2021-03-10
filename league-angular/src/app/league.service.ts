@@ -151,7 +151,7 @@ export class LeagueService {
     .pipe(
       tap(x => console.log(x)),
       catchError(err => {
-        alert(err.error);
+        console.log(err)
         return of(null);
       })
       );
@@ -260,7 +260,7 @@ export class LeagueService {
     .pipe(
       tap(x => console.log(x)),
       catchError(err => {
-        alert(err.error);
+        console.log(err)
         return of(null);
       })
       );
@@ -370,7 +370,7 @@ export class LeagueService {
     .pipe(
       tap(x => console.log(x)),
       catchError(err => {
-        alert(err.error);
+        console.log(err)
         return of(null);
       })
       );
