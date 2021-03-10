@@ -355,7 +355,7 @@ export class LeagueService {
   }
 
   getSummonerSpellSetById(id : number) : Observable<SummonerSpellSet> {
-    return this.http.get<SummonerSpellSet>(this.baseUrl + "/summonerSpells/id/" + id)
+    return this.http.get<SummonerSpellSet>(this.baseUrl + "/summonerSpellSets/id/" + id)
     .pipe(
       tap(x => console.log(x)),
       catchError(err => {

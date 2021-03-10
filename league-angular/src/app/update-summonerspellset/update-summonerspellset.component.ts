@@ -10,6 +10,10 @@ import { SummonerSpellSet } from '../SummonerSpellSet';
 })
 export class UpdateSummonerspellsetComponent implements OnInit {
 
+  preUpdateSetName : string;
+  preUpdateSetChampionId : number;
+  preUpdateSetIdList : number[];
+
   body : SummonerSpellSet;
   summonerSpellSetId : number;
   summonerSpellSetName : string;
@@ -20,6 +24,15 @@ export class UpdateSummonerspellsetComponent implements OnInit {
 
   ngOnInit(): void {
     this.summonerSpellSetId = parseInt(this.route.snapshot.paramMap.get('id'));
+
+    this.service.getSummonerSpellSetById(this.summonerSpellSetId).subscribe( summSpellSet => {
+      (document.getElementById("summSpellSetName") as HTMLInputElement).value = summSpellSet.summonerSpellSetName;
+      this.setSelected(summSpellSet.championId, "championId");
+      this.setSelected(summSpellSet.summonerSpellIdList[0], "summonerSpell1");
+      this.setSelected(summSpellSet.summonerSpellIdList[1], "summonerSpell2");
+
+    });
+
   }
 
   updateSummonerSpellSet() {
@@ -36,6 +49,17 @@ export class UpdateSummonerspellsetComponent implements OnInit {
 
     this.body = {summonerSpellSetId: this.summonerSpellSetId, summonerSpellSetName: this.summonerSpellSetName, championId: this.championId, summonerSpellIdList: this.summonerSpellIdList }
     this.service.updateSummonerSpellSet(this.body).subscribe((_) => {this.router.navigate(["/summonerspellsetlist"])});
+  }
+
+  setSelected(toSelectId : number, elementId : string) : void {
+    let selectElement : HTMLSelectElement = document.querySelector("#"+elementId);
+
+    for(let i = 0; i < selectElement.length; i++) {
+      if(parseInt(selectElement.options[i].value) == toSelectId) {
+        selectElement.selectedIndex = i;
+        break;
+      }
+    }
   }
 
 }
