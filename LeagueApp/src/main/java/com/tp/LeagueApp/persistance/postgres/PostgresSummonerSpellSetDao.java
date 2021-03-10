@@ -22,7 +22,7 @@ public class PostgresSummonerSpellSetDao implements SummonerSpellSetDao {
     //CREATE
     @Override
     public SummonerSpellSet createNewSummonerSpellSet(SummonerSpellSet toAdd) throws NullSetException, EmptySummonerSpellListException,
-            InvalidSummonerSpellException, DuplicateComponentException {
+            InvalidSummonerSpellException, DuplicateComponentException, MaxNameLengthException {
 
         if(toAdd == null)
             throw new NullSetException("ERROR: Tried to create a null summoner spell set.");
@@ -30,6 +30,8 @@ public class PostgresSummonerSpellSetDao implements SummonerSpellSetDao {
             throw new EmptySummonerSpellListException("ERROR: Empty item list.");
         if(checkDuplicateList(toAdd.getSummonerSpellIdList()) == false)
             throw new DuplicateComponentException("ERROR: Duplicate id's in item list.");
+        if(toAdd.getSummonerSpellSetName().length() > 50)
+            throw new MaxNameLengthException("ERROR: Summoner Spell Set name is too long (50 characters max).");
 
 
         //Add validate items

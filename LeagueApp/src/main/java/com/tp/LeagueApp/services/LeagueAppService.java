@@ -87,9 +87,8 @@ public class LeagueAppService {
         return summonerSpellDao.getSummonerSpellById(summonerSpellId);
     }
 
-    //Various Sets methods
     //Item Sets
-    public ItemSet createNewItemSet(ItemSet toAdd) throws NullSetException, InvalidItemException, EmptyItemListException, DuplicateComponentException {
+    public ItemSet createNewItemSet(ItemSet toAdd) throws NullSetException, InvalidItemException, EmptyItemListException, DuplicateComponentException, MaxNameLengthException {
         return itemSetDao.createNewItemSet(toAdd);
     }
 
@@ -110,7 +109,7 @@ public class LeagueAppService {
     }
 
     //Rune Sets
-    public RuneSet createNewRuneSet(RuneSet toAdd) throws NullSetException, EmptyRuneListException, InvalidRuneException, DuplicateComponentException {
+    public RuneSet createNewRuneSet(RuneSet toAdd) throws NullSetException, EmptyRuneListException, InvalidRuneException, DuplicateComponentException, MaxNameLengthException {
         return runeSetDao.createNewRuneSet(toAdd);
     }
 
@@ -131,7 +130,7 @@ public class LeagueAppService {
     }
 
     //Summoner Spell Sets
-    public SummonerSpellSet createNewSummonerSpellSet(SummonerSpellSet toAdd) throws NullSetException, InvalidSummonerSpellException, EmptySummonerSpellListException, DuplicateComponentException {
+    public SummonerSpellSet createNewSummonerSpellSet(SummonerSpellSet toAdd) throws NullSetException, InvalidSummonerSpellException, EmptySummonerSpellListException, DuplicateComponentException, MaxNameLengthException {
         return summonerSpellSetDao.createNewSummonerSpellSet(toAdd);
     }
 

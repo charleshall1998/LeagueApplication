@@ -25,7 +25,7 @@ public class RuneSetController {
         try {
             toReturn = service.createNewRuneSet(toAdd);
         }
-        catch(NullSetException | EmptyRuneListException | InvalidRuneException | DuplicateComponentException e) {
+        catch(NullSetException | EmptyRuneListException | InvalidRuneException | DuplicateComponentException | MaxNameLengthException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
 

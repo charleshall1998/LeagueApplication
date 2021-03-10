@@ -22,7 +22,7 @@ public class PostgresItemSetDao implements ItemSetDao {
     //CREATE
     @Override
     public ItemSet createNewItemSet(ItemSet toAdd) throws NullSetException, InvalidItemException,
-            EmptyItemListException, DuplicateComponentException {
+            EmptyItemListException, DuplicateComponentException, MaxNameLengthException {
 
         if(toAdd == null)
             throw new NullSetException("ERROR: Tried to create a null item set.");
@@ -30,6 +30,8 @@ public class PostgresItemSetDao implements ItemSetDao {
             throw new EmptyItemListException("ERROR: Empty item list.");
         if(checkDuplicateList(toAdd.getItemIdList()) == false)
             throw new DuplicateComponentException("ERROR: Duplicate id's in item list.");
+        if(toAdd.getItemSetName().length() > 50)
+            throw new MaxNameLengthException("ERROR: Item Set name is too long (50 characters max).");
 
         //Add validate items
         if(!validateItemList(toAdd.getItemIdList()))

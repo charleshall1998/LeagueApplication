@@ -54,7 +54,7 @@ public class PostgresSummonerSpellSetDaoTests {
         SummonerSpellSet returnedSummonerSpellSet = null;
         try {
             returnedSummonerSpellSet = toTest.createNewSummonerSpellSet(summSetToAdd);
-        } catch (NullSetException | EmptySummonerSpellListException | InvalidSummonerSpellException | DuplicateComponentException e) {
+        } catch (NullSetException | EmptySummonerSpellListException | InvalidSummonerSpellException | DuplicateComponentException | MaxNameLengthException e) {
             fail();
         }
 
@@ -112,6 +112,20 @@ public class PostgresSummonerSpellSetDaoTests {
         testSummSpellSet.setSummonerSpellIdList(testList);
 
         assertThrows(DuplicateComponentException.class, () -> toTest.createNewSummonerSpellSet(testSummSpellSet));
+    }
+
+    @Test
+    public void createNewSummonerSpellSetDMaxNameLengthExceededTest() {
+        SummonerSpellSet testSummSpellSet = new SummonerSpellSet();
+        testSummSpellSet.setSummonerSpellSetId(1);
+        testSummSpellSet.setSummonerSpellSetName("abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz");
+        testSummSpellSet.setChampionId(1);
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testSummSpellSet.setSummonerSpellIdList(testList);
+
+        assertThrows(MaxNameLengthException.class, () -> toTest.createNewSummonerSpellSet(testSummSpellSet));
     }
 
     @Test

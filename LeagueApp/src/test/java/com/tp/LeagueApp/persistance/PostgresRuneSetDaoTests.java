@@ -54,7 +54,7 @@ public class PostgresRuneSetDaoTests {
         RuneSet returnedRuneSet = null;
         try {
             returnedRuneSet = toTest.createNewRuneSet(runeSetToAdd);
-        } catch (NullSetException | InvalidRuneException | EmptyRuneListException | DuplicateComponentException e) {
+        } catch (NullSetException | InvalidRuneException | EmptyRuneListException | DuplicateComponentException | MaxNameLengthException e) {
             fail();
         }
 
@@ -112,6 +112,20 @@ public class PostgresRuneSetDaoTests {
         testRuneSet.setRuneIdList(testList);
 
         assertThrows(DuplicateComponentException.class, () -> toTest.createNewRuneSet(testRuneSet));
+    }
+
+    @Test
+    public void createNewRuneSetMaxNameLengthExceededTest() {
+        RuneSet testRuneSet = new RuneSet();
+        testRuneSet.setRuneSetId(1);
+        testRuneSet.setRuneSetName("abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz");
+        testRuneSet.setChampionId(1);
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testRuneSet.setRuneIdList(testList);
+
+        assertThrows(MaxNameLengthException.class, () -> toTest.createNewRuneSet(testRuneSet));
     }
 
     @Test

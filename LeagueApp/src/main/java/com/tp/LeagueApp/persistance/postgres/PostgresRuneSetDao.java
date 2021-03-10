@@ -22,7 +22,7 @@ public class PostgresRuneSetDao implements RuneSetDao {
 
     //CREATE
     @Override
-    public RuneSet createNewRuneSet(RuneSet toAdd) throws NullSetException, InvalidRuneException, EmptyRuneListException, DuplicateComponentException {
+    public RuneSet createNewRuneSet(RuneSet toAdd) throws NullSetException, InvalidRuneException, EmptyRuneListException, DuplicateComponentException, MaxNameLengthException {
 
         if(toAdd == null)
             throw new NullSetException("ERROR: Tried to create a null rune set.");
@@ -30,6 +30,8 @@ public class PostgresRuneSetDao implements RuneSetDao {
             throw new EmptyRuneListException("ERROR: Empty rune list.");
         if(checkDuplicateList(toAdd.getRuneIdList()) == false)
             throw new DuplicateComponentException("ERROR: Duplicate id's in item list.");
+        if(toAdd.getRuneSetName().length() > 50)
+            throw new MaxNameLengthException("ERROR: Rune Set name is too long (50 characters max).");
 
         //Add validate items
         if(!validateRuneList(toAdd.getRuneIdList()))

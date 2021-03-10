@@ -9,7 +9,7 @@ public interface SummonerSpellSetDao {
 
     //CREATE
     SummonerSpellSet createNewSummonerSpellSet(SummonerSpellSet toAdd) throws NullSetException, EmptySummonerSpellListException,
-            InvalidSummonerSpellException, DuplicateComponentException;
+            InvalidSummonerSpellException, DuplicateComponentException, MaxNameLengthException;
 
     //READ
     List<SummonerSpellSet> getAllSummonerSpellSets();

@@ -96,6 +96,26 @@ public class ServicesTests {
     }
 
     @Test
+    public void getChampionByNameEmptyNameTest() {
+        assertThrows(EmptyStringException.class, () -> service.getChampionByName(""));
+    }
+
+    @Test
+    public void getChampionByNameEmptyNameSpaceTest() {
+        assertThrows(EmptyStringException.class, () -> service.getChampionByName(" "));
+    }
+
+    @Test
+    public void getChampionByNameEmptyNameMultipleSpacesTest() {
+        assertThrows(EmptyStringException.class, () -> service.getChampionByName("            "));
+    }
+
+    @Test
+    public void getChampionByNameInvalidNameTest() {
+        assertThrows(InvalidChampionException.class, () -> service.getChampionByName("ASDFGH"));
+    }
+
+    @Test
     public void getChampionByIdGoldenPath() {
 
         Champion toCheck = null;
@@ -126,9 +146,6 @@ public class ServicesTests {
     public void getChampionByIdInvalidChampionTest() {
         assertThrows(InvalidChampionException.class, () -> service.getChampionById(100000));
     }
-
-
-
 
     //**********
     //ITEM TESTS
@@ -177,6 +194,26 @@ public class ServicesTests {
     }
 
     @Test
+    public void getItemByNameEmptyNameTest() {
+        assertThrows(EmptyStringException.class, () -> service.getItemByName(""));
+    }
+
+    @Test
+    public void getItemByNameEmptyNameSpaceTest() {
+        assertThrows(EmptyStringException.class, () -> service.getItemByName(" "));
+    }
+
+    @Test
+    public void getItemByNameEmptyNameMultipleSpacesTest() {
+        assertThrows(EmptyStringException.class, () -> service.getItemByName("            "));
+    }
+
+    @Test
+    public void getItemByNameInvalidNameTest() {
+        assertThrows(InvalidItemException.class, () -> service.getItemByName("ASDFGH"));
+    }
+
+    @Test
     public void getItemByIdGoldenPath() {
         template.update("insert into \"Items\" (\"itemName\", \"itemDescription\", \"itemCost\") values ('Test', 'Test Description', '1000')");
 
@@ -204,8 +241,6 @@ public class ServicesTests {
     public void getItemByIdInvalidItemTest() {
         assertThrows(InvalidItemException.class, () -> service.getItemById(100000));
     }
-
-
 
     //**********
     //RUNE TESTS
@@ -251,6 +286,26 @@ public class ServicesTests {
     }
 
     @Test
+    public void getRuneByNameEmptyNameTest() {
+        assertThrows(EmptyStringException.class, () -> service.getRuneByName(""));
+    }
+
+    @Test
+    public void getRuneByNameEmptyNameSpaceTest() {
+        assertThrows(EmptyStringException.class, () -> service.getRuneByName(" "));
+    }
+
+    @Test
+    public void getRuneByNameEmptyNameMultipleSpacesTest() {
+        assertThrows(EmptyStringException.class, () -> service.getRuneByName("            "));
+    }
+
+    @Test
+    public void getRuneByNameInvalidNameTest() {
+        assertThrows(InvalidRuneException.class, () -> service.getRuneByName("ASDFGH"));
+    }
+
+    @Test
     public void getRuneByIdGoldenPath() {
         template.update("insert into \"Runes\" (\"runeName\", \"runeDescription\") values ('Test', 'Test Description')");
 
@@ -277,9 +332,6 @@ public class ServicesTests {
     public void getRuneByIdInvalidRuneTest() {
         assertThrows(InvalidRuneException.class, () -> service.getRuneById(100000));
     }
-
-
-
 
     //**********
     //SUMMONER SPELL TESTS
@@ -325,6 +377,26 @@ public class ServicesTests {
     }
 
     @Test
+    public void getSummonerSpellByNameEmptyNameTest() {
+        assertThrows(EmptyStringException.class, () -> service.getSummonerSpellByName(""));
+    }
+
+    @Test
+    public void getSummonerSpellByNameEmptyNameSpaceTest() {
+        assertThrows(EmptyStringException.class, () -> service.getSummonerSpellByName(" "));
+    }
+
+    @Test
+    public void getSummonerSpellByNameEmptyNameMultipleSpacesTest() {
+        assertThrows(EmptyStringException.class, () -> service.getSummonerSpellByName("            "));
+    }
+
+    @Test
+    public void getSummonerSpellByNameInvalidNameTest() {
+        assertThrows(InvalidSummonerSpellException.class, () -> service.getSummonerSpellByName("ASDFGH"));
+    }
+
+    @Test
     public void getSummonerSpellByIdGoldenPath() {
         template.update("insert into \"SummonerSpells\" (\"summSpellName\", \"summSpellDescription\") values ('Test', 'Test Description')");
 
@@ -352,8 +424,6 @@ public class ServicesTests {
         assertThrows(InvalidSummonerSpellException.class, () -> service.getSummonerSpellById(100000));
     }
 
-
-
     //**********
     //ITEM SET TESTS
     //**********
@@ -371,7 +441,7 @@ public class ServicesTests {
         ItemSet returnedItemSet = null;
         try {
             returnedItemSet = service.createNewItemSet(itemSetToAdd);
-        } catch (NullSetException | InvalidItemException | EmptyItemListException | DuplicateComponentException e) {
+        } catch (NullSetException | InvalidItemException | EmptyItemListException | DuplicateComponentException | MaxNameLengthException e) {
             fail();
         }
 
@@ -414,6 +484,20 @@ public class ServicesTests {
         testItemSet.setItemIdList(testList);
 
         assertThrows(InvalidItemException.class, () -> service.createNewItemSet(testItemSet));
+    }
+
+    @Test
+    public void createNewItemSetMaxNameLengthExceededTest() {
+        ItemSet testItemSet = new ItemSet();
+        testItemSet.setItemSetId(1);
+        testItemSet.setItemSetName("abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz");
+        testItemSet.setChampionId(1);
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testItemSet.setItemIdList(testList);
+
+        assertThrows(MaxNameLengthException.class, () -> service.createNewItemSet(testItemSet));
     }
 
     @Test
@@ -549,9 +633,6 @@ public class ServicesTests {
         assertThrows(InvalidSetException.class, () -> service.deleteItemSetById(100000));
     }
 
-
-
-
     //**********
     //RUNE SET TESTS
     //**********
@@ -569,7 +650,7 @@ public class ServicesTests {
         RuneSet returnedRuneSet = null;
         try {
             returnedRuneSet = service.createNewRuneSet(runeSetToAdd);
-        } catch (NullSetException | InvalidRuneException | EmptyRuneListException | DuplicateComponentException e) {
+        } catch (NullSetException | InvalidRuneException | EmptyRuneListException | DuplicateComponentException | MaxNameLengthException e) {
             fail();
         }
 
@@ -612,6 +693,20 @@ public class ServicesTests {
         testRuneSet.setRuneIdList(testList);
 
         assertThrows(InvalidRuneException.class, () -> service.createNewRuneSet(testRuneSet));
+    }
+
+    @Test
+    public void createNewRuneSetMaxNameLengthExceededTest() {
+        RuneSet testRuneSet = new RuneSet();
+        testRuneSet.setRuneSetId(1);
+        testRuneSet.setRuneSetName("abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz");
+        testRuneSet.setChampionId(1);
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testRuneSet.setRuneIdList(testList);
+
+        assertThrows(MaxNameLengthException.class, () -> service.createNewRuneSet(testRuneSet));
     }
 
     @Test
@@ -747,9 +842,6 @@ public class ServicesTests {
         assertThrows(InvalidSetException.class, () -> service.deleteRuneSetById(100000));
     }
 
-
-
-
     //**********
     //SUMMONER SPELL SET TESTS
     //**********
@@ -767,7 +859,7 @@ public class ServicesTests {
         SummonerSpellSet returnedSummonerSpellSet = null;
         try {
             returnedSummonerSpellSet = service.createNewSummonerSpellSet(summSetToAdd);
-        } catch (NullSetException | EmptySummonerSpellListException | InvalidSummonerSpellException | DuplicateComponentException e) {
+        } catch (NullSetException | EmptySummonerSpellListException | InvalidSummonerSpellException | DuplicateComponentException | MaxNameLengthException e) {
             fail();
         }
 
@@ -810,6 +902,20 @@ public class ServicesTests {
         testSummSpellSet.setSummonerSpellIdList(testList);
 
         assertThrows(InvalidSummonerSpellException.class, () -> service.createNewSummonerSpellSet(testSummSpellSet));
+    }
+
+    @Test
+    public void createNewSummonerSpellSetDMaxNameLengthExceededTest() {
+        SummonerSpellSet testSummSpellSet = new SummonerSpellSet();
+        testSummSpellSet.setSummonerSpellSetId(1);
+        testSummSpellSet.setSummonerSpellSetName("abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz");
+        testSummSpellSet.setChampionId(1);
+        List<Integer> testList = new ArrayList<>();
+        testList.add(1);
+        testList.add(2);
+        testSummSpellSet.setSummonerSpellIdList(testList);
+
+        assertThrows(MaxNameLengthException.class, () -> service.createNewSummonerSpellSet(testSummSpellSet));
     }
 
     @Test
@@ -943,6 +1049,5 @@ public class ServicesTests {
     public void deleteSummonerSPellSetByIdInvalidSetTest() {
         assertThrows(InvalidSetException.class, () -> service.deleteSummonerSpellSetById(100000));
     }
-
 
 }

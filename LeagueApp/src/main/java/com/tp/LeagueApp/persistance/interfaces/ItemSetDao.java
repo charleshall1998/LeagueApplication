@@ -9,7 +9,7 @@ public interface ItemSetDao {
 
     //CREATE
     ItemSet createNewItemSet(ItemSet toAdd) throws NullSetException, InvalidItemException,
-            EmptyItemListException, DuplicateComponentException;
+            EmptyItemListException, DuplicateComponentException, MaxNameLengthException;
 
     //READ
     List<ItemSet> getAllItemSets();

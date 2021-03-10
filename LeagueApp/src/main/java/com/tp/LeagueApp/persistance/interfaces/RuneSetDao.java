@@ -9,7 +9,7 @@ public interface RuneSetDao {
 
     //CREATE
     RuneSet createNewRuneSet(RuneSet toAdd) throws NullSetException, EmptyRuneListException
-            , InvalidRuneException, DuplicateComponentException;
+            , InvalidRuneException, DuplicateComponentException, MaxNameLengthException;
 
     //READ
     List<RuneSet> getAllRuneSets();
