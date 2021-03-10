@@ -10,7 +10,7 @@ import { Rune } from '../Rune';
 export class RuneByIdComponent implements OnInit {
 
   rune : Rune;
-  runeId : number;
+  runeId : number = 0;
   src : string;
 
   constructor(private leagueService : LeagueService) { }
@@ -18,6 +18,8 @@ export class RuneByIdComponent implements OnInit {
   ngOnInit(): void { }
 
   search() : void {
+    this.runeId = parseInt((document.getElementById("runeId") as HTMLInputElement).value);
+
     this.leagueService.getRuneById(this.runeId).subscribe( rune => {
       this.rune = rune;
       this.src = "./assets/images/runes/"+this.rune.runeName+".png";
