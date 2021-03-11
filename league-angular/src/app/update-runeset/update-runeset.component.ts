@@ -33,18 +33,24 @@ export class UpdateRunesetComponent implements OnInit {
 
   updateRuneSet() {
 
-    this.runeIdList = [];
-
-    for(let i = 1; i < 5; i++) {
-      let id = "rune" + i;
-      let rune =  (document.getElementById(id) as HTMLInputElement).value;
-      this.runeIdList.push(parseInt(rune));
+    if(this.runeSetName === undefined) {
+      alert("Rune Set Name cannot be undefined.")
+      return;
     }
+    else {
+      this.runeIdList = [];
 
-    this.championId = parseInt((document.getElementById("championId") as HTMLInputElement).value);
+      for(let i = 1; i < 5; i++) {
+        let id = "rune" + i;
+        let rune =  (document.getElementById(id) as HTMLInputElement).value;
+        this.runeIdList.push(parseInt(rune));
+      }
 
-    this.body = {runeSetId:this.runeSetId, runeSetName: this.runeSetName, championId: this.championId, runeIdList: this.runeIdList }
-    this.service.updateRuneSet(this.body).subscribe((_) => {this.router.navigate(["/runesetlist"])});
+      this.championId = parseInt((document.getElementById("championId") as HTMLInputElement).value);
+
+      this.body = {runeSetId:this.runeSetId, runeSetName: this.runeSetName, championId: this.championId, runeIdList: this.runeIdList }
+      this.service.updateRuneSet(this.body).subscribe((_) => {this.router.navigate(["/runesetlist"])});
+    }
   }
 
   setSelected(toSelectId : number, elementId : string) : void {

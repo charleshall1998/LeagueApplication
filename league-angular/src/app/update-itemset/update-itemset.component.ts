@@ -35,18 +35,24 @@ export class UpdateItemsetComponent implements OnInit {
 
   updateItemSet() {
 
-    this.itemIdList = [];
-
-    for(let i = 1; i < 7; i++) {
-      let id = "item" + i;
-      let item =  (document.getElementById(id) as HTMLInputElement).value;
-      this.itemIdList.push(parseInt(item));
+    if(this.itemSetName === undefined) {
+      alert("Item Set Name cannot be undefined.");
+      return;
     }
+    else {
+      this.itemIdList = [];
 
-    this.championId = parseInt((document.getElementById("championId") as HTMLInputElement).value);
+      for(let i = 1; i < 7; i++) {
+        let id = "item" + i;
+        let item =  (document.getElementById(id) as HTMLInputElement).value;
+        this.itemIdList.push(parseInt(item));
+      }
 
-    this.body = {itemSetId:this.itemSetId, itemSetName: this.itemSetName, championId: this.championId, itemIdList: this.itemIdList }
-    this.service.updateItemSet(this.body).subscribe((_) => {this.router.navigate(["/itemsetlist"])});
+      this.championId = parseInt((document.getElementById("championId") as HTMLInputElement).value);
+
+      this.body = {itemSetId:this.itemSetId, itemSetName: this.itemSetName, championId: this.championId, itemIdList: this.itemIdList }
+      this.service.updateItemSet(this.body).subscribe((_) => {this.router.navigate(["/itemsetlist"])});
+    }
   }
 
   setSelected(toSelectId : number, elementId : string) : void {

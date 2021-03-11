@@ -20,18 +20,25 @@ export class CreateItemsetComponent implements OnInit {
   }
 
   createItemSet() {
-    this.itemIdList = [];
 
-    for(let i = 1; i < 7; i++) {
-      let id = "item" + i;
-      let item =  (document.getElementById(id) as HTMLInputElement).value;
-      this.itemIdList.push(parseInt(item));
+    if(this.itemSetName === undefined) {
+      alert("Item Set Name cannot be undefined.");
+      return;
     }
+    else {
+      this.itemIdList = [];
 
-    this.championId = parseInt((document.getElementById("championId") as HTMLInputElement).value);
+      for(let i = 1; i < 7; i++) {
+        let id = "item" + i;
+        let item =  (document.getElementById(id) as HTMLInputElement).value;
+        this.itemIdList.push(parseInt(item));
+      }
 
-    let toAdd : ItemSet = {itemSetName: this.itemSetName, championId: this.championId, itemIdList: this.itemIdList}
-    this.service.createItemSet(toAdd).subscribe((_) => {this.router.navigate(["/itemsetlist"])});
+      this.championId = parseInt((document.getElementById("championId") as HTMLInputElement).value);
+
+      let toAdd : ItemSet = {itemSetName: this.itemSetName, championId: this.championId, itemIdList: this.itemIdList}
+      this.service.createItemSet(toAdd).subscribe((_) => {this.router.navigate(["/itemsetlist"])});
+    }
   }
 
 }

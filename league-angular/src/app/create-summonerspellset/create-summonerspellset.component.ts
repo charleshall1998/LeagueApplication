@@ -20,18 +20,24 @@ export class CreateSummonerspellsetComponent implements OnInit {
   }
 
   createSummonerSpellSet() {
-    this.summonerSpellIdList = [];
-
-    for(let i = 1; i < 3; i++) {
-      let id = "summonerSpell" + i;
-      let rune =  (document.getElementById(id) as HTMLInputElement).value;
-      this.summonerSpellIdList.push(parseInt(rune));
+    if(this.summonerSpellSetName === undefined) {
+      alert("Summoner Spell Set Name cannot be undefined.");
+      return;
     }
+    else {
+      this.summonerSpellIdList = [];
 
-    this.championId = parseInt((document.getElementById("championId") as HTMLInputElement).value);
+      for(let i = 1; i < 3; i++) {
+        let id = "summonerSpell" + i;
+        let rune =  (document.getElementById(id) as HTMLInputElement).value;
+        this.summonerSpellIdList.push(parseInt(rune));
+      }
 
-    let toAdd : SummonerSpellSet = {summonerSpellSetName: this.summonerSpellSetName, championId: this.championId, summonerSpellIdList: this.summonerSpellIdList}
-    this.service.createSummonerSpellSet(toAdd).subscribe((_) => {this.router.navigate(["/summonerspellsetlist"])});
+      this.championId = parseInt((document.getElementById("championId") as HTMLInputElement).value);
+
+      let toAdd : SummonerSpellSet = {summonerSpellSetName: this.summonerSpellSetName, championId: this.championId, summonerSpellIdList: this.summonerSpellIdList}
+      this.service.createSummonerSpellSet(toAdd).subscribe((_) => {this.router.navigate(["/summonerspellsetlist"])});
+    }
   }
 
 }
