@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Champion } from '../Champion';
 import { LeagueService } from '../league.service';
+import { Rune } from '../Rune';
 import { RuneSet } from '../RuneSet';
 
 @Component({
@@ -17,6 +18,7 @@ export class UpdateRunesetComponent implements OnInit {
   championId : number;
   runeIdList : number[];
   championsList : Champion[];
+  runesList : Rune[];
 
   constructor(private service : LeagueService, private router : Router, private route : ActivatedRoute) { }
 
@@ -24,6 +26,10 @@ export class UpdateRunesetComponent implements OnInit {
 
     this.service.getAllChampions().subscribe(list => { 
       this.championsList = list;
+    });
+
+    this.service.getAllRunes().subscribe(list => { 
+      this.runesList = list;
     });
 
     this.runeSetId = parseInt(this.route.snapshot.paramMap.get('id'));
