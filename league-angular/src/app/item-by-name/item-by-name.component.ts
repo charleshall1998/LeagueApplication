@@ -11,20 +11,31 @@ export class ItemByNameComponent implements OnInit {
 
   item : Item;
   itemName : string = " ";
-  src : string;
+  src : string = " ";
+  itemNameContainer : string;
+  itemInfoContainer : string;
+  itemsList : Item[];
 
-  constructor(private leagueService : LeagueService) { }
+  constructor(private service : LeagueService) { }
 
   ngOnInit(): void {
-    
+    this.service.getAllItems().subscribe(list => { 
+      this.itemsList = list;
+    });
   }
 
   search(): void {
     this.itemName = (document.getElementById("itemName") as HTMLInputElement).value;
+    this.itemNameContainer = '<h1>'+this.itemName+'</h1>';
 
-    this.leagueService.getItemByName(this.itemName).subscribe( item => {
+    this.service.getItemByName(this.itemName).subscribe( item => {
       this.item = item;
+
       this.src = "./assets/images/items/"+this.itemName+".png";
+
+      this.itemInfoContainer = '<p>Description: '+this.item.itemDescription+'</p>'
+      +'<p>Cost: '+item.itemCost+' gold</p>';
+
     });
   }
 

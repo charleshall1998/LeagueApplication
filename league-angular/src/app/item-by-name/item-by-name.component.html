@@ -1,50 +1,18 @@
 <div class="search">
     <p class="itemName">Select Item</p>
-    <select id="itemName" name="items">
-        <option value="Abyssal Mask" selected>Abyssal Mask</option>
-        <option value="Aegis of the Legion">Aegis of the Legion</option>
-        <option value="Aether Wisp">Aether Wisp</option>
-        <option value="Amplifying Tome">Amplifying Tome</option>
-        <option value="Archangels Staff">Archangel's Staff</option>
-        <option value="Ardent Censer">Ardent Censer</option>
-        <option value="B.F. Sword">B.F. Sword</option>
-        <option value="Bamis Cinder">Bami's Cinder</option>
-        <option value="Bandleglass Mirror">Bandleglass Mirror</option>
-        <option value="Banshees Veil">Banshee's Veil</option>
-        <option value="Berzerkers Greaves">Berzerker's Greaves</option>
-        <option value="Black Cleaver">Black Cleaver</option>
-        <option value="Blade of the Ruined King">Blade of the Ruined King</option>
-        <option value="Bloodthirster">Bloodthirster</option>
-        <option value="Boots of Swiftness">Boots of Swiftness</option>
-        <option value="Bulwark of the Mountain">Bulwark of the Mountain</option>
-        <option value="Chempunk Chainsword">Chempunk Chainsword</option>
-        <option value="Chemtech Putrifier">Chemtech Putrifier</option>
-        <option value="Cosmic Drive">Cosmic Drive</option>
-        <option value="Dead Mans Plate">Dead Man's Plate</option>
-        <option value="Deaths Dance">Death's Dance</option>
-        <option value="Demonic Embrace">Demonic Embrace</option>
-        <option value="Divine Sunderer">Divine Sunderer</option>
-        <option value="Duskblade of Darktharr">Duskblade of Darktharr</option>
-        <option value="Eclipse">Eclipse</option>
-        <option value="Edge of Night">Edge of Night</option>
-        <option value="Essence Reaver">Essence Reaver</option>
-        <option value="Everfrost">Everfrost</option>
-        <option value="Force of Nature">Force of Nature</option>
-        <option value="Frostfire Gauntlet">Frostfire Gauntlet</option>
-        <option value="Frozen Heart">Frozen Heart</option>
-        <option value="Galeforce">Galeforce</option>
+    <select name="items" id="itemName">
+        <option *ngFor="let itemOption of itemsList" value="{{itemOption.itemName}}">
+            {{itemOption.itemName}}
+        </option>
     </select>
 
     <button (click)="search()" class="searchButton">Search</button>
 </div> 
 
-<div class="itemName">
-    <h2>{{item.itemName}}</h2>
+<div class="itemName" [innerHTML]="itemNameContainer">
 </div>
 
 <img class="itemSquare" [src]="src">
 
-<div class="item-info">
-    <p>Description: {{item.itemDescription}}</p>
-    <p>Cost: {{item.itemCost}} gold</p>
+<div class="item-info" [innerHTML]="itemInfoContainer">
 </div>

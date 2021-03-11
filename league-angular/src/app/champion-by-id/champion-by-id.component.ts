@@ -11,7 +11,7 @@ export class ChampionByIdComponent implements OnInit {
 
   champion : Champion;
   championId : number = 0;
-  src : string;
+  src : string = " ";
   championNameContainer : string;
   championInfoContainer : string;
   championsList : Champion[];
