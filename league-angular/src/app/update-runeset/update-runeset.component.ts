@@ -45,6 +45,7 @@ export class UpdateRunesetComponent implements OnInit {
   }
 
   updateRuneSet() {
+    this.runeSetName = (document.getElementById("runeSetName") as HTMLInputElement).value;
 
     if(this.runeSetName === undefined) {
       alert("Rune Set Name cannot be undefined.")

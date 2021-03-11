@@ -44,6 +44,8 @@ export class UpdateSummonerspellsetComponent implements OnInit {
   }
 
   updateSummonerSpellSet() {    
+    this.summonerSpellSetName = (document.getElementById("summonerSpellSetName") as HTMLInputElement).value;
+
     if(this.summonerSpellSetName === undefined) {
       alert("Summoner Spell Set Name cannot be undefined.");
       return;

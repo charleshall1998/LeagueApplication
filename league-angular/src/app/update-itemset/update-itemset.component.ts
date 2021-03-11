@@ -48,6 +48,8 @@ export class UpdateItemsetComponent implements OnInit {
 
   updateItemSet() {
 
+    this.itemSetName = (document.getElementById("itemSetName") as HTMLInputElement).value;
+
     if(this.itemSetName === undefined) {
       alert("Item Set Name cannot be undefined.");
       return;

@@ -10,17 +10,23 @@ import { SummonerSpell } from '../SummonerSpell';
 export class SummonerspellByIdComponent implements OnInit {
 
   summonerSpell : SummonerSpell;
+  summonerSpellOption : SummonerSpell;
   summonerSpellId : number;
   src : string;
+  summonerSpellsList : SummonerSpell[];
 
-  constructor(private leagueService : LeagueService) { }
+  constructor(private service : LeagueService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    this.service.getAllSummonerSpells().subscribe(list => { 
+      this.summonerSpellsList = list;
+    });
+  }
 
   search() : void {
     this.summonerSpellId = parseInt((document.getElementById("summonerSpellId") as HTMLInputElement).value);
 
-    this.leagueService.getSummonerSpellById(this.summonerSpellId).subscribe( summonerSpell => {
+    this.service.getSummonerSpellById(this.summonerSpellId).subscribe( summonerSpell => {
       this.summonerSpell = summonerSpell;
       this.src = "./assets/images/summonerspells/"+this.summonerSpell.summonerSpellName+".png";
     });
