@@ -85,7 +85,7 @@ public class PostgresItemSetDao implements ItemSetDao {
     //READ
     @Override
     public List<ItemSet> getAllItemSets() {
-        List<ItemSet> allItemSets = template.query("select * from \"ItemSets\"",
+        List<ItemSet> allItemSets = template.query("select * from \"ItemSets\" order by \"itemSetId\" desc;",
                 new ItemSetMapper());
 
         for(ItemSet toGet : allItemSets) {

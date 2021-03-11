@@ -87,7 +87,7 @@ public class PostgresRuneSetDao implements RuneSetDao {
     //READ
     @Override
     public List<RuneSet> getAllRuneSets() {
-        List<RuneSet> allRuneSets = template.query("select * from \"RuneSets\"",
+        List<RuneSet> allRuneSets = template.query("select * from \"RuneSets\" order by \"runeSetId\" desc;",
                 new RuneSetMapper());
 
         for(RuneSet toGet : allRuneSets) {

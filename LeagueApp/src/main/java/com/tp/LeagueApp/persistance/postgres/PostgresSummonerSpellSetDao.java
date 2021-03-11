@@ -87,7 +87,7 @@ public class PostgresSummonerSpellSetDao implements SummonerSpellSetDao {
     //READ
     @Override
     public List<SummonerSpellSet> getAllSummonerSpellSets() {
-        List<SummonerSpellSet> allSummonerSpellSets = template.query("select * from \"SummonerSpellSets\"",
+        List<SummonerSpellSet> allSummonerSpellSets = template.query("select * from \"SummonerSpellSets\" order by \"summSpellSetId\" desc;",
                 new SummonerSpellSetMapper());
 
         for(SummonerSpellSet toGet : allSummonerSpellSets) {
