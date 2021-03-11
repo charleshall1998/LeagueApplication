@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Champion } from '../Champion';
 import { LeagueService } from '../league.service';
 import { SummonerSpellSet } from '../SummonerSpellSet';
 
@@ -15,10 +16,16 @@ export class UpdateSummonerspellsetComponent implements OnInit {
   summonerSpellSetName : string;
   championId : number;
   summonerSpellIdList : number[];
+  championsList : Champion[];
 
   constructor(private service : LeagueService, private router : Router, private route : ActivatedRoute) { }
 
   ngOnInit(): void {
+
+    this.service.getAllChampions().subscribe(list => { 
+      this.championsList = list;
+    });
+
     this.summonerSpellSetId = parseInt(this.route.snapshot.paramMap.get('id'));
 
     this.service.getSummonerSpellSetById(this.summonerSpellSetId).subscribe( summSpellSet => {
@@ -30,7 +37,7 @@ export class UpdateSummonerspellsetComponent implements OnInit {
 
   }
 
-  updateSummonerSpellSet() {
+  updateSummonerSpellSet() {    
     if(this.summonerSpellSetName === undefined) {
       alert("Summoner Spell Set Name cannot be undefined.");
       return;

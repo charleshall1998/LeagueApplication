@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import { Champion } from '../Champion';
 import { ItemSet } from '../ItemSet';
 import { LeagueService } from '../league.service';
 
@@ -13,10 +14,14 @@ export class CreateItemsetComponent implements OnInit {
   itemSetName : string;
   championId : number;
   itemIdList : number[];
+  championsList : Champion[];
 
   constructor(private service : LeagueService, private router : Router) { }
 
   ngOnInit(): void {
+    this.service.getAllChampions().subscribe(list => { 
+      this.championsList = list;
+    });
   }
 
   createItemSet() {

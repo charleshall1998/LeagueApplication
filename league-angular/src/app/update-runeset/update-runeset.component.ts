@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Champion } from '../Champion';
 import { LeagueService } from '../league.service';
 import { RuneSet } from '../RuneSet';
 
@@ -15,10 +16,16 @@ export class UpdateRunesetComponent implements OnInit {
   runeSetName : string;
   championId : number;
   runeIdList : number[];
+  championsList : Champion[];
 
   constructor(private service : LeagueService, private router : Router, private route : ActivatedRoute) { }
 
   ngOnInit(): void { 
+
+    this.service.getAllChampions().subscribe(list => { 
+      this.championsList = list;
+    });
+
     this.runeSetId = parseInt(this.route.snapshot.paramMap.get('id'));
 
     this.service.getRuneSetById(this.runeSetId).subscribe( runeSet => {

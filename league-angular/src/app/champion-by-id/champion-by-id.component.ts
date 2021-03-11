@@ -13,14 +13,15 @@ export class ChampionByIdComponent implements OnInit {
   championId : number = 0;
   src : string;
 
-  constructor(private leagueService : LeagueService) { }
+  constructor(private service : LeagueService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
   search() : void {
     this.championId = parseInt((document.getElementById("championId") as HTMLInputElement).value);
 
-    this.leagueService.getChampionById(this.championId).subscribe( champ => {
+    this.service.getChampionById(this.championId).subscribe( champ => {
       this.champion = champ;
       this.src = "./assets/images/splash/"+this.champion.championName+".jpg";
     });

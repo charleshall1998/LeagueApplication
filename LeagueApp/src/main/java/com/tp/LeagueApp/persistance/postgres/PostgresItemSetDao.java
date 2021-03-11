@@ -23,7 +23,6 @@ public class PostgresItemSetDao implements ItemSetDao {
     @Override
     public ItemSet createNewItemSet(ItemSet toAdd) throws NullSetException, InvalidItemException,
             EmptyItemListException, DuplicateComponentException, MaxNameLengthException, EmptyStringException {
-
         if(toAdd == null)
             throw new NullSetException("ERROR: Tried to create a null item set.");
         if(toAdd.getItemIdList().size() == 0)

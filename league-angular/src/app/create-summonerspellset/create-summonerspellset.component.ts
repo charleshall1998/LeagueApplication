@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Champion } from '../Champion';
 import { LeagueService } from '../league.service';
 import { SummonerSpellSet } from '../SummonerSpellSet';
 
@@ -13,10 +14,14 @@ export class CreateSummonerspellsetComponent implements OnInit {
   summonerSpellSetName : string;
   championId : number;
   summonerSpellIdList : number[];
+  championsList : Champion[];
 
   constructor(private service : LeagueService, private router : Router) { }
 
   ngOnInit(): void {
+    this.service.getAllChampions().subscribe(list => { 
+      this.championsList = list;
+    });
   }
 
   createSummonerSpellSet() {

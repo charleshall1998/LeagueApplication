@@ -12,15 +12,17 @@ export class ChampionByNameComponent implements OnInit {
   champion : Champion;
   championName : string = " ";
   src : string;
-  constructor(private leagueService : LeagueService) { }
+
+  constructor(private service : LeagueService) { }
 
   ngOnInit(): void {
+
   }
 
   search(): void {
     this.championName = (document.getElementById("championName") as HTMLInputElement).value;
 
-    this.leagueService.getChampionByName(this.championName).subscribe( champ => {
+    this.service.getChampionByName(this.championName).subscribe( champ => {
       this.champion = champ;
       this.src = "./assets/images/splash/"+this.championName+".jpg";
     });

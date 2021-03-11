@@ -11,36 +11,9 @@
         <div class="column1">
             <p>Champion</p>
             <select name="champions" id="championId">
-            <option value="1" selected>Aatrox</option>
-            <option value="2">Ahri</option>
-            <option value="3">Akali</option>
-            <option value="4">Alistar</option>
-            <option value="5">Amumu</option>
-            <option value="6">Anivia</option>
-            <option value="7">Annie</option>
-            <option value="8">Aphelios</option>
-            <option value="9">Ashe</option>
-            <option value="10">Aurelion Sol</option>
-            <option value="11">Azir</option>
-            <option value="12">Bard</option>
-            <option value="13">Blitzcrank</option>
-            <option value="14">Brand</option>
-            <option value="15">Braum</option>
-            <option value="16">Caitlyn</option>
-            <option value="17">Camille</option>
-            <option value="18">Cassioppeia</option>
-            <option value="19">Corki</option>
-            <option value="20">Darius</option>
-            <option value="21">Diana</option>
-            <option value="22">Dr. Mundo</option>
-            <option value="23">Draven</option>
-            <option value="24">Ekko</option>
-            <option value="25">Elise</option>
-            <option value="26">Evelynn</option>
-            <option value="27">Ezreal</option>
-            <option value="28">Fiddlesticks</option>
-            <option value="29">Fiora</option>
-            <option value="30">Fizz</option>
+                <option *ngFor="let champion of championsList" value="{{champion.championId}}">
+                    {{champion.championName}}
+                </option>
             </select>
         </div>
     </div>
