@@ -30,7 +30,9 @@ export class ChampionByNameComponent implements OnInit {
 
     this.service.getChampionByName(this.championName).subscribe( champ => {
       this.champion = champ;
+      
       this.src = "./assets/images/splash/"+this.championName+".jpg";
+
       this.championInfoContainer = '<p>'+this.champion.championDescription+'</p>'
       +'<p> KDA: '+this.champion.avgKDA+'</p>'
       +'<p>Win Rate: '+this.champion.winRate+'%</p>'
