@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { Champion } from '../Champion';
+import { Item } from '../Item';
 import { ItemSet } from '../ItemSet';
 import { LeagueService } from '../league.service';
 
@@ -15,6 +16,7 @@ export class CreateItemsetComponent implements OnInit {
   championId : number;
   itemIdList : number[];
   championsList : Champion[];
+  itemsList : Item[];
 
   constructor(private service : LeagueService, private router : Router) { }
 
@@ -43,6 +45,17 @@ export class CreateItemsetComponent implements OnInit {
 
       let toAdd : ItemSet = {itemSetName: this.itemSetName, championId: this.championId, itemIdList: this.itemIdList}
       this.service.createItemSet(toAdd).subscribe((_) => {this.router.navigate(["/itemsetlist"])});
+    }
+  }
+
+  setSelected(toSelectId : number, elementId : string) : void {
+    let selectElement : HTMLSelectElement = document.querySelector("#"+elementId);
+
+    for(let i = 0; i < selectElement.length; i++) {
+      if(parseInt(selectElement.options[i].value) == toSelectId) {
+        selectElement.selectedIndex = i;
+        break;
+      }
     }
   }
 
