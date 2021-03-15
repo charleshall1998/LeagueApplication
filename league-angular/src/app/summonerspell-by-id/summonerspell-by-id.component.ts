@@ -12,7 +12,9 @@ export class SummonerspellByIdComponent implements OnInit {
   summonerSpell : SummonerSpell;
   summonerSpellOption : SummonerSpell;
   summonerSpellId : number;
-  src : string;
+  src : string = " ";
+  summSpellNameContainer : string;
+  summSpellInfoContainer : string;
   summonerSpellsList : SummonerSpell[];
 
   constructor(private service : LeagueService) { }
@@ -28,7 +30,11 @@ export class SummonerspellByIdComponent implements OnInit {
 
     this.service.getSummonerSpellById(this.summonerSpellId).subscribe( summonerSpell => {
       this.summonerSpell = summonerSpell;
+      this.summSpellNameContainer =  '<h2>'+this.summonerSpell.summonerSpellName+'</h2>';
+
       this.src = "./assets/images/summonerspells/"+this.summonerSpell.summonerSpellName+".png";
+
+      this.summSpellInfoContainer = '<p>Description: '+this.summonerSpell.summonerSpellDescription+'</p>';
     });
   }
 

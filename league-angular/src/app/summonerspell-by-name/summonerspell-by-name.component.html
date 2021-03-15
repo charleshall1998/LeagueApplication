@@ -1,26 +1,18 @@
 <div class="search">
     <p class="summonerSpellName">Enter Summoner Spell</p>
-    <select id="summonerSpellName" name="summonerspells">
-        <option value="Heal" selected>Heal</option>
-        <option value="Ghost">Ghost</option>
-        <option value="Barrier">Barrier</option>
-        <option value="Exhaust">Exhaust</option>
-        <option value="Flash">Flash</option>
-        <option value="Teleport">Teleport</option>
-        <option value="Smite">Smite</option>
-        <option value="Cleanse">Cleanse</option>
-        <option value="Ignite">Ignite</option>
+    <select name="summonerspells" id="summonerSpellName">
+        <option *ngFor="let summSpellOption of summonerSpellsList" value="{{summSpellOption.summonerSpellName}}">
+            {{summSpellOption.summonerSpellName}}
+        </option>
     </select>
 
     <button (click)="search()" class="searchButton">Search</button>
 </div> 
 
-<div class="summonerSpellName">
-    <h2 id="summSpellName">{{summonerSpell.summonerSpellName}}</h2>
+<div class="summonerSpellName" [innerHTML]="summSpellNameContainer">
 </div>
 
 <img class="summonerSpellSquare" [src]="src">
 
-<div class="summonerSpell-info">
-    <p>Description: {{summonerSpell.summonerSpellDescription}}</p>
+<div class="summonerSpell-info" [innerHTML]="summSpellInfoContainer">
 </div>
