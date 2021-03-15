@@ -11,20 +11,29 @@ export class RuneByNameComponent implements OnInit {
 
   rune : Rune;
   runeName : string = " ";
-  src : string;
+  src : string = " ";
+  runeNameContainer : string;
+  runeInfoContainer : string;
+  runesList : Rune[];
 
-  constructor(private leagueService : LeagueService) { }
+  constructor(private service : LeagueService) { }
 
-  ngOnInit(): void {
-    
+  ngOnInit(): void { 
+    this.service.getAllRunes().subscribe(list => { 
+      this.runesList = list;
+    });
   }
 
   search(): void {
     this.runeName = (document.getElementById("runeName") as HTMLInputElement).value;
 
-    this.leagueService.getRuneByName(this.runeName).subscribe( rune => {
+    this.service.getRuneByName(this.runeName).subscribe( rune => {
       this.rune = rune;
-      this.src = "./assets/images/runes/"+this.runeName+".png";
+      this.runeNameContainer = '<h2>'+this.rune.runeName+'</h2>';
+
+      this.src = "./assets/images/runes/"+this.rune.runeName+".png";
+
+      this.runeInfoContainer = '<p>Description: '+this.rune.runeDescription+'</p>'
     });
   }
 

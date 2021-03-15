@@ -1,45 +1,19 @@
 <div class="search">
     <p class="runeName">Select Rune to search by ID</p>
-    <select id="runeId" name="runes">
-        <option value="1" selected>Press the Attack</option>
-        <option value="2">Lethal Tempo</option>
-        <option value="3">Fleet Footwork</option>
-        <option value="4">Conqueror</option>
-        <option value="5">Overheal</option>
-        <option value="6">Triumph</option>
-        <option value="7">Presence of Mind</option>
-        <option value="8">Alacrity</option>
-        <option value="9">Tenacity</option>
-        <option value="10">Bloodline</option>
-        <option value="11">Coup de Grace</option>
-        <option value="12">Cut Down</option>
-        <option value="13">Last Stand</option>
-        <option value="14">Electrocute</option>
-        <option value="15">Predator</option>
-        <option value="16">Dark Harvest</option>
-        <option value="17">Hail of Blades</option>
-        <option value="18">Cheap Shot</option>
-        <option value="19">Taste of Blood</option>
-        <option value="20">Sudden Impact</option>
-        <option value="21">Zombie Ward</option>
-        <option value="22">Ghost Poro</option>
-        <option value="23">Eyeball Collection</option>
-        <option value="24">Ravenous Hunter</option>
-        <option value="25">Ingenious Hunter</option>
-        <option value="26">Relentless Hunter</option>
-        <option value="27">Ultimate Hunter</option>
+    <select name="runes" id="runeId">
+        <option *ngFor="let runeOption of runesList" value="{{runeOption.runeId}}">
+            {{runeOption.runeName}}
+        </option>
     </select>
 
     <button (click)="search()" class="searchButton">Search</button>
 </div> 
 
-<div class="runeName">
-    <h2>{{rune.runeName}}</h2>
+<div class="runeName" [innerHTML]="runeNameContainer">
 </div>
 
 <img class="runeSquare" [src]="src">
 
-<div class="rune-info">
-    <p>Description: {{rune.runeDescription}}</p>
+<div class="rune-info" [innerHTML]="runeInfoContainer">
 </div>
 

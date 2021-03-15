@@ -1,43 +1,18 @@
 <div class="search">
     <p class="runeName">Enter Rune Name</p>
-    <select id="runeName" name="runes">
-        <option value="Press the Attack" selected>Press the Attack</option>
-        <option value="Lethal Tempo">Lethal Tempo</option>
-        <option value="Fleet Footwork">Fleet Footwork</option>
-        <option value="Conqueror">Conqueror</option>
-        <option value="Overheal">Overheal</option>
-        <option value="Triumph">Triumph</option>
-        <option value="Presence of Mind">Presence of Mind</option>
-        <option value="Alacrity">Alacrity</option>
-        <option value="Tenacity">Tenacity</option>
-        <option value="Bloodline">Bloodline</option>
-        <option value="Coup de Grace">Coup de Grace</option>
-        <option value="Cut Down">Cut Down</option>
-        <option value="Last Stand">Last Stand</option>
-        <option value="Electrocute">Electrocute</option>
-        <option value="Predator">Predator</option>
-        <option value="Dark Harvest">Dark Harvest</option>
-        <option value="Hail of Blades">Hail of Blades</option>
-        <option value="Cheap Shot">Cheap Shot</option>
-        <option value="Taste of Blood">Taste of Blood</option>
-        <option value="Sudden Impact">Sudden Impact</option>
-        <option value="Zombie Ward">Zombie Ward</option>
-        <option value="Ghost Poro">Ghost Poro</option>
-        <option value="Eyeball Collection">Eyeball Collection</option>
-        <option value="Ravenous Hunter">Ravenous Hunter</option>
-        <option value="Ingenious Hunter">Ingenious Hunter</option>
-        <option value="Relentless Hunter">Relentless Hunter</option>
-        <option value="Ultimate Hunter">Ultimate Hunter</option>
+    <select name="runes" id="runeName">
+        <option *ngFor="let runeOption of runesList" value="{{runeOption.runeName}}">
+            {{runeOption.runeName}}
+        </option>
     </select>
+
     <button (click)="search()" class="searchButton">Search</button>
 </div> 
 
-<div class="runeName">
-    <h2>{{rune.runeName}}</h2>
+<div class="runeName" [innerHTML]="runeNameContainer">
 </div>
 
 <img class="runeSquare" [src]="src">
 
-<div class="rune-info">
-    <p>Description: {{rune.runeDescription}}</p>
+<div class="rune-info" [innerHTML]="runeInfoContainer">
 </div>
