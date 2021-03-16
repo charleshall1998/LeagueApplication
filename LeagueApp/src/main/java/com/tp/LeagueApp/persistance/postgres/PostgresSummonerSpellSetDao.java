@@ -28,7 +28,7 @@ public class PostgresSummonerSpellSetDao implements SummonerSpellSetDao {
             throw new NullSetException("ERROR: Tried to create a null summoner spell set.");
         if(toAdd.getSummonerSpellIdList().size() == 0)
             throw new EmptySummonerSpellListException("ERROR: Empty item list.");
-        if(checkDuplicateList(toAdd.getSummonerSpellIdList()) == false)
+        if(!checkDuplicateList(toAdd.getSummonerSpellIdList()))
             throw new DuplicateComponentException("ERROR: Duplicate id's in item list.");
         if(!checkEmptyString(toAdd.getSummonerSpellSetName()))
             throw new EmptyStringException("ERROR: Tried to make a summoner spell set with empty name.");
@@ -131,7 +131,7 @@ public class PostgresSummonerSpellSetDao implements SummonerSpellSetDao {
             throw new NullIdException("ERROR: Tried to update a summoner spell set with a null id.");
         if(!validateSummonerSpellSetId(toUpdate.getSummonerSpellSetId()))
             throw new InvalidSetException("ERROR: Tried to update a set that doesn't exist.");
-        if(checkDuplicateList(toUpdate.getSummonerSpellIdList()) == false)
+        if(!checkDuplicateList(toUpdate.getSummonerSpellIdList()))
             throw new DuplicateComponentException("ERROR: Tried to update a set with duplicate rune id's.");
         if(!checkEmptyString(toUpdate.getSummonerSpellSetName()))
             throw new EmptyStringException("ERROR: Tried to make a summoner spell set with empty name.");

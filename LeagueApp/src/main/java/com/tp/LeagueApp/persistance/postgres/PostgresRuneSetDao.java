@@ -29,7 +29,7 @@ public class PostgresRuneSetDao implements RuneSetDao {
             throw new NullSetException("ERROR: Tried to create a null rune set.");
         if(toAdd.getRuneIdList().size() == 0)
             throw new EmptyRuneListException("ERROR: Empty rune list.");
-        if(checkDuplicateList(toAdd.getRuneIdList()) == false)
+        if(!checkDuplicateList(toAdd.getRuneIdList()))
             throw new DuplicateComponentException("ERROR: Duplicate id's in item list.");
         if(!checkEmptyString(toAdd.getRuneSetName()))
             throw new EmptyStringException("ERROR: Tried to make a rune set with empty name.");
@@ -131,7 +131,7 @@ public class PostgresRuneSetDao implements RuneSetDao {
             throw new NullIdException("ERROR: Tried to update a rune set with a null id.");
         if(!validateRuneSetId(toUpdate.getRuneSetId()))
             throw new InvalidSetException("ERROR: Tried to update a set that doesn't exist.");
-        if(checkDuplicateList(toUpdate.getRuneIdList()) == false)
+        if(!checkDuplicateList(toUpdate.getRuneIdList()))
             throw new DuplicateComponentException("ERROR: Tried to update a set with duplicate rune id's");
         if(!checkEmptyString(toUpdate.getRuneSetName()))
             throw new EmptyStringException("ERROR: Tried to make a rune set with empty name.");

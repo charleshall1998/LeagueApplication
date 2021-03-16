@@ -27,7 +27,7 @@ public class PostgresItemSetDao implements ItemSetDao {
             throw new NullSetException("ERROR: Tried to create a null item set.");
         if(toAdd.getItemIdList().size() == 0)
             throw new EmptyItemListException("ERROR: Empty item list.");
-        if(checkDuplicateList(toAdd.getItemIdList()) == false)
+        if(!checkDuplicateList(toAdd.getItemIdList()))
             throw new DuplicateComponentException("ERROR: Duplicate id's in item list.");
         if(!checkEmptyString(toAdd.getItemSetName()))
             throw new EmptyStringException("ERROR: Tried to make an item set with empty name.");
@@ -131,7 +131,7 @@ public class PostgresItemSetDao implements ItemSetDao {
             throw new NullIdException("ERROR: Tried to update an item set with a null id.");
         if(!validateItemSetId(toUpdate.getItemSetId()))
             throw new InvalidSetException("ERROR: Tried to update a set that doesn't exist.");
-        if(checkDuplicateList(toUpdate.getItemIdList()) == false)
+        if(!checkDuplicateList(toUpdate.getItemIdList()))
             throw new DuplicateComponentException("ERROR: Tried to update a set with duplicate item id's");
         if(!checkEmptyString(toUpdate.getItemSetName()))
             throw new EmptyStringException("ERROR: Tried to make an item set with empty name.");
