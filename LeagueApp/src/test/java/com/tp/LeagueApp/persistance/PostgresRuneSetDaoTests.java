@@ -62,12 +62,17 @@ public class PostgresRuneSetDaoTests {
         assertEquals( 1, returnedRuneSet.getRuneSetId() );
         assertEquals( "Testing Rune Set", returnedRuneSet.getRuneSetName() );
         assertEquals( 1, returnedRuneSet.getChampionId());
+        assertEquals(1, returnedRuneSet.getRuneIdList().get(0));
+        assertEquals(2, returnedRuneSet.getRuneIdList().get(1));
+
 
         List<RuneSet> allRuneSets = toTest.getAllRuneSets();
 
         assertEquals( 1, allRuneSets.get(0).getRuneSetId() );
         assertEquals( "Testing Rune Set", allRuneSets.get(0).getRuneSetName() );
         assertEquals( 1, allRuneSets.get(0).getChampionId());
+        assertEquals(1, returnedRuneSet.getRuneIdList().get(0));
+        assertEquals(2, returnedRuneSet.getRuneIdList().get(1));
     }
 
     @Test
@@ -178,12 +183,12 @@ public class PostgresRuneSetDaoTests {
 
         List<RuneSet> toCheck = toTest.getAllRuneSets();
 
-        assertEquals( 1, toCheck.get(0).getRuneSetId() );
-        assertEquals( "Testing Rune Set", toCheck.get(0).getRuneSetName() );
+        assertEquals( 2, toCheck.get(0).getRuneSetId() );
+        assertEquals( "Testing2 Rune Set", toCheck.get(0).getRuneSetName() );
         assertEquals( 1, toCheck.get(0).getChampionId());
 
-        assertEquals( 2, toCheck.get(1).getRuneSetId() );
-        assertEquals( "Testing2 Rune Set", toCheck.get(1).getRuneSetName() );
+        assertEquals( 1, toCheck.get(1).getRuneSetId() );
+        assertEquals( "Testing Rune Set", toCheck.get(1).getRuneSetName() );
         assertEquals( 1, toCheck.get(1).getChampionId());
 
     }
@@ -249,6 +254,7 @@ public class PostgresRuneSetDaoTests {
         assertEquals( 1, toCheck.getRuneSetId() );
         assertEquals( "New Update", toCheck.getRuneSetName() );
         assertEquals( 2, toCheck.getChampionId());
+        assertEquals(1, toCheck.getRuneIdList().get(0));
 
     }
 

@@ -61,12 +61,18 @@ public class PostgresSummonerSpellSetDaoTests {
         assertEquals( 1, returnedSummonerSpellSet.getSummonerSpellSetId() );
         assertEquals( "Testing Summ Set", returnedSummonerSpellSet.getSummonerSpellSetName() );
         assertEquals( 1, returnedSummonerSpellSet.getChampionId());
+        assertEquals(1, returnedSummonerSpellSet.getSummonerSpellIdList().get(0));
+        assertEquals(2, returnedSummonerSpellSet.getSummonerSpellIdList().get(1));
+
 
         List<SummonerSpellSet> allItemSets = toTest.getAllSummonerSpellSets();
 
         assertEquals( 1, allItemSets.get(0).getSummonerSpellSetId() );
         assertEquals( "Testing Summ Set", allItemSets.get(0).getSummonerSpellSetName() );
         assertEquals( 1, allItemSets.get(0).getChampionId());
+        assertEquals(1, returnedSummonerSpellSet.getSummonerSpellIdList().get(0));
+        assertEquals(2, returnedSummonerSpellSet.getSummonerSpellIdList().get(1));
+
     }
 
     @Test
@@ -177,12 +183,12 @@ public class PostgresSummonerSpellSetDaoTests {
 
         List<SummonerSpellSet> toCheck = toTest.getAllSummonerSpellSets();
 
-        assertEquals( 1, toCheck.get(0).getSummonerSpellSetId() );
-        assertEquals( "Testing Summoner Spell Set", toCheck.get(0).getSummonerSpellSetName() );
+        assertEquals( 2, toCheck.get(0).getSummonerSpellSetId() );
+        assertEquals( "Testing2 Summoner Spell Set", toCheck.get(0).getSummonerSpellSetName() );
         assertEquals( 1, toCheck.get(0).getChampionId());
 
-        assertEquals( 2, toCheck.get(1).getSummonerSpellSetId() );
-        assertEquals( "Testing2 Summoner Spell Set", toCheck.get(1).getSummonerSpellSetName() );
+        assertEquals( 1, toCheck.get(1).getSummonerSpellSetId() );
+        assertEquals( "Testing Summoner Spell Set", toCheck.get(1).getSummonerSpellSetName() );
         assertEquals( 1, toCheck.get(1).getChampionId());
 
     }
@@ -217,7 +223,7 @@ public class PostgresSummonerSpellSetDaoTests {
     }
 
     @Test
-    public void updateRuneSetGoldenPathTest() {
+    public void updateSummonerSpellSetGoldenPathTest() {
         template.update("insert into \"SummonerSpellSets\" (\"summSpellSetName\", \"championId\") values (\'Testing Summoner Spell Set\', \'1\')");
         template.update("insert into \"Champions\" (\"championName\", \"championDescription\",\"winRate\",\"pickRate\",\"banRate\",\"avgKDA\")\n" +
                 "values ('Test','Test Description', '1','1','1','1')");
@@ -248,6 +254,7 @@ public class PostgresSummonerSpellSetDaoTests {
         assertEquals( 1, toCheck.getSummonerSpellSetId() );
         assertEquals( "New Update", toCheck.getSummonerSpellSetName() );
         assertEquals( 2, toCheck.getChampionId());
+        assertEquals(1, toCheck.getSummonerSpellIdList().get(0));
 
     }
 
@@ -354,7 +361,7 @@ public class PostgresSummonerSpellSetDaoTests {
     }
 
     @Test
-    public void deleteSummonerSPellSetByIdInvalidSetTest() {
+    public void deleteSummonerSpellSetByIdInvalidSetTest() {
         assertThrows(InvalidSetException.class, () -> toTest.deleteSummonerSpellSetById(100000));
     }
 }

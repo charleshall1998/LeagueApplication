@@ -62,12 +62,17 @@ public class PostgresItemSetDaoTests {
         assertEquals( 1, returnedItemSet.getItemSetId() );
         assertEquals( "Testing Item Set", returnedItemSet.getItemSetName() );
         assertEquals( 1, returnedItemSet.getChampionId());
+        assertEquals(1, returnedItemSet.getItemIdList().get(0));
+        assertEquals(2, returnedItemSet.getItemIdList().get(1));
 
         List<ItemSet> allItemSets = toTest.getAllItemSets();
 
         assertEquals( 1, allItemSets.get(0).getItemSetId() );
         assertEquals( "Testing Item Set", allItemSets.get(0).getItemSetName() );
         assertEquals( 1, allItemSets.get(0).getChampionId());
+        assertEquals(1, returnedItemSet.getItemIdList().get(0));
+        assertEquals(2, returnedItemSet.getItemIdList().get(1));
+
     }
 
     @Test
@@ -178,12 +183,12 @@ public class PostgresItemSetDaoTests {
 
         List<ItemSet> toCheck = toTest.getAllItemSets();
 
-        assertEquals( 1, toCheck.get(0).getItemSetId() );
-        assertEquals( "Testing Item Set", toCheck.get(0).getItemSetName() );
+        assertEquals( 2, toCheck.get(0).getItemSetId() );
+        assertEquals( "Testing2 Item Set", toCheck.get(0).getItemSetName() );
         assertEquals( 1, toCheck.get(0).getChampionId());
 
-        assertEquals( 2, toCheck.get(1).getItemSetId() );
-        assertEquals( "Testing2 Item Set", toCheck.get(1).getItemSetName() );
+        assertEquals( 1, toCheck.get(1).getItemSetId() );
+        assertEquals( "Testing Item Set", toCheck.get(1).getItemSetName() );
         assertEquals( 1, toCheck.get(1).getChampionId());
 
     }
@@ -249,6 +254,7 @@ public class PostgresItemSetDaoTests {
         assertEquals( 1, toCheck.getItemSetId() );
         assertEquals( "New Update", toCheck.getItemSetName() );
         assertEquals( 2, toCheck.getChampionId());
+        assertEquals(1, toCheck.getItemIdList().get(0));
 
     }
 
