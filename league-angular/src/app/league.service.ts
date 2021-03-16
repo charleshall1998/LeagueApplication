@@ -7,7 +7,6 @@ import {tap, catchError} from 'rxjs/operators';
 import {of} from 'rxjs';
 import { Rune } from './Rune';
 import { SummonerSpell } from './SummonerSpell';
-import { SummonerspellComponent } from './summonerspell/summonerspell.component';
 import { ItemSet } from './ItemSet';
 import { RuneSet } from './RuneSet';
 import { SummonerSpellSet } from './SummonerSpellSet';
