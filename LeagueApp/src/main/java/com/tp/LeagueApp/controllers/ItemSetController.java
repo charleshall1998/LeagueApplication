@@ -25,7 +25,7 @@ public class ItemSetController {
         try {
             toReturn = service.createNewItemSet(toAdd);
         }
-        catch(EmptyItemListException | NullSetException | InvalidItemException | DuplicateComponentException | MaxNameLengthException | EmptyStringException e) {
+        catch(Exception | InvalidItemException | EmptyItemListException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
 
@@ -72,7 +72,7 @@ public class ItemSetController {
             service.deleteItemSetById(itemSetId);
             return "Item Set " + itemSetId + " successfully deleted.";
         }
-        catch(NullIdException | InvalidSetException e) {
+        catch(Exception e) {
             return e.getMessage();
         }
     }

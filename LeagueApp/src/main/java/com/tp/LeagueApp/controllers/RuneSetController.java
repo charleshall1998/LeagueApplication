@@ -25,7 +25,7 @@ public class RuneSetController {
         try {
             toReturn = service.createNewRuneSet(toAdd);
         }
-        catch(NullSetException | EmptyRuneListException | InvalidRuneException | DuplicateComponentException | MaxNameLengthException | EmptyStringException e) {
+        catch(Exception | EmptyRuneListException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
 
@@ -46,7 +46,7 @@ public class RuneSetController {
         try {
             toReturn = service.getRuneSetById(runeSetId);
         }
-        catch(NullIdException | InvalidSetException e) {
+        catch(Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
 
@@ -72,7 +72,7 @@ public class RuneSetController {
             service.deleteRuneSetById(runeSetId);
             return "Rune Set " + runeSetId + " successfully deleted.";
         }
-        catch(NullIdException | InvalidSetException e) {
+        catch(Exception e) {
             return e.getMessage();
         }
     }

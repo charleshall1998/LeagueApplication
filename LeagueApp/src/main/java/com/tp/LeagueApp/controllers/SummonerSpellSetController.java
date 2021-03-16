@@ -72,7 +72,7 @@ public class SummonerSpellSetController {
             service.deleteSummonerSpellSetById(summSpellSetId);
             return "Summoner Spell Set " + summSpellSetId + " successfully deleted.";
         }
-        catch(NullIdException | InvalidSetException e) {
+        catch(Exception e) {
             return e.getMessage();
         }
     }
