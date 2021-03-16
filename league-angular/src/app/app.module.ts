@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChampionComponent } from './champion/champion.component';
@@ -22,10 +21,7 @@ import { CreateItemsetComponent } from './create-itemset/create-itemset.componen
 import { FormsModule } from '@angular/forms';
 import { CreateRunesetComponent } from './create-runeset/create-runeset.component';
 import { CreateSummonerspellsetComponent } from './create-summonerspellset/create-summonerspellset.component';
-import { DeleteItemsetComponent } from './delete-itemset/delete-itemset.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { DeleteRunesetComponent } from './delete-runeset/delete-runeset.component';
-import { DeleteSummonerspellsetComponent } from './delete-summonerspellset/delete-summonerspellset.component';
 import { ChampionByNameComponent } from './champion-by-name/champion-by-name.component';
 import { ChampionByIdComponent } from './champion-by-id/champion-by-id.component';
 import { ItemByNameComponent } from './item-by-name/item-by-name.component';
@@ -58,10 +54,7 @@ import { UpdateSummonerspellsetComponent } from './update-summonerspellset/updat
     CreateItemsetComponent,
     CreateRunesetComponent,
     CreateSummonerspellsetComponent,
-    DeleteItemsetComponent,
     HomePageComponent,
-    DeleteRunesetComponent,
-    DeleteSummonerspellsetComponent,
     ChampionByNameComponent,
     ChampionByIdComponent,
     ItemByNameComponent,
