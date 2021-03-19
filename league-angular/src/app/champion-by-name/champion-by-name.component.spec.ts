@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ChampionByNameComponent } from './champion-by-name.component';
@@ -8,6 +9,7 @@ describe('ChampionByNameComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
       declarations: [ ChampionByNameComponent ]
     })
     .compileComponents();

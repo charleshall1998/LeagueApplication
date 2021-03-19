@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { SummonerspellByIdComponent } from './summonerspell-by-id.component';
 
 describe('SummonerspellByIdComponent', () => {
@@ -8,6 +8,7 @@ describe('SummonerspellByIdComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
       declarations: [ SummonerspellByIdComponent ]
     })
     .compileComponents();

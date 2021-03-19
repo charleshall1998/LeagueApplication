@@ -33,6 +33,7 @@ import { RuneByIdComponent } from './rune-by-id/rune-by-id.component';
 import { UpdateItemsetComponent } from './update-itemset/update-itemset.component';
 import { UpdateRunesetComponent } from './update-runeset/update-runeset.component';
 import { UpdateSummonerspellsetComponent } from './update-summonerspellset/update-summonerspellset.component';
+import { LeagueService } from './league.service';
 
 @NgModule({
   declarations: [
