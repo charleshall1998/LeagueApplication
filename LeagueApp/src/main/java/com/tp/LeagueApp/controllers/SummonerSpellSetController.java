@@ -20,7 +20,7 @@ public class SummonerSpellSetController {
     //User summonerSpellSetName in JSON request!!
     //CREATE
     @PostMapping("/new/summonerSpellSet")
-    public ResponseEntity createNewRuneSet(@RequestBody SummonerSpellSet toAdd) {
+    public ResponseEntity createNewSummonerSpellSet(@RequestBody SummonerSpellSet toAdd) {
         SummonerSpellSet toReturn = null;
         try {
             toReturn = service.createNewSummonerSpellSet(toAdd);
