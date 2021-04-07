@@ -3,7 +3,13 @@ Demo Day project for Charles Hall. This is a full-stack League of Legends applic
 
 ## Purpose
 
-To display proficiency in various technologies such as Spring Boot, JUnit5, JDBC, and Angular.
+To display proficiency in various technologies and full stack development including database design, REST API and back end development, and front end design and development.
 
 ## Tech Stack
 
+* Java
+* Spring Boot
+* Java Database Connectivity (JDBC)
+* JUnit 5
+* PostgreSQL
+* Angular
