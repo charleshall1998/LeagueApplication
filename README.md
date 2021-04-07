@@ -2,9 +2,9 @@
 
 ## About
 
-Based around the video game [League of Legends](https://na.leagueoflegends.com/en-us/), it allows a user to easily organize and structure the various item, rune, and summoner spells systems of the game. A user can get information about the various systems and perform the standard create, read, update, and delete ([CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete)) operations on their own sets of items, runes, and summoner spell sets. 
+Based around the video game [League of Legends](https://na.leagueoflegends.com/en-us/), it allows a user to easily organize and structure the various item, rune, and summoner spells systems of the game. A user can get information about the various systems and perform the standard Create, Read, Update, and Delete ([CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete)) operations on their own sets of items, runes, and summoner spell sets. 
 
-These calls are handled via a REST API that I developed using Spring Boot and the data is stored in a PostgreSQL database. The front end of the application is developed with Angular.
+These calls are handled via a Representational State Transfer ([REST](https://www.ibm.com/cloud/learn/rest-apis)) API that I developed using Spring Boot and the data is stored in a PostgreSQL database. The front end of the application is developed with Angular.
 
 ## Purpose
 
